@@ -1,6 +1,3 @@
-[submodule "vendor/rhtml-mode"]
-	path = vendor/rhtml-mode
-	url = git://github.com/eschulte/rhtml.git
 [submodule "vendor/bundler.el"]
 	path = vendor/bundler.el
 	url = git://github.com/tobiassvn/bundler.el.git
@@ -10,27 +7,9 @@
 [submodule "vendor/cheat.el"]
 	path = vendor/cheat.el
 	url = https://github.com/defunkt/cheat.el.git
-[submodule "vendor/direx.el"]
-	path = vendor/direx.el
-	url = https://github.com/m2ym/direx-el
-[submodule "vendor/enhanced-ruby-mode"]
-	path = vendor/enhanced-ruby-mode
-	url = https://github.com/jacott/Enhanced-Ruby-Mode.git
 [submodule "vendor/powerline.el"]
 	path = vendor/powerline.el
 	url = https://github.com/milkypostman/powerline.git
-[submodule "vendor/smart-tab.el"]
-	path = vendor/smart-tab.el
-	url = https://github.com/genehack/smart-tab.git
-[submodule "vendor/rinari"]
-	path = vendor/rinari
-	url = git://github.com/eschulte/rinari.git
-[submodule "vendor/evil-rails.el"]
-	path = vendor/evil-rails.el
-	url = git://github.com/antono/evil-rails.git
-[submodule "vendor/growl.el"]
-	path = vendor/growl.el
-	url = git://github.com/elim/emacs-growl.git
 [submodule "vendor/sackspace.el"]
 	path = vendor/sackspace.el
 	url = https://github.com/cofi/sackspace.el
@@ -49,12 +28,6 @@
 [submodule "vendor/ace-jump-mode.el"]
 	path = vendor/ace-jump-mode.el
 	url = https://github.com/winterTTr/ace-jump-mode
-[submodule "vendor/dired-details+.el"]
-	path = vendor/dired-details+.el
-	url = git://github.com/emacsmirror/dired-details-plus.git
-[submodule "vendor/autopair.el"]
-	path = vendor/autopair.el
-	url = git://github.com/capitaomorte/autopair.git
 [submodule "vendor/expand-region.el"]
 	path = vendor/expand-region.el
 	url = git://github.com/magnars/expand-region.el.git
@@ -124,3 +97,9 @@
 [submodule "vendor/jade-mode.el"]
 	path = vendor/jade-mode.el
 	url = git://github.com/brianc/jade-mode.git
+[submodule "vendor/rhtml-mode.el"]
+	path = vendor/rhtml-mode.el
+	url = git://github.com/eschulte/rhtml.git
+[submodule "vendor/rinari.el"]
+	path = vendor/rinari.el
+	url = git://github.com/eschulte/rinari.git
