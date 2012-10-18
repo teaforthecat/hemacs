@@ -1,0 +1,14 @@
+*.DS_Store
+*.elc
+/eshell
+/elpa
+/tramp
+/backup
+/autosave
+/places
+/savehist
+/history
+/recentf
+/saveplace
+/ac-comphist.dat
+/url/cookies

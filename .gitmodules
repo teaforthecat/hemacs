@@ -1,0 +1,126 @@
+[submodule "vendor/rhtml-mode"]
+	path = vendor/rhtml-mode
+	url = git://github.com/eschulte/rhtml.git
+[submodule "vendor/bundler.el"]
+	path = vendor/bundler.el
+	url = git://github.com/tobiassvn/bundler.el.git
+[submodule "vendor/foreman.el"]
+	path = vendor/foreman.el
+	url = git://github.com/waymondo/foreman.el.git
+[submodule "vendor/cheat.el"]
+	path = vendor/cheat.el
+	url = https://github.com/defunkt/cheat.el.git
+[submodule "vendor/direx.el"]
+	path = vendor/direx.el
+	url = https://github.com/m2ym/direx-el
+[submodule "vendor/enhanced-ruby-mode"]
+	path = vendor/enhanced-ruby-mode
+	url = https://github.com/jacott/Enhanced-Ruby-Mode.git
+[submodule "vendor/powerline.el"]
+	path = vendor/powerline.el
+	url = https://github.com/milkypostman/powerline.git
+[submodule "vendor/smart-tab.el"]
+	path = vendor/smart-tab.el
+	url = https://github.com/genehack/smart-tab.git
+[submodule "vendor/rinari"]
+	path = vendor/rinari
+	url = git://github.com/eschulte/rinari.git
+[submodule "vendor/evil-rails.el"]
+	path = vendor/evil-rails.el
+	url = git://github.com/antono/evil-rails.git
+[submodule "vendor/growl.el"]
+	path = vendor/growl.el
+	url = git://github.com/elim/emacs-growl.git
+[submodule "vendor/sackspace.el"]
+	path = vendor/sackspace.el
+	url = https://github.com/cofi/sackspace.el
+[submodule "vendor/popwin.el"]
+	path = vendor/popwin.el
+	url = git://github.com/m2ym/popwin-el.git
+[submodule "vendor/deft.el"]
+	path = vendor/deft.el
+	url = git://jblevins.org/git/deft.git
+[submodule "vendor/ack-and-a-half.el"]
+	path = vendor/ack-and-a-half.el
+	url = git://github.com/jhelwig/ack-and-a-half.git
+[submodule "vendor/magit.el"]
+	path = vendor/magit.el
+	url = git://github.com/magit/magit.git
+[submodule "vendor/ace-jump-mode.el"]
+	path = vendor/ace-jump-mode.el
+	url = https://github.com/winterTTr/ace-jump-mode
+[submodule "vendor/dired-details+.el"]
+	path = vendor/dired-details+.el
+	url = git://github.com/emacsmirror/dired-details-plus.git
+[submodule "vendor/autopair.el"]
+	path = vendor/autopair.el
+	url = git://github.com/capitaomorte/autopair.git
+[submodule "vendor/expand-region.el"]
+	path = vendor/expand-region.el
+	url = git://github.com/magnars/expand-region.el.git
+[submodule "vendor/less-css-mode.el"]
+	path = vendor/less-css-mode.el
+	url = git://github.com/purcell/less-css-mode.git
+[submodule "vendor/heroku.el"]
+	path = vendor/heroku.el
+	url = git://github.com/technomancy/heroku.el.git
+[submodule "vendor/evil.el"]
+	path = vendor/evil.el
+	url = git://gitorious.org/evil/evil.git
+[submodule "vendor/slim-mode.el"]
+	path = vendor/slim-mode.el
+	url = git://github.com/minad/emacs-slim.git
+[submodule "vendor/switch-window.el"]
+	path = vendor/switch-window.el
+	url = git://github.com/dimitri/switch-window.git
+[submodule "vendor/zoom-frm.el"]
+	path = vendor/zoom-frm.el
+	url = git://github.com/emacsmirror/zoom-frm.git
+[submodule "vendor/auto-complete.el"]
+	path = vendor/auto-complete.el
+	url = git://github.com/auto-complete/auto-complete.git
+[submodule "vendor/popup.el"]
+	path = vendor/popup.el
+	url = git://github.com/auto-complete/popup-el.git
+[submodule "vendor/helm.el"]
+	path = vendor/helm.el
+	url = git://github.com/emacs-helm/helm.git
+[submodule "vendor/readline-complete.el"]
+	path = vendor/readline-complete.el
+	url = git://github.com/monsanto/readline-complete.el.git
+[submodule "vendor/ido-ubiquitous.el"]
+	path = vendor/ido-ubiquitous.el
+	url = git://github.com/technomancy/ido-ubiquitous.git
+[submodule "vendor/magithub.el"]
+	path = vendor/magithub.el
+	url = git://github.com/nex3/magithub.git
+[submodule "vendor/coffee-mode.el"]
+	path = vendor/coffee-mode.el
+	url = git://github.com/defunkt/coffee-mode.git
+[submodule "vendor/jump-char.el"]
+	path = vendor/jump-char.el
+	url = git://github.com/lewang/jump-char.git
+[submodule "vendor/dired-details.el"]
+	path = vendor/dired-details.el
+	url = git://github.com/emacsmirror/dired-details.git
+[submodule "vendor/yaml-mode.el"]
+	path = vendor/yaml-mode.el
+	url = git://github.com/yoshiki/yaml-mode.git
+[submodule "vendor/key-chord.el"]
+	path = vendor/key-chord.el
+	url = git://github.com/emacsmirror/key-chord.git
+[submodule "vendor/smex.el"]
+	path = vendor/smex.el
+	url = git://github.com/nonsequitur/smex.git
+[submodule "vendor/haml-mode.el"]
+	path = vendor/haml-mode.el
+	url = git://github.com/nex3/haml-mode.git
+[submodule "vendor/sass-mode.el"]
+	path = vendor/sass-mode.el
+	url = git://github.com/nex3/sass-mode.git
+[submodule "vendor/scss-mode.el"]
+	path = vendor/scss-mode.el
+	url = git://github.com/antonj/scss-mode.git
+[submodule "vendor/jade-mode.el"]
+	path = vendor/jade-mode.el
+	url = git://github.com/brianc/jade-mode.git
