@@ -3,17 +3,8 @@
 (vendor 'cheat)
 (vendor 'open-file-in-github)
 (vendor 'ack-and-a-half)
-
 ;; (vendor 'evil)
-;; (vendor 'switch-window)
-;; (vendor 'autopair)
 ;; (vendor 'sackspace)
-;; (vendor 'evil-rails)
-;; (vendor 'smart-tab)
-;; (vendor 'pabbrev)
-;; (vendor 'growl)
-;; (vendor 'enhanced-ruby-mode)
-;; (vendor 'surround)
 
 ;; always update files, i.e. after git pull
 (global-auto-revert-mode 1)
@@ -31,18 +22,17 @@
 (require 'saveplace)
 (require 'recentf)
 (setq-default save-place t)
-(setq recentf-max-saved-items 200)
+(setq recentf-max-saved-items 100)
 (setq recentf-save-file "~/.emacs.d/recentf")
 (setq savehist-file "~/.emacs.d/savehist")
 (setq save-place-file "~/.emacs.d/places")
 (savehist-mode t)
 (recentf-mode t)
 
-;; (setq vc-handled-backends ())
+(vendor 'undo-tree)
+(global-undo-tree-mode)
 
-;; disable
-(put 'downcase-region 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
+;; (setq vc-handled-backends ())
 
 ;; tabs
 (setq-default tab-width 2)
@@ -55,18 +45,17 @@
 (set-selection-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq uniquify-buffer-name-style 'forward
+      uniquify-separator " • "
+      uniquify-after-kill-buffer-p t    ; rename after killing uniquified
+      uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-;; meaningful names for buffers with the same name
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-(setq uniquify-separator " • ")
-(setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
-
-;; shift + arrows to move around windows
-(windmove-default-keybindings)
-(setq windmove-wrap-around t)
+;;enable cua-mode for rectangular selections
+;; (require 'cua-base)
+;; (require 'cua-gmrk)
+;; (require 'cua-rect)
+;; (cua-mode 1)
+;; (setq cua-enable-cua-keys nil)
 
 (vendor 'smex)
 (smex-initialize)
@@ -86,9 +75,10 @@
 (vendor 'helm)
 (require 'helm-config)
 
-(icomplete-mode +1)
 (global-subword-mode 1)
 (delete-selection-mode t)
+(setq normal-erase-is-backspace 2)
+
 
 ;; convenience and prefs
 (setq inhibit-startup-message t)
@@ -97,12 +87,14 @@
 ;; (setq max-lisp-eval-depth 100000)
 (setq show-trailing-whitespace t)
 (setq pop-up-windows nil)
+
 (global-font-lock-mode t)
 (tooltip-mode -1)
 
 ;; dired
 (vendor 'dired-details)
 (setq-default dired-details-hidden-string "- ")
+(setq dired-use-ls-dired nil)
 (dired-details-install)
 
 (setq dired-auto-revert-buffer t)
@@ -115,67 +107,12 @@
   ; up directory binding uses same buffer
   ))
 
-;; ido
-(vendor 'ido-ubiquitous)
-(ido-mode t)
-;; (ido-everywhere t)
-(ido-ubiquitous t)
-(setq ido-enable-flex-matching t)
-(setq ido-use-virtual-buffers t) ;; include non-existent buffers
-(setq ido-auto-merge-work-directories-length nil)
-(setq ido-use-filename-at-point nil)
-(setq ido-max-window-height 29)
-(setq ido-max-prospects 25)
-(add-to-list 'ido-ignore-files "\\.DS_Store")
-(add-to-list 'ido-ignore-files "\\.ido.last")
-(add-to-list 'ido-ignore-files "\\.loaddefs.el")
-(add-to-list 'ido-ignore-directories "\#{var}")
-(add-to-list 'ido-ignore-directories "tmp")
-(add-to-list 'ido-ignore-directories "node_modules")
-(add-to-list 'ido-ignore-directories "vendor")
-(add-to-list 'ido-ignore-directories "public/system")
-
-;; popwin
-(vendor 'popwin)
-(setq display-buffer-function 'popwin:display-buffer)
-(setq popwin:popup-window-height 0.4)
-(push "*Bundler*" popwin:special-display-config)
-(push "*Deft*" popwin:special-display-config)
-(push "*rake*" popwin:special-display-config)
-(push "*rails*" popwin:special-display-config)
-(push "*magit-process*" popwin:special-display-config)
-(push "*magit-edit-log*" popwin:special-display-config)
-(push "*ruby*" popwin:special-display-config)
-(push "*helm mini*" popwin:special-display-config)
-(push '("*Foreman*" :position left :width .4 :noselect t) popwin:special-display-config)
-;; (push '("*Ack-and-a-half*" :position left :width .4 :dedicated t) popwin:special-display-config)
-(push '("*shell*" :position left :width .4) popwin:special-display-config)
-(push '(dired-mode :position left :width .4) popwin:special-display-config)
-
 ;; magit
 (vendor 'magit)
 (vendor 'magithub)
 
 (define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
 (setq magit-process-popup-time 2)
-;; (add-hook 'magit-post-command-hook 'popwin:close-popup-window)
-;; (add-hook 'magit-push-command-hook 'magit-display-process)
-
-;; hippie expand match order
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev
-                                         try-expand-dabbrev-all-buffers
-                                         try-expand-dabbrev-from-kill
-                                         try-complete-file-name-partially
-                                         try-complete-file-name
-                                         try-expand-all-abbrevs
-                                         try-complete-lisp-symbol-partially
-                                         try-complete-lisp-symbol))
-
-(defun hippie-expand-lines ()
-  (interactive)
-  (let ((hippie-expand-try-functions-list '(try-expand-line
-                                            try-expand-line-all-buffers)))
-    (hippie-expand nil)))
 
 ;; smooth scrolling
 (dolist (hook '(emacs-lisp-mode-hook
@@ -208,35 +145,6 @@
                 mustache-mode-hook
                 ))
   (add-hook hook 'enter-as-newline-and-indent))
-
-;; autocomplete
-(vendor 'popup)
-(vendor 'auto-complete)
-(vendor 'readline-complete)
-(global-auto-complete-mode t)
-
-(dolist (mode '(yaml-mode
-                html-mode
-                nxml-mode
-                sh-mode
-                lisp-mode
-                markdown-mode
-                css-mode
-                less-css-mode
-                ruby-mode
-                javascript-mode
-                js-mode
-                js2-mode
-                js3-mode
-                php-mode
-                sass-mode
-                slim-mode
-                coffee-mode
-                rhtml-mode
-                mustache-mode
-                haml-mode
-                ))
-   (add-to-list 'ac-modes mode))
 
 ;; extensions
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))

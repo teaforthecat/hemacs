@@ -15,6 +15,9 @@
 
 (require 'packages)
 (require 'defuns)
+
+(require 'hemacs-completion)
+(require 'hemacs-windows)
 (require 'config)
 (require 'pairs)
 (require 'bindings)
@@ -31,5 +34,6 @@
 (require 'stylesheets)
 (require 'javascripts)
 (require 'console)
+(require 'hemacs-swank)
 
 (provide 'init)

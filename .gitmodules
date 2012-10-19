@@ -103,3 +103,30 @@
 [submodule "vendor/rinari.el"]
 	path = vendor/rinari.el
 	url = git://github.com/eschulte/rinari.git
+[submodule "vendor/predictive.el"]
+	path = vendor/predictive.el
+	url = git://github.com/emacsmirror/predictive.git
+[submodule "vendor/ac-predictive.el"]
+	path = vendor/ac-predictive.el
+	url = git://github.com/tkosaka/ac-predictive.git
+[submodule "vendor/slime.el"]
+	path = vendor/slime.el
+	url = git://github.com/nablaone/slime.git
+[submodule "vendor/volatile-highlights.el"]
+	path = vendor/volatile-highlights.el
+	url = git://github.com/k-talo/volatile-highlights.el.git
+[submodule "vendor/undo-tree.el"]
+	path = vendor/undo-tree.el
+	url = git://github.com/emacsmirror/undo-tree.git
+[submodule "vendor/highlight-tail.el"]
+	path = vendor/highlight-tail.el
+	url = git://github.com/emacsmirror/highlight-tail.git
+[submodule "vendor/js2-mode.el"]
+	path = vendor/js2-mode.el
+	url = git://github.com/mooz/js2-mode.git
+[submodule "vendor/slime-js.el"]
+	path = vendor/slime-js.el
+	url = git://github.com/swank-js/swank-js.git
+[submodule "vendor/js2-refactor.el"]
+	path = vendor/js2-refactor.el
+	url = git://github.com/magnars/js2-refactor.el.git

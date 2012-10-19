@@ -1,11 +1,17 @@
+;; (load-file "~/.emacs.d/themes/cyberpunk.el")
+;; (load-file "~/.emacs.d/themes/gandalf.el")
+
+;; (color-theme-cyberpunk)
+;; (set-cursor-color "yellow")
+
 (load-theme 'misterioso)
 
 (setq color-theme-is-global t)
-;; (setq font-lock-maximum-decoration t)
-(setq visible-bell t)
+(setq font-lock-maximum-decoration t)
+(setq ring-bell-function 'ignore)
 (setq truncate-partial-width-windows nil)
+(set-default 'fill-column 72)
 
-(idle-highlight-mode 1)
 (global-hl-line-mode t)
 (transient-mark-mode t)
 (show-paren-mode t)
@@ -13,8 +19,12 @@
 (size-indication-mode t)
 (fringe-mode 0)
 
-;; vertical ido results!
-(setq ido-decorations (quote ("\n=> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(vendor 'volatile-highlights)
+(volatile-highlights-mode t)
+
+(vendor 'highlight-tail)
+(highlight-tail-mode 1)
+(setq highlight-tail-steps 48)      
 
 ;; box around mode line is ew with powerline
 (vendor 'powerline)
@@ -58,12 +68,15 @@
                     (powerline-fill face2 (powerline-width rhs))
                     (powerline-render rhs))))))
 
-;; let the side colors of powerline be more vibrant in your active window
-(defun setup-powerline-colors ()
+(require 'color)
+(defun massage-theme-colors ()
   (interactive)
   (let (
         (mode-line-foreground (face-attribute 'mode-line :foreground))
         (mode-line-background (face-attribute 'mode-line :background))
+        (highlight-base (face-attribute 'highlight :background))
+        (flash-base (face-attribute 'isearch :background))
+        (tail-base (face-attribute 'match :background))
         )
     (set-face-attribute 'mode-line nil
                         :foreground mode-line-background
@@ -72,8 +85,17 @@
                         :foreground mode-line-foreground)
     (set-face-attribute 'powerline-active2 nil
                         :foreground mode-line-foreground)
+    (set-face-attribute 'hl-line nil
+                        :background (color-darken-name highlight-base 16))
+    (set-face-attribute 'cursor nil
+                        :background flash-base)
+    (setq highlight-tail-colors (list (cons (color-lighten-name tail-base 10) 0)
+                                      (cons highlight-base 50)
+                                      (cons (color-darken-name highlight-base 10) 100)
+                                      ))
+    (highlight-tail-reload)
     ))
-(setup-powerline-colors)
+(massage-theme-colors)
 
 ;; diminish mode names in mode line
 (require 'diminish)
@@ -81,6 +103,9 @@
 (eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
 (eval-after-load "ruby-end" '(diminish 'ruby-end-mode))
 (eval-after-load "rinari" '(diminish 'rinari-minor-mode "rails"))
+(eval-after-load "highlight-tail" '(diminish 'highlight-tail-mode))
+(eval-after-load "volatile-highlights" '(diminish 'volatile-highlights-mode))
+(eval-after-load "slime-js" '(diminish 'slime-js-minor-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "el")))
 
 (provide 'ui)

@@ -11,7 +11,9 @@
   '(browse-kill-ring
     diminish
     gist
-    idle-highlight-mode
+    slime
+    slime-repl
+    slime-js
     inf-ruby
     markdown-mode
     perspective

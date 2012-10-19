@@ -4,6 +4,7 @@
 (set-face-attribute 'default nil :font "-apple-Meslo_LG_M_DZ-medium-normal-normal-*-15-*-*-*-m-0-fontset-auto3")
 
 (custom-set-faces
+ '(font-lock-function-name-face ((t (:weight normal))))
  '(mode-line ((t (:box nil :height 120))))
  '(mode-line-inactive ((t (:box nil :height 120))))
  )
@@ -26,6 +27,12 @@
                     (face-remap-add-relative 'popup-scroll-bar-foreground-face '(:height 120))
                     (face-remap-add-relative 'popup-tip-face '(:height 120))
                     )))
+
+(defun terminal-init-zsh ()
+  "Terminal initialization function for screen."
+   ;; Use the xterm color initialization code.
+  (text-scale-set -1)
+   )
 
 ;; bump fix the autocomplete faces to 160pt + remove the box around powerline
 

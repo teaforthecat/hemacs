@@ -289,15 +289,6 @@
   (switch-to-buffer (other-buffer))
   )
 
-(defun hexcolour-luminance (color)
-  "Calculate the luminance of a color string (e.g. \"#ffaa00\", \"blue\").
-  This is 0.3 red + 0.59 green + 0.11 blue and always between 0 and 255."
-  (let* ((values (x-color-values color))
-         (r (car values))
-         (g (cadr values))
-         (b (caddr values)))
-    (floor (+ (* .3 r) (* .59 g) (* .11 b)) 256)))
-
 (defun js-insert-console ()
   (interactive)
   (insert "console.log()")
@@ -466,6 +457,18 @@ file of a buffer in an external program."
     (let ((dir (file-name-directory filename)))
       (unless (file-exists-p dir)
         (make-directory dir)))))
+
+(defun what-face (pos)
+  "Return the name of the face at point"
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+(defun persp-switch-last ()
+  (interactive)
+  (persp-switch persp-last)
+  )
 
 (defun vendor (library)
   (let* ((file (symbol-name library))

@@ -8,19 +8,20 @@
 (global-set-key (kbd "C-c f") 'ack-and-a-half-find-file)
 (global-set-key (kbd "C-c F") 'ack-and-a-half-find-file-same)
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
+
 (global-set-key (kbd "s-b") 'ido-switch-buffer)
-(global-set-key (kbd "s-n") 'bs-ace-jump-buffer)
+(global-set-key (kbd "s-m") 'bs-ace-jump-buffer)
 
 ;; moving, selecting
 (key-chord-define-global "fg" 'jump-char-forward)
 (key-chord-define-global "df" 'jump-char-backward)
+(key-chord-define-global "DD" 'kill-whole-line)
 
 (global-set-key (kbd "s-,") 'next-line)
 (global-set-key (kbd "s-.") 'previous-line)
 (global-set-key (kbd "C-,") 'forward-paragraph)
 (global-set-key (kbd "C-.") 'backward-paragraph)
 (global-set-key (kbd "s-'") 'er/expand-region)
-(global-set-key (kbd "s-/") 'comment-or-uncomment-region-or-line)
 
 ;; overrides
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
@@ -44,7 +45,7 @@
 
 ;; popups
 (global-set-key (kbd "C-z") popwin:keymap)
-(global-set-key (kbd "C-z d") 'popwin-direx:direx)
+(global-set-key (kbd "C-z d") 'dired-jump-other-window)
 (global-set-key (kbd "C-z x") 'popwin:visit-project-shell)
 (global-set-key (kbd "C-z a") 'popwin:async-command)
 (global-set-key (kbd "C-z F") 'popwin:foreman)
@@ -61,6 +62,7 @@
 ;; buffer / window movement
 (global-set-key (kbd "s-`") 'switch-to-previous-buffer)
 (global-set-key (kbd "M-`") 'popwin:display-last-buffer)
+(global-set-key (kbd "s-S-`") 'persp-switch-last)
 
 ;; killing, yanking
 (global-set-key (kbd "s-V") 'yank-indented)

@@ -12,6 +12,10 @@
      ))
 
 (setq css-indent-offset 2)
+(add-hook 'css-mode-hook
+          (lambda ()
+            (define-key css-mode-map "\M-\C-x" 'slime-js-refresh-css)
+            (define-key css-mode-map "\C-c\C-r" 'slime-js-embed-css)))
 ;; (setq css-electric-keys (quote (125 59 0)))
 
 (provide 'stylesheets)

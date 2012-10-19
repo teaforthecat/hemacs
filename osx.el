@@ -21,12 +21,10 @@
 ;; no pop-up windows
 (setq ns-pop-up-frames nil)
 
+;; clipboard
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
-
-;; (setq mac-command-key-is-meta nil)
-;; (setq default-input-method "MacOSX")
-
 (setq x-select-enable-clipboard t)
+(setq save-interprogram-paste-before-kill t)
 
 ;; enhanced ruby
 ;; (setq enh-ruby-program (rbenv which ruby)) ; so that still works if ruby points to ruby1.8
