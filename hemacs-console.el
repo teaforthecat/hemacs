@@ -108,4 +108,4 @@ it. Returns the buffer name of the newly created terminal."
     (setq live-current-ansi-term term-name)
     (popwin:display-buffer live-current-ansi-term)))
 
-(provide 'console)
+(provide 'hemacs-console)

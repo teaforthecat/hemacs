@@ -15,6 +15,21 @@
   (interactive)
   (apply #'make-comint "swank-js"  slime-js-swank-command nil slime-js-swank-args))
 
+(defun slime-js-jack-in-browser ()
+  "Start a swank-js server, connect to it, open a repl, open a browser, connect to that."
+  (interactive)
+  (let* ((slime-js-target-url (read-from-minibuffer "Site URL: " nil nil nil nil)))    
+    (setq slime-protocol-version 'ignore)
+    (slime-connect "localhost" 4005)
+    (sleep-for 2)
+    (slime-js-set-target-url (concat "http://" slime-js-target-url))
+    (shell-command (concat slime-js-browser-command " " slime-js-connect-url))
+    (sleep-for 3)
+    (setq slime-remote-history nil)
+    (slime-js-sticky-select-remote (caadr (slime-eval '(js:list-remotes))))
+    (setq slime-js-browser-jacked-in-p t)
+    (global-set-key [f5] 'slime-js-reload)))
+
 (defun slime-js-coffee-eval-current ()
   (interactive)
   (coffee-compile-region (point) (mark))

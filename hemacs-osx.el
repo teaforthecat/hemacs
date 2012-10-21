@@ -30,4 +30,4 @@
 ;; (setq enh-ruby-program (rbenv which ruby)) ; so that still works if ruby points to ruby1.8
 ;; (require 'ruby-mode)
 
-(provide 'osx)
+(provide 'hemacs-osx)

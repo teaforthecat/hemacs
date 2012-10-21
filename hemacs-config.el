@@ -1,15 +1,12 @@
 (vendor 'expand-region)
 (vendor 'deft)
 (vendor 'cheat)
-(vendor 'open-file-in-github)
-(vendor 'ack-and-a-half)
-;; (vendor 'evil)
+(vendor 'evil)
 ;; (vendor 'sackspace)
 
-;; always update files, i.e. after git pull
-(global-auto-revert-mode 1)
-(setq global-auto-revert-non-file-buffers t)
-(setq auto-revert-verbose nil)
+;; ack searching `brew install ack`
+(vendor 'ack-and-a-half)
+(setq ack-and-a-half-arguments (quote ("--nosql")))
 
 ;; move autosave and backup files out of project workspaces
 (defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
@@ -31,8 +28,6 @@
 
 (vendor 'undo-tree)
 (global-undo-tree-mode)
-
-;; (setq vc-handled-backends ())
 
 ;; tabs
 (setq-default tab-width 2)
@@ -79,40 +74,13 @@
 (delete-selection-mode t)
 (setq normal-erase-is-backspace 2)
 
-
 ;; convenience and prefs
 (setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-nonexistent-file-or-buffer nil)
-;; (setq max-lisp-eval-depth 100000)
 (setq show-trailing-whitespace t)
 (setq pop-up-windows nil)
-
-(global-font-lock-mode t)
-(tooltip-mode -1)
-
-;; dired
-(vendor 'dired-details)
-(setq-default dired-details-hidden-string "- ")
-(setq dired-use-ls-dired nil)
-(dired-details-install)
-
-(setq dired-auto-revert-buffer t)
-(put 'dired-find-alternate-file 'disabled nil) ;; reuse current buffer by pressing 'a'
-(add-hook 'dired-mode-hook
- (lambda ()
-  (define-key dired-mode-map (kbd "^")
-    (lambda () (interactive) (find-alternate-file "..")))
-  (define-key dired-mode-map (kbd "C-x C-k") 'dired-do-delete)
-  ; up directory binding uses same buffer
-  ))
-
-;; magit
-(vendor 'magit)
-(vendor 'magithub)
-
-(define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
-(setq magit-process-popup-time 2)
+;; (setq max-lisp-eval-depth 100000)
 
 ;; smooth scrolling
 (dolist (hook '(emacs-lisp-mode-hook
@@ -127,6 +95,7 @@
                 coffee-mode-hook
                 haml-mode-hook
                 js-mode-hook
+                js2-mode-hook
                 mustache-mode-hook
                 ))
   (add-hook hook 'nice-scrolling))
@@ -142,36 +111,16 @@
                 ;; coffee-mode-hook
                 haml-mode-hook
                 js-mode-hook
+                js2-mode-hook
                 mustache-mode-hook
                 ))
   (add-hook hook 'enter-as-newline-and-indent))
 
-;; extensions
+;; file types
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-;; (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache$" . mustache-mode))
-(add-to-list 'auto-mode-alist '("\\.hbs$" . mustache-mode))
-(add-to-list 'auto-mode-alist '("\\.hamlbars$" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
-(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Procfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gems" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.builder" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rabl" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.cfm" . html-mode))
 
-(provide 'config)
+(provide 'hemacs-config)

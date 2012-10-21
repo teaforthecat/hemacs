@@ -29,4 +29,4 @@
 
 (electric-pair-mode t)
 
-(provide 'pairs)
+(provide 'hemacs-pairs)

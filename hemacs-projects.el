@@ -88,4 +88,4 @@
            (get-buffer command-buffer-name)))
      :default-config-keywords '(:position :left :width 64 :stick t))))
 
-(provide 'projects)
+(provide 'hemacs-projects)

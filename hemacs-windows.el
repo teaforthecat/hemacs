@@ -24,6 +24,7 @@
         "*ruby*"
         "*helm mini*"
         "*Deft*"
+        "*magit-process*"
         ("*Occur*" :noselect t)
         ("*magit-commit*" :noselect t :width 80)
         ("*magit-diff*" :noselect t :width 80)

@@ -1,0 +1,40 @@
+(vendor 'rinari)
+(vendor 'bundler)
+(vendor 'foreman)
+(vendor 'heroku)
+(vendor 'slim-mode)
+(vendor 'rhtml-mode)
+(vendor 'haml-mode)
+(vendor 'yaml-mode)
+
+(add-to-list 'auto-mode-alist '("\\.hamlbars$" . haml-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Procfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gems" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.thor" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.builder" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rabl" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
+
+(defun foreman-start ()  
+  (interactive)
+  (apply #'make-comint "foreman start" "foreman start" nil))
+
+(eval-after-load 'ruby-mode
+  '(progn
+
+     (ruby-end-mode +1)
+     (subword-mode +1)
+     ;; (define-key ruby-mode-map (kbd "<s-return>") 'insert-empty-line)
+     ;; (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
+     (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
+     ))
+
+(provide 'hemacs-ruby)

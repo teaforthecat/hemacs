@@ -1,0 +1,153 @@
+(require 'color)
+(vendor 'volatile-highlights)
+(vendor 'highlight-tail)
+(vendor 'powerline)
+
+(when (and *is-a-mac* window-system)
+  ;; using this font = https://github.com/andreberg/Meslo-Font
+  (set-face-attribute 'default nil :font "-apple-Meslo_LG_M_DZ-medium-normal-normal-*-15-*-*-*-m-0-fontset-auto3")
+  (ns-toggle-fullscreen)
+  )
+
+;; bump shell and process modes down to 12pt
+(dolist (hook '(comint-mode-hook
+                ))
+  (add-hook hook '(lambda ()
+                    (face-remap-add-relative 'default '(:height 120))
+                    (face-remap-add-relative 'ac-candidate-face '(:height 120))
+                    (face-remap-add-relative 'ac-candidate-mouse-face '(:height 120))
+                    (face-remap-add-relative 'ac-completion-face '(:height 120))
+                    (face-remap-add-relative 'ac-selection-face '(:height 120))
+                    (face-remap-add-relative 'popup-face '(:height 120))
+                    (face-remap-add-relative 'popup-menu-face '(:height 120))
+                    (face-remap-add-relative 'popup-isearch-match-face '(:height 120))
+                    (face-remap-add-relative 'popup-menu-mouse-face '(:height 120))
+                    (face-remap-add-relative 'popup-menu-selection-face '(:height 120))
+                    (face-remap-add-relative 'popup-scroll-bar-background-face '(:height 120))
+                    (face-remap-add-relative 'popup-scroll-bar-foreground-face '(:height 120))
+                    (face-remap-add-relative 'popup-tip-face '(:height 120))
+                    )))
+
+(load-theme 'misterioso)
+
+(setq color-theme-is-global t
+      font-lock-maximum-decoration t
+      ring-bell-function 'ignore
+      truncate-partial-width-windows nil)
+(set-default 'fill-column 72)
+
+(transient-mark-mode t)
+(show-paren-mode t)
+(blink-cursor-mode t)
+(size-indication-mode t)
+(fringe-mode 0)
+(volatile-highlights-mode t)
+(global-font-lock-mode t)
+(tooltip-mode -1)
+
+;; because coding is magic
+(highlight-tail-mode 1)
+(setq highlight-tail-steps 36
+      highlight-tail-timer 0.02)
+
+(custom-set-faces
+ '(font-lock-function-name-face ((t (:weight normal)))) ;; makes scrolling sticky
+ '(ido-subdir ((t (:inherit font-lock-keyword-face))))
+ '(mode-line ((t (:box nil :height 130 :inherit font-lock-comment-face))))
+ '(mode-line-inactive ((t (:box nil :height 130 :foreground nil :inherit font-lock-comment-face))))
+ '(powerline-active1 ((t (:foreground nil :height 130 :inherit default))))
+ '(powerline-active2 ((t (:foreground nil :height 130 :inherit default))))
+ '(powerline-inactive1 ((t (:foreground nil :inherit font-lock-comment-face))))
+ '(powerline-inactive2 ((t (:foreground nil :inherit font-lock-comment-face))))
+ )
+
+(defun massage-theme-colors ()
+  (interactive)
+  (let (
+        (bg (face-attribute 'default :background))
+        (font-lock-comment-base (face-attribute 'font-lock-comment-face :foreground))
+        (highlight-base (face-attribute 'highlight :background))
+        (flash-base (face-attribute 'isearch :background))
+        (tail-base (face-attribute 'match :background))
+        )
+    
+    (set-face-attribute 'mode-line nil
+                        :foreground bg
+                        :background font-lock-comment-base)
+    
+    (set-face-attribute 'mode-line-inactive nil
+                        :background (color-darken-name bg 5))
+    
+    (set-face-attribute 'powerline-active1 nil
+                        :background (color-lighten-name bg 18))
+    
+    (set-face-attribute 'powerline-active2 nil
+                        :background (color-lighten-name bg 12))
+    
+    (set-face-attribute 'powerline-inactive1 nil
+                        :background (color-lighten-name bg 10))
+    
+    (set-face-attribute 'powerline-inactive2 nil
+                        :background (color-lighten-name bg 6))
+        
+    (set-face-attribute 'cursor nil
+                        :background flash-base)
+    
+    (setq highlight-tail-colors (list (cons tail-base 0)
+                                      (cons highlight-base 24)))
+    (highlight-tail-reload)
+
+    ;; powerline
+    (powerline-default)
+    (setq-default mode-line-format
+                  '("%e"
+                    (:eval
+                     (let* ((active (eq (frame-selected-window) (selected-window)))
+                            (face1 (if active 'powerline-active1 'powerline-inactive1))
+                            (face2 (if active 'powerline-active2 'powerline-inactive2))
+                            (lhs (list
+                                  (powerline-raw " ")
+                                  (powerline-buffer-id nil 'l)
+                                  (powerline-raw " ")
+                                  (powerline-arrow-right nil face1)
+                                  (powerline-raw "%*" face1 'l)
+                                  (powerline-raw " " face1)
+                                  ;; (powerline-hud face2 face1)
+                                  ;; (powerline-raw " " face1)
+                                  (powerline-raw "%3l" face1 'r)
+                                  (powerline-buffer-size face1 'l)
+                                  (powerline-raw " " face1)
+                                  (powerline-arrow-right face1 face2)
+                                  (powerline-major-mode face2 'l)
+                                  (powerline-minor-modes face2 'l)
+                                  (powerline-raw mode-line-process face2 'l)
+                                  ))
+                            (rhs (list
+                                  (powerline-arrow-left face2 face1)
+                                  (powerline-vc face1)
+                                  (powerline-raw " " face1)
+                                  (powerline-arrow-left face1 nil)
+                                  (powerline-raw " ")
+                                  (powerline-raw (persp-name persp-curr) nil 'r)
+                                  (powerline-raw " ")
+                                  )))
+                       (concat
+                        (powerline-render lhs)
+                        (powerline-fill face2 (powerline-width rhs))
+                        (powerline-render rhs))))))
+    
+    ))
+(massage-theme-colors)
+
+;; diminish mode names in mode line
+(require 'diminish)
+(eval-after-load "textmate" '(diminish 'textmate-mode))
+(eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
+(eval-after-load "ruby-end" '(diminish 'ruby-end-mode))
+(eval-after-load "rinari" '(diminish 'rinari-minor-mode "rails"))
+(eval-after-load "highlight-tail" '(diminish 'highlight-tail-mode))
+(eval-after-load "volatile-highlights" '(diminish 'volatile-highlights-mode))
+(eval-after-load "slime-js" '(diminish 'slime-js-minor-mode))
+(add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "el")))
+
+(provide 'hemacs-ui)

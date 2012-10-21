@@ -130,3 +130,6 @@
 [submodule "vendor/js2-refactor.el"]
 	path = vendor/js2-refactor.el
 	url = git://github.com/magnars/js2-refactor.el.git
+[submodule "vendor/kite.el"]
+	path = vendor/kite.el
+	url = git://github.com/jscheid/kite.git

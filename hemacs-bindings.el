@@ -62,7 +62,7 @@
 ;; buffer / window movement
 (global-set-key (kbd "s-`") 'switch-to-previous-buffer)
 (global-set-key (kbd "M-`") 'popwin:display-last-buffer)
-(global-set-key (kbd "s-S-`") 'persp-switch-last)
+(global-set-key (kbd "C-`") 'persp-switch-last)
 
 ;; killing, yanking
 (global-set-key (kbd "s-V") 'yank-indented)
@@ -81,4 +81,4 @@
 (global-set-key (kbd "C-x \\") 'align-regexp)
 (global-set-key (kbd "C-c q") 'join-line)
 
-(provide 'bindings)
+(provide 'hemacs-bindings)
