@@ -19,7 +19,7 @@ the first time you boot a handful of elisp packages will be installed so practic
 
 ## what does this look like?
 
-![screenshot](/waymondo/hemacs/screenshot.png)
+![screenshot](https://github.com/waymondo/hemacs/raw/master/screenshot.png)
 
 ## what does it come with?
 
