@@ -13,9 +13,13 @@ one man's ever evolving emacs setup. used on osx with carbon emacs 24+.
 installing emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew) =>
 
 `brew install emacs --cocoa`
-`brew linkapps`
 
+`brew linkapps`
 the first time you boot a handful of elisp packages will be installed so practice your patience.
+
+## what does this look like?
+
+![screenshot](http://cl.ly/image/0C371v0v3G1Y)
 
 ## what does it come with?
 
@@ -32,7 +36,7 @@ the first time you boot a handful of elisp packages will be installed so practic
 * `hemacs-osx` - carbon / osx related
 * `hemacs-ui` - font, theme, highlight-tail, powerline and fanciness
 * `hemacs-console` - trying to make emacs shell or terminal more usable
-* support for: ruby, javascript, coffeescript, css, less css, scss, sass, rhtml, haml, slim, mustache, handlebars, yaml, and markdown
+* support for: ruby, javascript, coffeescript, css, less css, scss, sass, erb, haml, slim, mustache, handlebars, yaml, and markdown
 * a whole buttload of git submoduled packages
 
 
