@@ -19,7 +19,7 @@ the first time you boot a handful of elisp packages will be installed so practic
 
 ## what does this look like?
 
-![screenshot](http://cl.ly/image/0C371v0v3G1Y)
+![screenshot](/screenshot.png)
 
 ## what does it come with?
 
