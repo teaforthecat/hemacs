@@ -82,25 +82,8 @@
 (setq pop-up-windows nil)
 ;; (setq max-lisp-eval-depth 100000)
 
-;; smooth scrolling
-(dolist (hook '(emacs-lisp-mode-hook
-                html-mode-hook
-                rhtml-mode-hook
-                ruby-mode-hook
-                css-mode-hook
-                less-css-mode-hook
-                sass-mode-hook
-                scss-mode-hook
-                slim-mode-hook
-                coffee-mode-hook
-                haml-mode-hook
-                js-mode-hook
-                js2-mode-hook
-                mustache-mode-hook
-                ))
-  (add-hook hook 'nice-scrolling))
-
 ;; override enter
+(global-set-key (kbd "<s-return>") 'insert-empty-line)
 (dolist (hook '(emacs-lisp-mode-hook
                 html-mode-hook
                 rhtml-mode-hook

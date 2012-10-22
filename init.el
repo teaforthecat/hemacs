@@ -22,6 +22,7 @@
 (require 'hemacs-git)
 (require 'hemacs-dired)
 (require 'hemacs-pairs)
+(require 'hemacs-scrolling)
 (require 'hemacs-bindings)
 (require 'hemacs-projects)
 

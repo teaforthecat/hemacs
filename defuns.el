@@ -171,25 +171,6 @@
                       (line-beginning-position (+ 1 arg)))
       (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
-(defun nice-scrolling ()
-  "Turn on smooth buffered scrolling"
-  (interactive)
-  (make-local-variable 'scroll-margin)
-  (make-local-variable 'scroll-conservatively)
-  (make-local-variable 'scroll-preserve-screen-position)
-  (setq scroll-margin 20)
-  (setq scroll-conservatively 100000)
-  (setq scroll-preserve-screen-position t)
-  )
-
-(defun no-nice-scrolling ()
-  "Turn on smooth buffered scrolling"
-  (interactive)
-  (setq scroll-margin 0)
-  (setq scroll-conservatively 1)
-  (setq scroll-preserve-screen-position nil)
-  )
-
 (defun split-window-horizontally-previous-buffer-select ()
   (interactive)
   (split-window-horizontally)
@@ -415,7 +396,6 @@ file of a buffer in an external program."
           (eq last-command 'back-to-indentation-or-beginning))
       (beginning-of-line)
     (back-to-indentation)))
-
 
 (defun open-line-and-indent ()
   (interactive)

@@ -1,3 +1,12 @@
+;; open/switch projects
+(global-set-key (kbd "s-o") 'magit-in-perspective)
+(global-set-key (kbd "s-p") 'persp-switch)
+
+;; project-related popwin
+(global-set-key (kbd "C-z x") 'popwin:visit-project-shell)
+(global-set-key (kbd "C-z a") 'popwin:async-command)
+(global-set-key (kbd "C-z F") 'popwin:foreman)
+
 (defmacro custom-persp (name &rest body)
        `(let ((initialize (not (gethash ,name perspectives-hash)))
               (current-perspective persp-curr))
