@@ -29,6 +29,7 @@
           (lambda ()
             (slime-js-minor-mode 1)
             (setq js2-basic-offset 2)
+            (setq js2-strict-missing-semi-warning nil)
             ))
 
 (eval-after-load 'js2-mode

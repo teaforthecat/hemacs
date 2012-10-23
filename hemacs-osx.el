@@ -24,6 +24,7 @@
 ;; clipboard
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 (setq x-select-enable-clipboard t)
+(setq kill-do-not-save-duplicates t)
 (setq save-interprogram-paste-before-kill t)
 
 ;; enhanced ruby

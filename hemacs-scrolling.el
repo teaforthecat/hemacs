@@ -32,6 +32,7 @@
                 js-mode-hook
                 js2-mode-hook
                 mustache-mode-hook
+                markdown-mode-hook
                 ))
   (add-hook hook 'nice-scrolling))
 
