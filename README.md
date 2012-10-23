@@ -7,8 +7,7 @@ one man's ever evolving emacs setup. used on osx with carbon emacs 24+.
 (backup any existing ~/.emacs.d first)
 
 1. `git clone git://github.com/waymondo/hemacs ~/.emacs.d`
-2. `ln -s $PWD/hemacs $HOME/.emacs.d`
-3. `cd $HOME/.emacs.d && git submodule update --init --recursive`
+2. `cd ~/.emacs.d && git submodule update --init --recursive`
 
 installing emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew) =>
 
