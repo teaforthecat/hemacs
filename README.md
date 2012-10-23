@@ -20,7 +20,7 @@ the first time you boot a handful of elisp packages will be installed so practic
 
 ## what does it come with?
 
-* [all of these](https://github.com/waymondo/hemacs/raw/master/vendor)
+* [all of these](https://github.com/waymondo/hemacs/tree/master/vendor)
 
 * `hemacs-completion` - less typing with autocomplete, ido, and hippie expand
 
