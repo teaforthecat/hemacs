@@ -8,20 +8,15 @@
   (package-refresh-contents))
 
 (defvar packages
-  '(browse-kill-ring
-    diminish
-    gist
+  '(diminish
     slime
     slime-repl
     slime-js
-    inf-ruby
+    exec-path-from-shell
     markdown-mode
     perspective
-    ruby-end
     textmate
-    volatile-highlights
     yari
-    zenburn-theme
     )
   "A list of packages to ensure are installed at launch.")
 
