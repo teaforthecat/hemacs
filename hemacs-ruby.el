@@ -40,8 +40,6 @@
     (pop-to-buffer (get-buffer *process-buffer-name*))
     (comint-mode)
     (nice-log-scrolling)
-    ;; (ruby-compilation-minor-mode)
-    ;; (view-mode)
     (get-buffer *process-buffer-name*)
     ))
 

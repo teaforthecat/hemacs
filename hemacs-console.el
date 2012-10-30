@@ -19,6 +19,10 @@
       comint-process-echoes t
       comint-input-ignoredups t)
 
+(add-hook 'comint-mode-hook '(lambda ()
+                               (text-scale-decrease 1)
+                               ))
+
 ;; shell mode completion
 (add-to-list 'ac-modes 'shell-mode)
 (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)

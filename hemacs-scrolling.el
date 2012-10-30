@@ -9,11 +9,24 @@
   (setq scroll-preserve-screen-position t)
   )
 
+(defun nice-log-scrolling ()
+  "Turn on smooth buffered scrolling"
+  (interactive)
+  (make-local-variable 'comint-move-point-for-output)
+  (make-local-variable 'scroll-margin)
+  (make-local-variable 'scroll-conservatively)
+  (make-local-variable 'comint-scroll-show-maximum-output)
+  (setq comint-move-point-for-output 'others)
+  (setq scroll-margin 1)
+  (setq scroll-conservatively 100000)
+  (setq comint-scroll-show-maximum-output t)
+  )
+
 (defun no-nice-scrolling ()
   "Turn on smooth buffered scrolling"
   (interactive)
   (setq scroll-margin 0)
-  (setq scroll-conservatively 1)
+  (setq scroll-conservatively 0)
   (setq scroll-preserve-screen-position nil)
   )
 

@@ -160,3 +160,6 @@
 [submodule "vendor/dash.el"]
 	path = vendor/dash.el
 	url = git://github.com/magnars/dash.el.git
+[submodule "vendor/zlc.el"]
+	path = vendor/zlc.el
+	url = git://github.com/mooz/emacs-zlc.git
