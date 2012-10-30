@@ -1,4 +1,4 @@
-(icomplete-mode +1)
+(icomplete-mode 99)
 
 ;; ido
 (vendor 'ido-ubiquitous)
@@ -70,5 +70,9 @@
                 haml-mode
                 ))
    (add-to-list 'ac-modes mode))
+
+;; smart tab
+;; (vendor 'smart-tab)
+;; (global-smart-tab-mode 1)
 
 (provide 'hemacs-completion)

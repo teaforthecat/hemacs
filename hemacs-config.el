@@ -1,8 +1,13 @@
 (vendor 'expand-region)
 (vendor 'deft)
 (vendor 'cheat)
-(vendor 'evil)
+(vendor 'rect-mark)
+;; (vendor 'dash)
+;; (vendor 'evil)
 ;; (vendor 'sackspace)
+
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 ;; ack searching `brew install ack`
 (vendor 'ack-and-a-half)
@@ -23,11 +28,16 @@
 (setq recentf-save-file "~/.emacs.d/recentf")
 (setq savehist-file "~/.emacs.d/savehist")
 (setq save-place-file "~/.emacs.d/places")
+(setq history-delete-duplicates t)
 (savehist-mode t)
 (recentf-mode t)
 
 (vendor 'undo-tree)
 (global-undo-tree-mode)
+
+;; minibuffer
+;; (setq minibuffer-auto-raise t)
+(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
 ;; tabs
 (setq-default tab-width 2)
@@ -35,13 +45,21 @@
 
 ;; forceful utf-8
 (setq locale-coding-system 'utf-8-unix)
+(setq buffer-file-coding-system 'utf-8-unix)
+
+(set-buffer-file-coding-system 'utf-8-unix t)
 (set-terminal-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8-unix)
 (set-selection-coding-system 'utf-8-unix)
+
+;; (set-language-environment '"en_US.UTF-8")
 (prefer-coding-system 'utf-8-unix)
 
+;; (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+
+(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward
-      uniquify-separator " • "
+      uniquify-separator " <> "
       uniquify-after-kill-buffer-p t    ; rename after killing uniquified
       uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
@@ -67,8 +85,8 @@
 (vendor 'ace-jump-mode)
 (vendor 'jump-char)
 
-(vendor 'helm)
-(require 'helm-config)
+;; (vendor 'helm)
+;; (require 'helm-config)
 
 (global-subword-mode 1)
 (delete-selection-mode t)
