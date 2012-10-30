@@ -1,5 +1,6 @@
 (vendor 'magit)
 (vendor 'magithub)
+;; (vendor 'gist)
 (vendor 'open-file-in-github)
 
 (define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
