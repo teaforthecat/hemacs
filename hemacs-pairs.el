@@ -25,7 +25,9 @@
          (eq (following-char) (rest pair))
          (delete-char 1))))
 
-(setq electric-pair-pairs (quote ((60 . 62) (124 . 124) (91 . 93) (40 . 41) (123 . 125) (34 . 34))))
+;; always electric -> () {} [] || <> ""
+(setq electric-pair-pairs (quote ((60 . 62) (124 . 124) (91 . 93) (40 . 41) (123 . 125) (34 . 34)))      
+      electric-pair-skip-self nil)
 
 (electric-pair-mode t)
 
