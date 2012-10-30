@@ -1,5 +1,5 @@
 (require 'color)
-(vendor 'volatile-highlights)
+;; (vendor 'volatile-highlights)
 (vendor 'highlight-tail)
 (vendor 'powerline)
 
@@ -10,23 +10,23 @@
   )
 
 ;; bump shell and process modes down to 12pt
-(dolist (hook '(comint-mode-hook
-                ))
-  (add-hook hook '(lambda ()
-                    (face-remap-add-relative 'default '(:height 120))
-                    (face-remap-add-relative 'ac-candidate-face '(:height 120))
-                    (face-remap-add-relative 'ac-candidate-mouse-face '(:height 120))
-                    (face-remap-add-relative 'ac-completion-face '(:height 120))
-                    (face-remap-add-relative 'ac-selection-face '(:height 120))
-                    (face-remap-add-relative 'popup-face '(:height 120))
-                    (face-remap-add-relative 'popup-menu-face '(:height 120))
-                    (face-remap-add-relative 'popup-isearch-match-face '(:height 120))
-                    (face-remap-add-relative 'popup-menu-mouse-face '(:height 120))
-                    (face-remap-add-relative 'popup-menu-selection-face '(:height 120))
-                    (face-remap-add-relative 'popup-scroll-bar-background-face '(:height 120))
-                    (face-remap-add-relative 'popup-scroll-bar-foreground-face '(:height 120))
-                    (face-remap-add-relative 'popup-tip-face '(:height 120))
-                    )))
+;; (dolist (hook '(comint-mode-hook
+;;                 ))
+;;   (add-hook hook '(lambda ()
+;;                     (face-remap-add-relative 'default '(:height 120))
+;;                     (face-remap-add-relative 'ac-candidate-face '(:height 120))
+;;                     (face-remap-add-relative 'ac-candidate-mouse-face '(:height 120))
+;;                     (face-remap-add-relative 'ac-completion-face '(:height 120))
+;;                     (face-remap-add-relative 'ac-selection-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-menu-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-isearch-match-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-menu-mouse-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-menu-selection-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-scroll-bar-background-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-scroll-bar-foreground-face '(:height 120))
+;;                     (face-remap-add-relative 'popup-tip-face '(:height 120))
+;;                     )))
 
 (load-theme 'misterioso)
 
@@ -41,14 +41,14 @@
 (blink-cursor-mode t)
 (size-indication-mode t)
 (fringe-mode 0)
-(volatile-highlights-mode t)
+;; (volatile-highlights-mode t)
 (global-font-lock-mode t)
 (tooltip-mode -1)
 
 ;; because coding is magic
 (highlight-tail-mode 1)
 (setq highlight-tail-steps 36
-      highlight-tail-timer 0.02)
+      highlight-tail-timer 0.01)
 
 (custom-set-faces
  '(font-lock-function-name-face ((t (:weight normal)))) ;; makes scrolling sticky
@@ -70,7 +70,7 @@
         (flash-base (face-attribute 'isearch :background))
         (tail-base (face-attribute 'match :background))
         )
-    
+
     (set-face-attribute 'mode-line nil
                         :foreground bg
                         :background font-lock-comment-base)
@@ -91,7 +91,7 @@
                         :background (color-lighten-name bg 6))
         
     (set-face-attribute 'cursor nil
-                        :background flash-base)
+                        :background font-lock-comment-base)
     
     (setq highlight-tail-colors (list (cons tail-base 0)
                                       (cons highlight-base 24)))
