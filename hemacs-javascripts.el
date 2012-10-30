@@ -15,9 +15,8 @@
   '(progn
 
      (define-key coffee-mode-map (kbd "C-c s-r") 'coffee-compile-buffer)
-     ;; (define-key coffee-mode-map (kbd "RET") 'newline)
-     ;; (electric-pair-mode 0)
      (define-key coffee-mode-map (kbd "C-l") 'js-insert-console)
+     (define-key coffee-mode-map (kbd "#") 'string-interpolate)
      ))
 
 (add-hook 'js-mode-hook

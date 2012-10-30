@@ -1,3 +1,6 @@
+;; (vendor 'inf-ruby)
+(vendor 'ruby-tools)
+(vendor 'ruby-end)
 (vendor 'rinari)
 (vendor 'bundler)
 (vendor 'foreman)
@@ -6,6 +9,11 @@
 (vendor 'rhtml-mode)
 (vendor 'haml-mode)
 (vendor 'yaml-mode)
+
+;; (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
+;; (autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
+;; (eval-after-load 'ruby-mode
+;;   '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
 
 (add-to-list 'auto-mode-alist '("\\.hamlbars$" . haml-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
@@ -25,16 +33,26 @@
 
 (defun foreman-start ()  
   (interactive)
-  (apply #'make-comint "foreman start" "foreman start" nil))
+  (let ((process-connection-type nil))
+    (defvar *process-buffer-name* (concat "*" (persp-name persp-curr) " Foreman*"))
+    (cd (shell-quote-argument (textmate-project-root)))
+    (start-process *process-buffer-name* *process-buffer-name* "foreman" "start")
+    (pop-to-buffer (get-buffer *process-buffer-name*))
+    (comint-mode)
+    (nice-log-scrolling)
+    ;; (ruby-compilation-minor-mode)
+    ;; (view-mode)
+    (get-buffer *process-buffer-name*)
+    ))
 
 (eval-after-load 'ruby-mode
   '(progn
 
      (ruby-end-mode +1)
      (subword-mode +1)
-     ;; (define-key ruby-mode-map (kbd "<s-return>") 'insert-empty-line)
-     ;; (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)
      (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
+     (define-key ruby-mode-map (kbd "#") 'string-interpolate)
+     
      ))
 
 (provide 'hemacs-ruby)
