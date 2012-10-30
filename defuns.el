@@ -463,6 +463,16 @@ file of a buffer in an external program."
       (require library))
      ((file-exists-p suffix) (require library)))))
 
+(defun string-interpolate ()
+  "In a double quoted string, interpolate."
+  (interactive)
+  (insert "#")
+  (when (and
+         (looking-back "\".*")
+         (looking-at ".*\""))
+    (insert "{}")
+    (backward-char 1)))
+
 ;; hot ace jump buffer selection
 (defun bs-ace-jump-buffer ()
   (interactive)
