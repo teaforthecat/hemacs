@@ -2,7 +2,10 @@
 (global-set-key (kbd "s-s") 'save-buffer)
 (global-set-key (kbd "s-w") 'kill-this-buffer)
 (global-set-key (kbd "s-z") 'undo)
+(global-set-key (kbd "s--") 'text-scale-decrease)
+(global-set-key (kbd "s-=") 'text-scale-increase)
 (global-set-key (kbd "C-=") 'ns-toggle-fullscreen)
+                                    
 
 ;; buffer hopping
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
@@ -15,7 +18,8 @@
 (global-set-key (kbd "C-c f") 'ack-and-a-half-find-file) ;; faster than textmate find in project
 (global-set-key (kbd "C-c F") 'ack-and-a-half-find-file-same)
 
-;; keychord jumpchar
+;; acejump and keychord jumpchar
+(global-set-key (kbd "s-m") 'ace-jump-mode)
 (key-chord-define-global "fg" 'jump-char-forward)
 (key-chord-define-global "df" 'jump-char-backward)
 
@@ -43,8 +47,9 @@
 ;; necessities
 (global-set-key (kbd "C-c g") 'magit-status)
 (global-set-key (kbd "s-x") 'smex)
-(global-set-key (kbd "C-c h") 'helm-mini)
-(define-key global-map (kbd "<M-S-return>") 'deft)
+
+;; (global-set-key (kbd "C-c h") 'helm-mini)
+;; (define-key global-map (kbd "<M-S-return>") 'deft)
 
 ;; toggling
 (global-set-key (kbd "s-`") 'switch-to-previous-buffer)
