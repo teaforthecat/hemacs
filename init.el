@@ -30,11 +30,12 @@
   (require 'hemacs-osx)
 )
 
+(require 'hemacs-console)
 (require 'hemacs-ruby)
 (require 'hemacs-stylesheets)
 (require 'hemacs-javascripts)
-(require 'hemacs-console)
 (require 'hemacs-swank)
 (require 'hemacs-ui)
+;; (require 'hemacs-webkit)
 
 (provide 'init)

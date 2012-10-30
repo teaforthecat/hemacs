@@ -133,3 +133,30 @@
 [submodule "vendor/kite.el"]
 	path = vendor/kite.el
 	url = git://github.com/jscheid/kite.git
+[submodule "vendor/inf-ruby.el"]
+	path = vendor/inf-ruby.el
+	url = git://github.com/nonsequitur/inf-ruby.git
+[submodule "vendor/smart-tab.el"]
+	path = vendor/smart-tab.el
+	url = git://github.com/genehack/smart-tab.git
+[submodule "vendor/gist.el"]
+	path = vendor/gist.el
+	url = git://github.com/defunkt/gist.el.git
+[submodule "vendor/json.el"]
+	path = vendor/json.el
+	url = git://github.com/thorstadt/json.el.git
+[submodule "vendor/websocket.el"]
+	path = vendor/websocket.el
+	url = git://github.com/ahyatt/emacs-websocket.git
+[submodule "vendor/shell-pop.el"]
+	path = vendor/shell-pop.el
+	url = git://github.com/kyagi/shell-pop-el.git
+[submodule "vendor/ruby-tools.el"]
+	path = vendor/ruby-tools.el
+	url = git://github.com/rejeep/ruby-tools.git
+[submodule "vendor/ruby-end.el"]
+	path = vendor/ruby-end.el
+	url = git://github.com/rejeep/ruby-end.git
+[submodule "vendor/dash.el"]
+	path = vendor/dash.el
+	url = git://github.com/magnars/dash.el.git
