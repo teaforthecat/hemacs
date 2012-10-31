@@ -28,7 +28,10 @@
 (global-set-key (kbd "s-.") 'previous-line)
 (global-set-key (kbd "C-,") 'forward-paragraph)
 (global-set-key (kbd "C-.") 'backward-paragraph)
+
+;; regions
 (global-set-key (kbd "s-'") 'er/expand-region)
+(global-set-key (kbd "s-;") 'mc/mark-next-like-this)
 
 ;; !! overrides
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)

@@ -1,4 +1,5 @@
 (vendor 'expand-region)
+(vendor 'multiple-cursors)
 (vendor 'deft)
 (vendor 'cheat)
 (vendor 'rect-mark)
