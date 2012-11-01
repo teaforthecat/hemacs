@@ -473,6 +473,14 @@ file of a buffer in an external program."
     (insert "{}")
     (backward-char 1)))
 
+(defun font-candidate (&rest fonts)
+     "Return existing font which first match."
+     (find-if (lambda (f) (find-font (font-spec :name f))) fonts))
+
+(defun font-existsp (font)
+  (if (null (x-list-fonts font))
+      nil t))
+
 ;; hot ace jump buffer selection
 (defun bs-ace-jump-buffer ()
   (interactive)

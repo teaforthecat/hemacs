@@ -2,11 +2,11 @@
 (vendor 'mustache-mode)
 (vendor 'jade-mode)
 (vendor 'js2-mode)
+(vendor 'json-mode)
 
 (autoload 'js2-mode "js2-mode" nil t)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs$" . mustache-mode))

@@ -1,13 +1,16 @@
+(vendor 'key-chord)
+(key-chord-mode 1)
+
 ;; osx-ish style conveniency
 (global-set-key (kbd "s-s") 'save-buffer)
 (global-set-key (kbd "s-w") 'kill-this-buffer)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s--") 'text-scale-decrease)
 (global-set-key (kbd "s-=") 'text-scale-increase)
-(global-set-key (kbd "C-=") 'ns-toggle-fullscreen)
-                                    
+(global-set-key (kbd "C-=") 'ns-toggle-fullscreen)                                    
 
 ;; buffer hopping
+(global-set-key (kbd "s-n") 'bs-ace-jump-buffer)
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
 (global-set-key (kbd "s-b") 'ido-switch-buffer)
 (global-set-key (kbd "s-m") 'bs-ace-jump-buffer)
@@ -73,5 +76,22 @@
 ;; shortcuts for common patterns
 (global-set-key (kbd "s->") 'arrow)
 (global-set-key (kbd "s-{") 'open-curlies-and-indent)
+
+;; override enter behavior
+(global-set-key (kbd "<s-return>") 'insert-empty-line)
+(dolist (hook '(emacs-lisp-mode-hook
+                html-mode-hook
+                rhtml-mode-hook
+                ruby-mode-hook
+                css-mode-hook
+                less-css-mode-hook
+                slim-mode-hook
+                ;; coffee-mode-hook
+                haml-mode-hook
+                js-mode-hook
+                js2-mode-hook
+                mustache-mode-hook
+                ))
+  (add-hook hook 'enter-as-newline-and-indent))
 
 (provide 'hemacs-bindings)
