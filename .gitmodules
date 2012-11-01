@@ -163,3 +163,6 @@
 [submodule "vendor/multiple-cursors.el"]
 	path = vendor/multiple-cursors.el
 	url = git://github.com/magnars/multiple-cursors.el.git
+[submodule "vendor/zlc.el"]
+	path = vendor/zlc.el
+	url = git://github.com/mooz/emacs-zlc.git
