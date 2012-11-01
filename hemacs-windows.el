@@ -1,15 +1,20 @@
-(require 'buffer-move)
-(vendor 'popwin)
+;; split windows horizontally by default
+(setq split-height-threshold nil
+      split-width-threshold 0)
 
-;; shift + arrows to move around windows, ctrl to swap buffers in windows
+;; shift + arrows to move cursor between windows
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
+
+;; shift + control + arrows to swap buffers in windows
+(require 'buffer-move)
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 ;; popwin
+(vendor 'popwin)
 (setq display-buffer-function 'popwin:display-buffer
       popwin:popup-window-height 0.4
       popwin:special-display-config
@@ -31,11 +36,12 @@
         ("*magit-commit*" :noselect t :width 80)
         ("*magit-diff*" :noselect t :width 80)
         ("*magit-edit-log*" :noselect t :width 80)
-        (dired-mode :position left :width .3)
+        (dired-mode :position left :width .3 :stick t)
+        (" *undo-tree*" :position right :width .3 :dedicated t)
         ("\\*ansi-term\\*.*" :regexp t :position left :width .5)
         ("\\Foreman\\*.*" :regexp t :position left :width .5)
         ("\\*slime-repl JS\\*.*" :regexp t :position left :width .5)
-        ("\\*eshell\\*.*" :regexp t :position left :width .5)
+        ("\\*eshell\\*.*" :regexp t :position left :width .5 :stick t)
         ("\\*shell\\*.*" :regexp t :position left :width .5)
         ))
 
