@@ -10,7 +10,7 @@
                                ))
 
 ;; comint/shell/term related
-(setq explicit-shell-file-name "/usr/local/bin/zsh"
+(setq explicit-shell-file-name shell-path
       comint-prompt-read-only t
       ;; comint-move-point-for-output t
       ;; comint-scroll-show-maximum-output t
