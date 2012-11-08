@@ -36,11 +36,11 @@
   (let ((process-connection-type nil))
     (defvar *process-buffer-name* (concat "*" (persp-name persp-curr) " Foreman*"))
     (cd (shell-quote-argument (textmate-project-root)))
-    (start-process *process-buffer-name* *process-buffer-name* "foreman" "start")
-    (pop-to-buffer (get-buffer *process-buffer-name*))
-    (comint-mode)
-    (nice-log-scrolling)
-    (get-buffer *process-buffer-name*)
+    (start-process *process-buffer-name* nil "foreman" "start")
+    ;; (pop-to-buffer (get-buffer *process-buffer-name*))
+    ;; (comint-mode)
+    ;; (nice-log-scrolling)
+    ;; (get-buffer *process-buffer-name*)
     ))
 
 (eval-after-load 'ruby-mode
@@ -50,6 +50,8 @@
      (subword-mode +1)
      (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
      (define-key ruby-mode-map (kbd "#") 'string-interpolate)
+     (define-key ruby-mode-map (kbd "s->") 'arrow)
+     (define-key css-mode-map (kbd "s-{") 'open-curlies-and-indent)
      
      ))
 

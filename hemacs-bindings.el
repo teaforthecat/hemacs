@@ -10,7 +10,6 @@
 (global-set-key (kbd "C-=") 'ns-toggle-fullscreen)                                    
 
 ;; buffer hopping
-(global-set-key (kbd "s-n") 'bs-ace-jump-buffer)
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
 (global-set-key (kbd "s-b") 'ido-switch-buffer)
 (global-set-key (kbd "s-m") 'bs-ace-jump-buffer)
@@ -21,10 +20,14 @@
 (global-set-key (kbd "C-c f") 'ack-and-a-half-find-file) ;; faster than textmate find in project
 (global-set-key (kbd "C-c F") 'ack-and-a-half-find-file-same)
 
-;; acejump and keychord jumpchar
+;; acejump 
 (global-set-key (kbd "s-m") 'ace-jump-mode)
+(global-set-key (kbd "s-n") 'bs-ace-jump-buffer)
+
+;; keychord
 (key-chord-define-global "fg" 'jump-char-forward)
 (key-chord-define-global "df" 'jump-char-backward)
+(key-chord-define-global "<>" 'sgml-close-tag)
 
 ;; keyboard scrolling
 (global-set-key (kbd "s-,") 'next-line)
@@ -72,10 +75,6 @@
 ;; open files
 (global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
 (global-set-key (kbd "C-c C-o") 'open-file-in-github)
-
-;; shortcuts for common patterns
-(global-set-key (kbd "s->") 'arrow)
-(global-set-key (kbd "s-{") 'open-curlies-and-indent)
 
 ;; override enter behavior
 (global-set-key (kbd "<s-return>") 'insert-empty-line)

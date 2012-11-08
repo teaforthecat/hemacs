@@ -166,3 +166,6 @@
 [submodule "vendor/zlc.el"]
 	path = vendor/zlc.el
 	url = git://github.com/mooz/emacs-zlc.git
+[submodule "vendor/handlebars-mode.el"]
+	path = vendor/handlebars-mode.el
+	url = git://github.com/danielevans/handlebars-mode.git

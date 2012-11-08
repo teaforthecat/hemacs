@@ -1,5 +1,5 @@
 (vendor 'coffee-mode)
-(vendor 'mustache-mode)
+(vendor 'handlebars-mode)
 (vendor 'jade-mode)
 (vendor 'js2-mode)
 (vendor 'json-mode)
@@ -9,7 +9,8 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-(add-to-list 'auto-mode-alist '("\\.hbs$" . mustache-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache$" . handlebars-mode))
 
 (eval-after-load 'coffee-mode
   '(progn
@@ -35,5 +36,8 @@
   '(progn
      (define-key js2-mode-map (kbd "C-l") 'js-insert-console)
      ))
+
+(define-key js-mode-map (kbd "C-l") 'js-insert-console)
+(define-key js-mode-map (kbd "s-{") 'open-curlies-and-indent)
 
 (provide 'hemacs-javascripts)
