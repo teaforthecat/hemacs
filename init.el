@@ -25,6 +25,7 @@
 
 ;; do it
 (require 'hemacs-completion)
+(require 'hemacs-jump)
 (require 'hemacs-windows)
 (require 'hemacs-config)
 (require 'hemacs-git)

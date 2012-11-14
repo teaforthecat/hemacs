@@ -31,6 +31,9 @@
 (add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 
+(setq ruby-deep-indent-paren nil
+      ruby-end-insert-newline nil)
+
 (defun foreman-start ()  
   (interactive)
   (let ((process-connection-type nil))
@@ -51,7 +54,7 @@
      (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
      (define-key ruby-mode-map (kbd "#") 'string-interpolate)
      (define-key ruby-mode-map (kbd "s->") 'arrow)
-     (define-key css-mode-map (kbd "s-{") 'open-curlies-and-indent)
+     (define-key ruby-mode-map (kbd "s-{") 'open-curlies-and-indent)
      
      ))
 

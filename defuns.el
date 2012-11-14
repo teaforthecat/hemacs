@@ -481,38 +481,10 @@ file of a buffer in an external program."
   (if (null (x-list-fonts font))
       nil t))
 
-;; hot ace jump buffer selection
-(defun bs-ace-jump-buffer ()
+(defun eshell/clear ()
+  "04Dec2001 - sailor, to clear the eshell buffer."
   (interactive)
-  (let ((query-char "`"))
-    (bs-show "sorted")
-    (defun ace-jump-buffer ()
-      (interactive)
-      (bs-select)
-      (remove-hook 'ace-jump-mode-end-hook 'ace-jump-buffer)
-      )
-    (add-hook 'ace-jump-mode-end-hook 'ace-jump-buffer)
-    (ace-jump-do (regexp-quote query-char))
-    ))
-
-(custom-set-variables
- '(bs-attributes-list (quote (
-                              ("" 1 1 left bs--get-marked-string)
-                              ("|" 1 1 left "`")
-                              ("" 1 1 left bs--get-marked-string)
-                              ("Buffer" bs--get-name-length 10 left bs--get-name)
-                              ("" 1 1 left bs--get-marked-string)
-                              ("M" 1 1 left bs--get-modified-string)
-                              ("" 1 1 left bs--get-marked-string)
-                              ("R" 2 2 left bs--get-readonly-string)
-                              ("" 1 1 left " ")
-                              ("Size" 8 8 right bs--get-size-string)
-                              ("" 1 1 left " ")
-                              ("Mode" 12 12 right bs--get-mode-name)
-                              ("" 2 2 left "  ")
-                              ("File" 12 12 left bs--get-file-name)
-                              ("" 2 2 left "  "))
-                             ))
- )
+  (let ((inhibit-read-only t))
+  (erase-buffer)))
 
 (provide 'defuns)

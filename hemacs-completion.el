@@ -1,16 +1,16 @@
 (icomplete-mode 99)
 
-(vendor 'zlc)
-(let ((map minibuffer-local-map))
-  ;;; like menu select
-  (define-key map (kbd "<down>")  'zlc-select-next-vertical)
-  (define-key map (kbd "<up>")    'zlc-select-previous-vertical)
-  (define-key map (kbd "<right>") 'zlc-select-next)
-  (define-key map (kbd "<left>")  'zlc-select-previous)
+;; (vendor 'zlc)
+;; (let ((map minibuffer-local-map))
+;;   ;;; like menu select
+;;   (define-key map (kbd "<down>")  'zlc-select-next-vertical)
+;;   (define-key map (kbd "<up>")    'zlc-select-previous-vertical)
+;;   (define-key map (kbd "<right>") 'zlc-select-next)
+;;   (define-key map (kbd "<left>")  'zlc-select-previous)
 
-  ;;; reset selection
-  (define-key map (kbd "C-c") 'zlc-reset)
-  )
+;;   ;;; reset selection
+;;   (define-key map (kbd "C-c") 'zlc-reset)
+;;   )
 
 ;; ido
 (vendor 'ido-ubiquitous)
@@ -20,9 +20,7 @@
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t ;; include non-existent buffers
       ido-auto-merge-work-directories-length nil
-      ;; ido-default-file-method 'other-window
-      ido-use-filename-at-point 'guess
-      ;; ido-use-filename-at-point nil
+      ido-use-filename-at-point nil
       ido-max-window-height 16
       ido-max-prospects 12
 

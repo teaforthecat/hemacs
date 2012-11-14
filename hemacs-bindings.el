@@ -12,7 +12,6 @@
 ;; buffer hopping
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
 (global-set-key (kbd "s-b") 'ido-switch-buffer)
-(global-set-key (kbd "s-m") 'bs-ace-jump-buffer)
 
 ;; ack
 (global-set-key (kbd "C-c a") 'ack-and-a-half)
@@ -20,13 +19,7 @@
 (global-set-key (kbd "C-c f") 'ack-and-a-half-find-file) ;; faster than textmate find in project
 (global-set-key (kbd "C-c F") 'ack-and-a-half-find-file-same)
 
-;; acejump 
-(global-set-key (kbd "s-m") 'ace-jump-mode)
-(global-set-key (kbd "s-n") 'bs-ace-jump-buffer)
-
 ;; keychord
-(key-chord-define-global "fg" 'jump-char-forward)
-(key-chord-define-global "df" 'jump-char-backward)
 (key-chord-define-global "<>" 'sgml-close-tag)
 
 ;; keyboard scrolling

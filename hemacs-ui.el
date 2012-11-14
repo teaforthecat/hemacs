@@ -32,7 +32,7 @@
 
 ;; because coding is magic
 (highlight-tail-mode 1)
-(setq highlight-tail-steps 36
+(setq highlight-tail-steps 24
       highlight-tail-timer 0.01)
 
 (custom-set-faces
@@ -133,6 +133,7 @@
 (eval-after-load "highlight-tail" '(diminish 'highlight-tail-mode))
 (eval-after-load "volatile-highlights" '(diminish 'volatile-highlights-mode))
 (eval-after-load "slime-js" '(diminish 'slime-js-minor-mode))
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "el")))
 
 (provide 'hemacs-ui)
