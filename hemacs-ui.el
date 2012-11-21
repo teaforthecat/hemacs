@@ -6,7 +6,7 @@
 ;; set font
 (if (font-existsp default-font)
     (set-face-attribute 'default nil :font default-font)
-  (set-face-attribute 'default nil :height 15))
+  (set-face-attribute 'default nil :height 150))
 
 ;; fullscreen
 (when (and *is-a-mac* window-system)
