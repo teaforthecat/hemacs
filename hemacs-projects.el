@@ -1,9 +1,9 @@
 ;; open/switch projects
 (global-set-key (kbd "s-o") 'magit-in-perspective)
 (global-set-key (kbd "s-p") 'persp-switch)
+(global-set-key (kbd "C-c x") 'perspective-eshell)
 
 ;; project-related popwin
-(global-set-key (kbd "C-z x") 'popwin:perspective-eshell)
 (global-set-key (kbd "C-z a") 'popwin:async-command)
 (global-set-key (kbd "C-z F") 'popwin:foreman)
 
@@ -22,15 +22,15 @@
     (magit-status (concat code-dir project-name))
     ))
 
-(defun popwin:perspective-eshell ()
+(defun perspective-eshell ()
   (interactive)
   (cd (shell-quote-argument (textmate-project-root)))
-  (setq eshell-buffer-name (concat "*" (persp-name persp-curr) "-eshell*"))
-  (popwin:display-buffer-1
+  (setq eshell-buffer-name (concat "*" (persp-name persp-curr) "-eshell*"))  
+  (display-buffer
    (or (get-buffer (concat "*" (persp-name persp-curr) "-eshell*"))
        (save-window-excursion
          (call-interactively 'eshell)))
-   :default-config-keywords '(:position :left :width .5)))
+   :default-config-keywords '(:position :left :width 0.5)))
 
 (defun popwin:async-command ()
   (interactive)
@@ -42,7 +42,7 @@
            (cd (shell-quote-argument (textmate-project-root)))
            (async-shell-command cmd command-buffer-name)
            (get-buffer command-buffer-name)))
-     :default-config-keywords '(:position :left :width 64 :stick t))))
+     :default-config-keywords '(:position :left :width 0.5 :noselect t))))
 
 (defun popwin:foreman ()
   (interactive)

@@ -41,5 +41,6 @@
 (require 'hemacs-javascripts)
 (require 'hemacs-ui)
 (require 'hemacs-webkit)
+(require 'hemacs-org)
 
 (provide 'init)

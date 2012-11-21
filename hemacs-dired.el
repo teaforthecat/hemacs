@@ -1,4 +1,7 @@
+(require 'dired)
 (vendor 'dired-details)
+;; (vendor 'dash)
+
 (setq-default dired-details-hidden-string "- ")
 (setq dired-use-ls-dired nil)
 (dired-details-install)
@@ -12,5 +15,11 @@
   (define-key dired-mode-map (kbd "C-x C-k") 'dired-do-delete)
   ; up directory binding uses same buffer
   ))
+
+;; (!!each '(dired-do-rename          
+;;           dired-create-directory
+;;           wdired-abort-changes)
+;;         (eval `(defadvice ,it (after revert-buffer activate)
+;;                  (revert-buffer))))
 
 (provide 'hemacs-dired)
