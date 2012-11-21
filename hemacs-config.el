@@ -3,8 +3,9 @@
 (vendor 'deft)
 (vendor 'cheat)
 (vendor 'rect-mark)
+(vendor 'evil)
+
 ;; (vendor 'dash)
-;; (vendor 'evil)
 ;; (vendor 'sackspace)
 
 (put 'downcase-region 'disabled nil)
@@ -14,12 +15,13 @@
 (vendor 'ack-and-a-half)
 (setq ack-and-a-half-arguments (quote ("--nosql")))
 
+(setq auto-save-default nil)
 ;; move autosave and backup files out of project workspaces
-(defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
-(defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
-(setq backup-directory-alist (list (cons ".*" backup-dir)))
-(setq auto-save-list-file-prefix autosave-dir)
-(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+;; (defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
+;; (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
+;; (setq backup-directory-alist (list (cons ".*" backup-dir)))
+;; (setq auto-save-list-file-prefix autosave-dir)
+;; (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
 ;; save cursor places in files and usage history
 (require 'saveplace)
@@ -53,7 +55,7 @@
 (set-keyboard-coding-system 'utf-8-unix)
 (set-selection-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
-;; (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
 ;; meaningful uniqueness
 (require 'uniquify)
@@ -70,9 +72,6 @@
 
 (require 'perspective)
 (persp-mode t)
-
-(vendor 'ace-jump-mode)
-(vendor 'jump-char)
 
 ;; (vendor 'helm)
 ;; (require 'helm-config)

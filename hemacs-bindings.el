@@ -1,13 +1,11 @@
-(vendor 'key-chord)
-(key-chord-mode 1)
-
 ;; osx-ish style conveniency
 (global-set-key (kbd "s-s") 'save-buffer)
 (global-set-key (kbd "s-w") 'kill-this-buffer)
 (global-set-key (kbd "s-z") 'undo)
 (global-set-key (kbd "s--") 'text-scale-decrease)
 (global-set-key (kbd "s-=") 'text-scale-increase)
-(global-set-key (kbd "C-=") 'ns-toggle-fullscreen)                                    
+(global-set-key (kbd "C-=") 'delete-other-windows)
+(global-set-key (kbd "C-+") 'ns-toggle-fullscreen)                                    
 
 ;; buffer hopping
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
@@ -20,6 +18,8 @@
 (global-set-key (kbd "C-c F") 'ack-and-a-half-find-file-same)
 
 ;; keychord
+(vendor 'key-chord)
+(key-chord-mode 1)
 (key-chord-define-global "<>" 'sgml-close-tag)
 
 ;; keyboard scrolling
@@ -41,6 +41,7 @@
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-x C-c") 'delete-frame)
 (global-set-key (kbd "C-x 3") 'split-window-horizontally-previous-buffer-select)
+(global-set-key (kbd "s-:") 'pad-colon)
 
 ;; popups
 (global-set-key (kbd "C-z") popwin:keymap)
@@ -77,13 +78,16 @@
                 ruby-mode-hook
                 css-mode-hook
                 less-css-mode-hook
-                slim-mode-hook
+                ;; slim-mode-hook
                 ;; coffee-mode-hook
-                haml-mode-hook
+                ;; haml-mode-hook
                 js-mode-hook
                 js2-mode-hook
                 mustache-mode-hook
                 ))
   (add-hook hook 'enter-as-newline-and-indent))
+
+;; lisp
+(define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-region)
 
 (provide 'hemacs-bindings)

@@ -3,7 +3,7 @@
 ;; eshell related
 (setq eshell-buffer-maximum-lines 256
       eshell-banner-message ""
-      eshell-plain-echo-behavior t)
+      )
 
 (add-hook 'eshell-mode-hook '(lambda ()
                                (text-scale-decrease 1)

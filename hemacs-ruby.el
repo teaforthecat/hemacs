@@ -52,10 +52,15 @@
      (ruby-end-mode +1)
      (subword-mode +1)
      (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
-     (define-key ruby-mode-map (kbd "#") 'string-interpolate)
+     (define-key ruby-mode-map (kbd "M-#") 'string-interpolate)
      (define-key ruby-mode-map (kbd "s->") 'arrow)
      (define-key ruby-mode-map (kbd "s-{") 'open-curlies-and-indent)
      
      ))
+
+(define-key haml-mode-map (kbd "s-{") 'pad-brackets)
+(define-key haml-mode-map (kbd "s->") 'arrow)
+
+(define-key slim-mode-map (kbd "s-{") 'pad-brackets)
 
 (provide 'hemacs-ruby)

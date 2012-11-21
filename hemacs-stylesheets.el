@@ -7,7 +7,7 @@
 
 (eval-after-load 'css-mode
   '(progn
-     (define-key css-mode-map (kbd "s-:") 'insert-space-and-semicolon)
+     (define-key css-mode-map (kbd "s-:") 'pad-colon-and-maybe-semicolon)
      (define-key css-mode-map (kbd "s-{") 'open-curlies-and-indent)
      (define-key css-mode-map (kbd "<s-return>") 'insert-empty-line)
      (define-key css-mode-map "\M-\C-x" 'slime-js-refresh-css)

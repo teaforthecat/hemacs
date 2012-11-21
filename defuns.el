@@ -240,6 +240,8 @@
   (interactive)
   (kill-line 0))
 
+;; short snips
+
 (defun arrow ()
   (interactive)
   (insert " => "))
@@ -251,10 +253,33 @@
   (previous-line)
   (indent-according-to-mode))
 
-(defun insert-space-and-semicolon()
+(defun pad-colon-and-maybe-semicolon()
   (interactive)
-  (insert ": ;")
-  (backward-char))
+  (if (looking-at "\;.*")
+      (insert ": ")
+    (insert ": ;")    
+    (backward-char)
+    )
+  )
+
+(defun string-interpolate ()
+  "In a double quoted string, interpolate."
+  (interactive)
+  (insert "#")
+  (when (and
+         (looking-back "\".*")
+         (looking-at ".*\""))
+    (insert "{}")
+    (backward-char 1)))
+
+(defun pad-brackets ()
+  (interactive)
+  (insert "{  }")
+  (backward-char 2))
+
+(defun pad-colon ()
+  (interactive)
+  (insert ": "))
 
 (defun word-count ()
   (interactive)
@@ -463,16 +488,6 @@ file of a buffer in an external program."
       (require library))
      ((file-exists-p suffix) (require library)))))
 
-(defun string-interpolate ()
-  "In a double quoted string, interpolate."
-  (interactive)
-  (insert "#")
-  (when (and
-         (looking-back "\".*")
-         (looking-at ".*\""))
-    (insert "{}")
-    (backward-char 1)))
-
 (defun font-candidate (&rest fonts)
      "Return existing font which first match."
      (find-if (lambda (f) (find-font (font-spec :name f))) fonts))
@@ -482,7 +497,6 @@ file of a buffer in an external program."
       nil t))
 
 (defun eshell/clear ()
-  "04Dec2001 - sailor, to clear the eshell buffer."
   (interactive)
   (let ((inhibit-read-only t))
   (erase-buffer)))

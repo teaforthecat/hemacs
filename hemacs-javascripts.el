@@ -6,7 +6,7 @@
 
 (autoload 'js2-mode "js2-mode" nil t)
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
@@ -17,7 +17,7 @@
 
      (define-key coffee-mode-map (kbd "C-c s-r") 'coffee-compile-buffer)
      (define-key coffee-mode-map (kbd "C-l") 'js-insert-console)
-     (define-key coffee-mode-map (kbd "#") 'string-interpolate)
+     (define-key coffee-mode-map (kbd "M-#") 'string-interpolate)
      ))
 
 (add-hook 'js-mode-hook
