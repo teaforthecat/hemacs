@@ -13,9 +13,10 @@
 
 ;; ack searching `brew install ack`
 (vendor 'ack-and-a-half)
-(setq ack-and-a-half-arguments (quote ("--nosql")))
+(setq ack-and-a-half-arguments "--nosql")
 
 (setq auto-save-default nil)
+(setq make-backup-files nil)
 ;; move autosave and backup files out of project workspaces
 ;; (defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
 ;; (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
@@ -37,6 +38,9 @@
 
 (vendor 'undo-tree)
 (global-undo-tree-mode)
+
+(vendor 'browse-kill-ring)
+(browse-kill-ring-default-keybindings)
 
 ;; minibuffer
 ;; (setq minibuffer-auto-raise t)

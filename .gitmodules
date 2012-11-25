@@ -169,3 +169,6 @@
 [submodule "vendor/handlebars-mode.el"]
 	path = vendor/handlebars-mode.el
 	url = git://github.com/danielevans/handlebars-mode.git
+[submodule "vendor/browse-kill-ring.el"]
+	path = vendor/browse-kill-ring.el
+	url = git://github.com/browse-kill-ring/browse-kill-ring.git
