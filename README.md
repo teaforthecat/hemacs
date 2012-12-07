@@ -73,7 +73,4 @@ within `init.el` there a few basic settings you might want to override.
 
 * `code-dir` - this is the root folder where all your projects reside, for the purpose of [`hemacs-projecs`](https://github.com/waymondo/hemacs/tree/master/vendor). i have this set to `~/code/`.
 
-* `default-font` - i'm grooving on [Meslo](https://github.com/andreberg/Meslo-Font) but you can change it to whatever. if the named font isn't found, it will usewhatever your emacs default is at 15px.
-
-* `shell-path` - if you are on osx, the `exec-path-from-shell` package will setup emacs with the same exec path for your shell environment, but if you want to specifically set the path to your zsh or bash installation you can do it here. i'm using `/usr/local/bin/zsh`.
-
+* `default-font` - i'm grooving on [Meslo](https://github.com/andreberg/Meslo-Font) but you can change it to whatever. if the named font isn't found, it will usewhatever your emacs default is at 16px.

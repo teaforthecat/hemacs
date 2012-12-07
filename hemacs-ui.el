@@ -6,7 +6,7 @@
 ;; set font
 (if (font-existsp default-font)
     (set-face-attribute 'default nil :font default-font)
-  (set-face-attribute 'default nil :height 150))
+  (set-face-attribute 'default nil :height 160))
 
 ;; fullscreen
 (when (and *is-a-mac* window-system)
@@ -26,7 +26,7 @@
 (blink-cursor-mode t)
 (size-indication-mode t)
 (fringe-mode 0)
-;; (volatile-highlights-mode t)
+(set-fringe-style -1)
 (global-font-lock-mode t)
 (tooltip-mode -1)
 
@@ -45,6 +45,45 @@
  '(powerline-inactive1 ((t (:foreground nil :inherit font-lock-comment-face))))
  '(powerline-inactive2 ((t (:foreground nil :inherit font-lock-comment-face))))
  )
+
+(defun powerline-waymondo-theme ()
+  (interactive)
+  (setq-default mode-line-format
+                '("%e"
+                  (:eval
+                   (let* ((active (eq (frame-selected-window) (selected-window)))
+                          (face1 (if active 'powerline-active1 'powerline-inactive1))
+                          (face2 (if active 'powerline-active2 'powerline-inactive2))
+                          (lhs (list
+                                (powerline-raw " ")
+                                (powerline-buffer-id nil 'l)
+                                (powerline-raw " ")
+                                (powerline-arrow-right nil face1)
+                                (powerline-raw "%*" face1 'l)
+                                (powerline-raw " " face1)
+                                ;; (powerline-hud face2 face1)
+                                ;; (powerline-raw " " face1)
+                                (powerline-raw "%3l" face1 'r)
+                                (powerline-buffer-size face1 'l)
+                                (powerline-raw " " face1)
+                                (powerline-arrow-right face1 face2)
+                                (powerline-major-mode face2 'l)
+                                (powerline-minor-modes face2 'l)
+                                (powerline-raw mode-line-process face2 'l)
+                                ))
+                          (rhs (list
+                                (powerline-arrow-left face2 face1)
+                                (powerline-vc face1)
+                                (powerline-raw " " face1)
+                                (powerline-arrow-left face1 nil)
+                                (powerline-raw " ")
+                                (powerline-raw (persp-name persp-curr) nil 'r)
+                                (powerline-raw " ")
+                                )))
+                     (concat
+                      (powerline-render lhs)
+                      (powerline-fill face2 (powerline-width rhs))
+                      (powerline-render rhs)))))))
 
 (defun massage-theme-colors ()
   (interactive)
@@ -80,46 +119,12 @@
     
     (setq highlight-tail-colors (list (cons tail-base 0)
                                       (cons highlight-base 24)))
-    (highlight-tail-reload)
 
-    ;; powerline
-    (powerline-default)
-    (setq-default mode-line-format
-                  '("%e"
-                    (:eval
-                     (let* ((active (eq (frame-selected-window) (selected-window)))
-                            (face1 (if active 'powerline-active1 'powerline-inactive1))
-                            (face2 (if active 'powerline-active2 'powerline-inactive2))
-                            (lhs (list
-                                  (powerline-raw " ")
-                                  (powerline-buffer-id nil 'l)
-                                  (powerline-raw " ")
-                                  (powerline-arrow-right nil face1)
-                                  (powerline-raw "%*" face1 'l)
-                                  (powerline-raw " " face1)
-                                  ;; (powerline-hud face2 face1)
-                                  ;; (powerline-raw " " face1)
-                                  (powerline-raw "%3l" face1 'r)
-                                  (powerline-buffer-size face1 'l)
-                                  (powerline-raw " " face1)
-                                  (powerline-arrow-right face1 face2)
-                                  (powerline-major-mode face2 'l)
-                                  (powerline-minor-modes face2 'l)
-                                  (powerline-raw mode-line-process face2 'l)
-                                  ))
-                            (rhs (list
-                                  (powerline-arrow-left face2 face1)
-                                  (powerline-vc face1)
-                                  (powerline-raw " " face1)
-                                  (powerline-arrow-left face1 nil)
-                                  (powerline-raw " ")
-                                  (powerline-raw (persp-name persp-curr) nil 'r)
-                                  (powerline-raw " ")
-                                  )))
-                       (concat
-                        (powerline-render lhs)
-                        (powerline-fill face2 (powerline-width rhs))
-                        (powerline-render rhs))))))
+    (set-face-attribute 'magit-item-highlight nil
+                        :background (color-lighten-name bg 12))
+
+    (highlight-tail-reload)
+    (powerline-waymondo-theme)
     
     ))
 (massage-theme-colors)

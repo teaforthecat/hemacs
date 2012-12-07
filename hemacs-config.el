@@ -51,6 +51,9 @@
 (setq-default indent-tabs-mode nil)
 (setq normal-erase-is-backspace 2)
 
+(electric-layout-mode)
+(electric-indent-mode)
+
 ;; forcefully applying utf-8
 (setq locale-coding-system 'utf-8-unix)
 (setq buffer-file-coding-system 'utf-8-unix)

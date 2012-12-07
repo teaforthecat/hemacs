@@ -240,13 +240,20 @@
   (interactive)
   (kill-line 0))
 
+;; (defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
+;;   "Kill up to the ARG'th occurence of CHAR, and leave CHAR. If
+;;    you are deleting forward, the CHAR is replaced and the point is
+;;    put before CHAR"
+;;   (insert char)
+;;   (if (< 0 arg) (forward-char -1)))
+
 ;; short snips
 
 (defun arrow ()
   (interactive)
   (insert " => "))
 
-(defun open-curlies-and-indent()
+(defun open-brackets-newline-and-indent()
   (interactive)
   (insert " {\n\n}")
   (indent-according-to-mode)

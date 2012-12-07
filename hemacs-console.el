@@ -10,8 +10,7 @@
                                ))
 
 ;; comint/shell/term related
-(setq explicit-shell-file-name shell-path
-      comint-prompt-read-only t
+(setq comint-prompt-read-only t
       ;; comint-move-point-for-output t
       ;; comint-scroll-show-maximum-output t
       ;; comint-move-point-for-output 'all

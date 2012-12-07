@@ -46,15 +46,27 @@
     ;; (get-buffer *process-buffer-name*)
     ))
 
+(defun rails-console ()
+  "Create a rails console process, if one doesn't exist. And switch to *rails-console* buffer."
+  (interactive)
+  (if (null (get-buffer "*rails-console*"))
+      (progn
+         (term "/bin/bash")
+        (term-send-string (get-buffer-process "*terminal*") "rails console\n")
+        (switch-to-buffer "*terminal*")
+        (rename-buffer "*rails-console*")
+        (term-line-mode))
+    (switch-to-buffer "*rails-console*")))
+
 (eval-after-load 'ruby-mode
   '(progn
 
      (ruby-end-mode +1)
      (subword-mode +1)
+     (define-key ruby-mode-map (kbd "RET") 'newline-and-indent) 
      (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
      (define-key ruby-mode-map (kbd "M-#") 'string-interpolate)
      (define-key ruby-mode-map (kbd "s->") 'arrow)
-     (define-key ruby-mode-map (kbd "s-{") 'open-curlies-and-indent)
      
      ))
 

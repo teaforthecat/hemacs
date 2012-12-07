@@ -21,6 +21,7 @@
 (vendor 'key-chord)
 (key-chord-mode 1)
 (key-chord-define-global "<>" 'sgml-close-tag)
+(key-chord-define-global "{}" 'open-brackets-newline-and-indent)
 
 ;; keyboard scrolling
 (global-set-key (kbd "s-,") 'next-line)
@@ -72,20 +73,7 @@
 
 ;; override enter behavior
 (global-set-key (kbd "<s-return>") 'insert-empty-line)
-(dolist (hook '(emacs-lisp-mode-hook
-                html-mode-hook
-                rhtml-mode-hook
-                ruby-mode-hook
-                css-mode-hook
-                less-css-mode-hook
-                ;; slim-mode-hook
-                ;; coffee-mode-hook
-                ;; haml-mode-hook
-                js-mode-hook
-                js2-mode-hook
-                mustache-mode-hook
-                ))
-  (add-hook hook 'enter-as-newline-and-indent))
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; lisp
 (define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-region)
