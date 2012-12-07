@@ -10,29 +10,38 @@
 (vendor 'haml-mode)
 (vendor 'yaml-mode)
 
-;; (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-;; (autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
-;; (eval-after-load 'ruby-mode
-;;   '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
+(dolist (regex '("\\.rake$" "\\.gemspec$" "\\.ru$" "Guardfile$" "Vagrantfile$"
+                 "Rakefile$" "Gemfile$" "Capfile$" "Procfile$" "\\.rabl$" "\\.gems$"))
+  (add-to-list 'auto-mode-alist `(,regex . ruby-mode)))
 
 (add-to-list 'auto-mode-alist '("\\.hamlbars$" . haml-mode))
-(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Procfile" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gems" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.builder" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rabl" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 
-(setq ruby-deep-indent-paren nil
-      ruby-end-insert-newline nil)
+;; indentation fixing
+(setq ruby-deep-indent-paren nil)
+
+;; (defadvice ruby-indent-line (after line-up-args activate)
+;;   (let (indent prev-indent arg-indent)
+;;     (save-excursion
+;;       (back-to-indentation)
+;;       (when (zerop (car (syntax-ppss)))
+;;         (setq indent (current-column))
+;;         (skip-chars-backward " \t\n")
+;;         (when (eq ?, (char-before))
+;;           (ruby-backward-sexp)
+;;           (back-to-indentation)
+;;           (setq prev-indent (current-column))
+;;           (skip-syntax-forward "w_.")
+;;           (skip-chars-forward " ")
+;;           (setq arg-indent (current-column)))))
+;;     (when prev-indent
+;;       (let ((offset (- (current-column) indent)))
+;;         (cond ((< indent prev-indent)
+;;                (indent-line-to prev-indent))
+;;               ((= indent prev-indent)
+;;                (indent-line-to arg-indent)))
+;;         (when (> offset 0) (forward-char offset))))))
 
 (defun foreman-start ()  
   (interactive)

@@ -12,9 +12,11 @@
 (add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache$" . handlebars-mode))
 
+
 (eval-after-load 'coffee-mode
   '(progn
-
+     (electric-indent-mode -1)
+     (setq coffee-tab-width 2)
      (define-key coffee-mode-map (kbd "C-c s-r") 'coffee-compile-buffer)
      (define-key coffee-mode-map (kbd "C-l") 'js-insert-console)
      (define-key coffee-mode-map (kbd "M-#") 'string-interpolate)
@@ -38,6 +40,7 @@
      ))
 
 (define-key js-mode-map (kbd "C-l") 'js-insert-console)
-(define-key js-mode-map (kbd "s-{") 'open-curlies-and-indent)
+(define-key js-mode-map (kbd "s-{") 'open-brackets-newline-and-indent)
+(define-key js-mode-map (kbd "RET") 'newline-and-indent)
 
 (provide 'hemacs-javascripts)

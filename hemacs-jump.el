@@ -2,6 +2,7 @@
 (vendor 'ace-jump-mode)
 
 (global-set-key (kbd "s-m") 'ace-jump-mode)
+(global-set-key (kbd "s-M") 'ace-jump-char-mode)
 (global-set-key (kbd "s-n") 'bs-ace-jump-mode)
 
 (defun add-hyper-char-to-ace-jump-word-mode (c)

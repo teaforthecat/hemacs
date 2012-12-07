@@ -1,17 +1,3 @@
-(icomplete-mode 99)
-
-;; (vendor 'zlc)
-;; (let ((map minibuffer-local-map))
-;;   ;;; like menu select
-;;   (define-key map (kbd "<down>")  'zlc-select-next-vertical)
-;;   (define-key map (kbd "<up>")    'zlc-select-previous-vertical)
-;;   (define-key map (kbd "<right>") 'zlc-select-next)
-;;   (define-key map (kbd "<left>")  'zlc-select-previous)
-
-;;   ;;; reset selection
-;;   (define-key map (kbd "C-c") 'zlc-reset)
-;;   )
-
 ;; ido
 (vendor 'ido-ubiquitous)
 (ido-mode t)
@@ -30,11 +16,30 @@
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.ido.last")
 (add-to-list 'ido-ignore-files "\\.loaddefs.el")
-(add-to-list 'ido-ignore-directories "\#{var}")
+(add-to-list 'ido-ignore-buffers "^\\*Messages\\*")
+(add-to-list 'ido-ignore-buffers "^\\*Help\\*")
+(add-to-list 'ido-ignore-buffers "^\\*Buffer")
+(add-to-list 'ido-ignore-directories "\\.git/")
 (add-to-list 'ido-ignore-directories "tmp")
 (add-to-list 'ido-ignore-directories "node_modules")
 (add-to-list 'ido-ignore-directories "vendor")
 (add-to-list 'ido-ignore-directories "public/system")
+
+;; sort ido filelist by mtime instead of alphabetically
+(add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
+(add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
+
+(defun ido-sort-mtime ()
+  (setq ido-temp-list
+        (sort ido-temp-list 
+              (lambda (a b)
+                (time-less-p
+                 (sixth (file-attributes (concat ido-current-directory b)))
+                 (sixth (file-attributes (concat ido-current-directory a)))))))
+  (ido-to-end  ;; move . files to end (again)
+   (delq nil (mapcar
+              (lambda (x) (and (char-equal (string-to-char x) ?.) x))
+              ido-temp-list))))
 
 ;; hippie expand match order
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev

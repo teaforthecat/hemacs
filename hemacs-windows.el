@@ -33,9 +33,9 @@
         "*Deft*"
         "*magit-process*"
         ("*Occur*" :noselect t)
-        ("*magit-commit*" :noselect t :width 80)
-        ("*magit-diff*" :noselect t :width 80)
-        ("*magit-edit-log*" :noselect t :width 80)
+        ("*magit-commit*" :noselect t)
+        ("*magit-diff*" :noselect t)
+        ("*magit-edit-log*" :height 5 :dedicated t)
         (dired-mode :position left :width .3 :stick t)
         (" *undo-tree*" :position right :width .3 :dedicated t)
         ("\\*ansi-term\\*.*" :regexp t :position left :width .5)

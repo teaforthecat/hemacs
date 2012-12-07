@@ -3,7 +3,6 @@
 (vendor 'deft)
 (vendor 'cheat)
 (vendor 'rect-mark)
-(vendor 'evil)
 
 ;; (vendor 'dash)
 ;; (vendor 'sackspace)
@@ -35,6 +34,10 @@
 (setq history-delete-duplicates t)
 (savehist-mode t)
 (recentf-mode t)
+
+;; clean up buffers over 2 hours old
+(require 'midnight)
+(setq midnight-period 7200) ;; (eq (* 2 60 60) "2 hours")
 
 (vendor 'undo-tree)
 (global-undo-tree-mode)
