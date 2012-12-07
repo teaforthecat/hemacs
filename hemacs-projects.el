@@ -1,11 +1,8 @@
-;; open/switch projects
+;; project-related bindings
 (global-set-key (kbd "s-o") 'magit-in-perspective)
 (global-set-key (kbd "s-p") 'persp-switch)
-(global-set-key (kbd "C-c x") 'perspective-eshell)
-
-;; project-related popwin
-(global-set-key (kbd "C-z a") 'popwin:async-command)
-(global-set-key (kbd "C-z F") 'popwin:foreman)
+(global-set-key (kbd "C-c x") 'persp-eshell)
+(global-set-key (kbd "C-c m") 'persp-async-command)
 
 (defmacro custom-persp (name &rest body)
        `(let ((initialize (not (gethash ,name perspectives-hash)))
@@ -22,7 +19,7 @@
     (magit-status (concat code-dir project-name))
     ))
 
-(defun perspective-eshell ()
+(defun persp-eshell ()
   (interactive)
   (cd (shell-quote-argument (textmate-project-root)))
   (setq eshell-buffer-name (concat "*" (persp-name persp-curr) "-eshell*"))  
@@ -32,7 +29,7 @@
          (call-interactively 'eshell)))
    :default-config-keywords '(:position :left :width 0.5)))
 
-(defun popwin:async-command ()
+(defun persp-async-command ()
   (interactive)
   (let* ((cmd (read-from-minibuffer "Shell command: " nil nil nil 'shell-command-history))
          (command-buffer-name (concat "*" (persp-name persp-curr) " " cmd "*")))
@@ -44,14 +41,14 @@
            (get-buffer command-buffer-name)))
      :default-config-keywords '(:position :left :width 0.5 :noselect t))))
 
-(defun popwin:foreman ()
-  (interactive)
-  (defvar *process-buffer-name* (concat "*" (persp-name persp-curr) " Foreman*"))
-  (popwin:display-buffer-1
-   (or (get-buffer *process-buffer-name*)
-       (save-window-excursion
-         (call-interactively 'foreman-start)))
-   :default-config-keywords '(:position :left :width 0.5 :noselect t)))
+;; (defun popwin:foreman ()
+;;   (interactive)
+;;   (defvar *process-buffer-name* (concat "*" (persp-name persp-curr) " Foreman*"))
+;;   (popwin:display-buffer-1
+;;    (or (get-buffer *process-buffer-name*)
+;;        (save-window-excursion
+;;          (call-interactively 'foreman-start)))
+;;    :default-config-keywords '(:position :left :width 0.5 :noselect t)))
 
 ;; (global-set-key (kbd "C-z x") 'popwin:visit-project-shell)
 ;; (global-set-key (kbd "C-z X") 'popwin:visit-project-term)
