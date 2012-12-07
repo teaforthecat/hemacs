@@ -46,6 +46,12 @@
  '(powerline-inactive2 ((t (:foreground nil :inherit font-lock-comment-face))))
  )
 
+;; colored diffs
+(set-face-attribute 'diff-added nil
+                    :foreground (color-lighten-name "Green" 20))
+(set-face-attribute 'diff-removed nil
+                    :foreground (color-lighten-name "Red" 20))
+
 (defun powerline-waymondo-theme ()
   (interactive)
   (setq-default mode-line-format
@@ -121,7 +127,8 @@
                                       (cons highlight-base 24)))
 
     (set-face-attribute 'magit-item-highlight nil
-                        :background (color-lighten-name bg 12))
+                        :background (color-lighten-name bg 5)
+                        :inherit nil)
 
     (highlight-tail-reload)
     (powerline-waymondo-theme)
