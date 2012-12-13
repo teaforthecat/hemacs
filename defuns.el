@@ -422,6 +422,13 @@ file of a buffer in an external program."
     (when file
       (find-file file))))
 
+(defun keyboard-quit-or-abort-recursive-edit ()
+  "Escape the keyboard or abort recursively if in the minibuffer"
+  (interactive)
+  (if (active-minibuffer-window)
+      (abort-recursive-edit)
+    (keyboard-quit)))
+
 (defun back-to-indentation-or-beginning ()
   (interactive)
   (if (or (looking-back "^\s*")

@@ -34,6 +34,7 @@
 (global-set-key (kbd "s-;") 'mc/mark-next-like-this)
 
 ;; !! overrides
+(global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "C-o") 'open-line-and-indent)
 (global-set-key (kbd "C-k") 'kill-and-join-forward)
