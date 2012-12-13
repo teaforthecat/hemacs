@@ -130,6 +130,14 @@
                         :background (color-lighten-name bg 5)
                         :inherit nil)
 
+    (set-face-attribute 'diff-hunk-header nil
+                        :background (color-lighten-name bg 15)
+                        :inherit nil)
+
+    (set-face-attribute 'diff-file-header nil
+                        :background (color-lighten-name bg 15)
+                        :inherit nil)
+
     (highlight-tail-reload)
     (powerline-waymondo-theme)
     
