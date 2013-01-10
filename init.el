@@ -49,6 +49,6 @@
 (require 'hemacs-ui)
 (require 'hemacs-webkit)
 (require 'hemacs-writing)
-(require 'hemacs-org)
+(require 'hemacs-todo)
 
 (provide 'init)

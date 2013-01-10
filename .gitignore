@@ -1,5 +1,6 @@
 *.DS_Store
 *.elc
+*.org
 /eshell
 /elpa
 /tramp
@@ -12,4 +13,3 @@
 /saveplace
 /ac-comphist.dat
 /url/cookies
-/org
