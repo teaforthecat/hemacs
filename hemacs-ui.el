@@ -23,12 +23,14 @@
 
 (transient-mark-mode t)
 (show-paren-mode t)
-(blink-cursor-mode t)
+(blink-cursor-mode 0)
 (size-indication-mode t)
-(fringe-mode 0)
-(set-fringe-style -1)
 (global-font-lock-mode t)
 (tooltip-mode -1)
+
+;; no fringe
+(fringe-mode 0)
+(set-fringe-style -1)
 
 ;; because coding is magic
 (highlight-tail-mode 1)
@@ -48,6 +50,8 @@
 
 ;; colored diffs
 (set-face-attribute 'diff-added nil
+                    :foreground (color-lighten-name "Green" 20))
+(set-face-attribute 'success nil
                     :foreground (color-lighten-name "Green" 20))
 (set-face-attribute 'diff-removed nil
                     :foreground (color-lighten-name "Red" 20))
@@ -104,25 +108,25 @@
     (set-face-attribute 'mode-line nil
                         :foreground bg
                         :background font-lock-comment-base)
-    
+
     (set-face-attribute 'mode-line-inactive nil
                         :background (color-darken-name bg 5))
-    
+
     (set-face-attribute 'powerline-active1 nil
                         :background (color-lighten-name bg 18))
-    
+
     (set-face-attribute 'powerline-active2 nil
                         :background (color-lighten-name bg 12))
-    
+
     (set-face-attribute 'powerline-inactive1 nil
                         :background (color-lighten-name bg 10))
-    
+
     (set-face-attribute 'powerline-inactive2 nil
                         :background (color-lighten-name bg 6))
-        
+
     (set-face-attribute 'cursor nil
                         :background font-lock-comment-base)
-    
+
     (setq highlight-tail-colors (list (cons tail-base 0)
                                       (cons highlight-base 24)))
 
@@ -140,7 +144,7 @@
 
     (highlight-tail-reload)
     (powerline-waymondo-theme)
-    
+
     ))
 (massage-theme-colors)
 
@@ -154,6 +158,7 @@
 (eval-after-load "volatile-highlights" '(diminish 'volatile-highlights-mode))
 (eval-after-load "slime-js" '(diminish 'slime-js-minor-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+(eval-after-load 'elisp-slime-nav '(diminish 'elisp-slime-nav-mode))
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "el")))
 
 (provide 'hemacs-ui)
