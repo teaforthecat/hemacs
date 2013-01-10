@@ -49,7 +49,4 @@
 (global-set-key (kbd "<s-return>") 'insert-empty-line)
 ;; (global-set-key (kbd "RET") 'newline-and-indent)
 
-;; lisp
-(define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-region)
-
 (provide 'hemacs-bindings)

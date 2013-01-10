@@ -37,9 +37,6 @@
 (vendor 'undo-tree)
 (global-undo-tree-mode)
 
-(vendor 'browse-kill-ring)
-(browse-kill-ring-default-keybindings)
-
 ;; minibuffer
 ;; (setq minibuffer-auto-raise t)
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
@@ -84,8 +81,12 @@
 ;; treat camelcasing and underscoring as stop points
 (global-subword-mode 1)
 
-;; any key causes 
+;; any key deletes active region
 (delete-selection-mode t)
+
+;; save hook
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'maybe-deactivate-mark)
 
 ;; convenience and prefs
 (setq inhibit-startup-message t)
