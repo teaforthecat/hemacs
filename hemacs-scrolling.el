@@ -38,6 +38,8 @@
                 css-mode-hook
                 less-css-mode-hook
                 sass-mode-hook
+                magit-log-mode-hook
+                magit-mode-hook
                 scss-mode-hook
                 slim-mode-hook
                 coffee-mode-hook

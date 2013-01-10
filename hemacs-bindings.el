@@ -39,14 +39,7 @@
 ;; toggling
 (global-set-key (kbd "s-`") 'switch-to-previous-buffer)
 (global-set-key (kbd "M-`") 'popwin:display-last-buffer)
-(global-set-key (kbd "C-`") 'persp-switch-last)
-
-;; killing, yanking
-(global-set-key (kbd "s-V") 'yank-indented)
-(global-set-key (kbd "s-u") 'dupe-line)
-(global-set-key (kbd "C-x C-y") 'browse-kill-ring)
-(global-set-key (kbd "C-c k") 'copy-whole-line)
-(global-set-key (kbd "C-c C-k") 'kill-whole-line)
+;; (global-set-key (kbd "C-`") 'persp-switch-last)
 
 ;; open files
 (global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
