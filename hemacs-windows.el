@@ -45,4 +45,7 @@
         ("\\*shell\\*.*" :regexp t :position left :width .5)
         ))
 
+(global-set-key (kbd "C-z") popwin:keymap)
+(global-set-key (kbd "C-z d") 'dired-jump-other-window)
+
 (provide 'hemacs-windows)

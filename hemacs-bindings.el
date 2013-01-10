@@ -1,33 +1,19 @@
-;; osx-ish style conveniency
-(global-set-key (kbd "s-s") 'save-buffer)
-(global-set-key (kbd "s-w") 'kill-this-buffer)
-(global-set-key (kbd "s-z") 'undo)
-(global-set-key (kbd "s--") 'text-scale-decrease)
-(global-set-key (kbd "s-=") 'text-scale-increase)
+;; font scaling
 (global-set-key (kbd "C-=") 'delete-other-windows)
-(global-set-key (kbd "C-+") 'ns-toggle-fullscreen)                                    
+(global-set-key (kbd "C-+") 'ns-toggle-fullscreen)
 
 ;; buffer hopping
 (global-set-key (kbd "C-c r") 'recentf-ido-find-file)
 (global-set-key (kbd "s-b") 'ido-switch-buffer)
-
-;; ack
-(global-set-key (kbd "C-c a") 'ack-and-a-half)
-(global-set-key (kbd "C-c C-a") 'ack-and-a-half-same)
-(global-set-key (kbd "C-c f") 'ack-and-a-half-find-file) ;; faster than textmate find in project
-(global-set-key (kbd "C-c F") 'ack-and-a-half-find-file-same)
-
-;; keychord
-(vendor 'key-chord)
-(key-chord-mode 1)
-(key-chord-define-global "<>" 'sgml-close-tag)
-(key-chord-define-global "{}" 'open-brackets-newline-and-indent)
 
 ;; keyboard scrolling
 (global-set-key (kbd "s-,") 'next-line)
 (global-set-key (kbd "s-.") 'previous-line)
 (global-set-key (kbd "C-,") 'forward-paragraph)
 (global-set-key (kbd "C-.") 'backward-paragraph)
+
+;; delete file
+(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;; regions
 (global-set-key (kbd "s-'") 'er/expand-region)
@@ -37,17 +23,11 @@
 (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "C-o") 'open-line-and-indent)
-(global-set-key (kbd "C-k") 'kill-and-join-forward)
-(global-set-key (kbd "M-w") 'save-region-or-current-line)
 (global-set-key (kbd "C-/") 'hippie-expand-lines)
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-x C-c") 'delete-frame)
 (global-set-key (kbd "C-x 3") 'split-window-horizontally-previous-buffer-select)
 (global-set-key (kbd "s-:") 'pad-colon)
-
-;; popups
-(global-set-key (kbd "C-z") popwin:keymap)
-(global-set-key (kbd "C-z d") 'dired-jump-other-window)
 
 ;; necessities
 (global-set-key (kbd "C-c g") 'magit-status)

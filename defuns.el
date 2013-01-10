@@ -2,14 +2,6 @@
   "Remove trailing whitespace from `STR'."
   (replace-regexp-in-string "[ \t\n]*$" "" str))
 
-(defun yank-indented ()
-  (interactive)
-  (let ((start (point)))
-    (yank)
-    (indent-region start (point))
-    (indent-according-to-mode)
-    ))
-
 (defun shift-text (distance)
   (if (use-region-p)
       (let ((mark (mark)))
@@ -23,6 +15,11 @@
                     (line-end-position)
                     distance)))
 
+(defun text-scale-decrease-one ()
+  (interactive)
+  (text-scale-decrease 1)
+  )
+
 (defun shift-right (count)
   (interactive "p")
   (shift-text count))
@@ -31,38 +28,12 @@
   (interactive "p")
   (shift-text (- count)))
 
-(defun copy-line (arg)
-  "Copy to end of line, or as many lines as prefix argument"
-  (interactive "P")
-  (if (null arg)
-      (copy-to-end-of-line)
-    (copy-whole-lines (prefix-numeric-value arg))))
-
 (defun find-git-repo (dir)
   (if (string= "/" dir)
       (message "not in a git repo.")
     (if (file-exists-p (expand-file-name ".git/" dir))
         dir
       (find-git-repo (expand-file-name "../" dir)))))
-
-(defun copy-to-end-of-line ()
-  (interactive)
-  (kill-ring-save (point)
-                  (line-end-position))
-  (message "Copied to end of line"))
-
-(defun copy-whole-lines (arg)
-  "Copy lines (as many as prefix argument) in the kill ring"
-  (interactive "p")
-  (kill-ring-save (line-beginning-position)
-                  (line-beginning-position (+ 1 arg)))
-  (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
-
-(defun save-region-or-current-line (arg)
-  (interactive "P")
-  (if (region-active-p)
-      (kill-ring-save (region-beginning) (region-end))
-    (copy-line arg)))
 
 (defun toggle-window-split ()
   (interactive)
@@ -164,13 +135,6 @@
   (let ((buffer (save-window-excursion (find-file-in-project))))
     (switch-to-buffer-other-window buffer)))
 
-(defun copy-whole-line (arg)
-      "Copy lines (as many as prefix argument) in the kill ring"
-      (interactive "p")
-      (kill-ring-save (line-beginning-position)
-                      (line-beginning-position (+ 1 arg)))
-      (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
-
 (defun split-window-horizontally-previous-buffer-select ()
   (interactive)
   (split-window-horizontally)
@@ -227,26 +191,6 @@
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
           "culpa qui officia deserunt mollit anim id est laborum."))
 
-(defun dupe-line ()
-  (interactive)
-  (beginning-of-line)
-  (copy-region-as-kill (point) (progn (end-of-line) (point)))
-  (textmate-next-line)
-  (yank)
-  (beginning-of-line)
-  (indent-according-to-mode))
-
-(defun bckwrd-kill-line ()
-  (interactive)
-  (kill-line 0))
-
-;; (defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
-;;   "Kill up to the ARG'th occurence of CHAR, and leave CHAR. If
-;;    you are deleting forward, the CHAR is replaced and the point is
-;;    put before CHAR"
-;;   (insert char)
-;;   (if (< 0 arg) (forward-char -1)))
-
 ;; short snips
 
 (defun arrow ()
@@ -264,7 +208,7 @@
   (interactive)
   (if (looking-at "\;.*")
       (insert ": ")
-    (insert ": ;")    
+    (insert ": ;")
     (backward-char)
     )
   )
@@ -320,8 +264,10 @@
   (interactive)
   (kill-buffer (current-buffer)))
 
-(defun cleanup-on-save ()
-  (add-hook 'before-save-hook 'cleanup-buffer))
+(defun maybe-deactivate-mark ()
+  (interactive)
+  (if (region-active-p)
+      (deactivate-mark t)))
 
 (defun insert-empty-line ()
   "Insert an empty line after the current line and positon
@@ -347,20 +293,6 @@ file of a buffer in an external program."
 (defun string-join (separator strings)
   "Join all STRINGS using SEPARATOR."
   (mapconcat 'identity strings separator))
-
-;; (defun my-shell-command (command &optional output-buffer error-buffer)
-;;   "Run a shell command with the current file (or marked dired files).
-;; In the shell command, the file(s) will be substituted wherever a '%' is."
-;;   (interactive (list (read-from-minibuffer "Shell command: "
-;;                                            nil nil nil 'shell-command-history)
-;;                      current-prefix-arg
-;;                      shell-command-default-error-buffer))
-;;   (cond ((buffer-file-name)
-;;          (setq command (replace-regexp-in-string "%" (buffer-file-name) command nil t)))
-;;         ((and (equal major-mode 'dired-mode) (save-excursion (dired-move-to-filename)))
-;;          (setq command (replace-regexp-in-string "%" (mapconcat 'identity (dired-get-marked-files) " ") command nil t))))
-;;   (shell-command command output-buffer error-buffer))
-
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -463,13 +395,6 @@ file of a buffer in an external program."
   (local-set-key (kbd "<C-return>") 'newline)
   )
 
-(defun magit-kill-file-on-line ()
-  "Show file on current magit line and prompt for deletion."
-  (interactive)
-  (magit-visit-item)
-  (delete-current-buffer-file)
-  (magit-refresh))
-
 (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
   "Create parent directory if not exists while visiting file."
   (unless (file-exists-p filename)
@@ -509,10 +434,5 @@ file of a buffer in an external program."
 (defun font-existsp (font)
   (if (null (x-list-fonts font))
       nil t))
-
-(defun eshell/clear ()
-  (interactive)
-  (let ((inhibit-read-only t))
-  (erase-buffer)))
 
 (provide 'defuns)

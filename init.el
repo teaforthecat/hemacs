@@ -26,15 +26,18 @@
 (require 'defuns)
 
 ;; do it
+(require 'hemacs-ack)
 (require 'hemacs-completion)
 (require 'hemacs-jump)
 (require 'hemacs-evil)
 (require 'hemacs-windows)
+(require 'hemacs-yankill)
 (require 'hemacs-config)
 (require 'hemacs-git)
 (require 'hemacs-dired)
 (require 'hemacs-pairs)
 (require 'hemacs-scrolling)
+(require 'hemacs-chords)
 (require 'hemacs-bindings)
 (require 'hemacs-projects)
 (when (and *is-a-mac* window-system) (require 'hemacs-osx))

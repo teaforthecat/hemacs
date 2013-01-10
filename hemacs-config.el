@@ -2,17 +2,12 @@
 (vendor 'multiple-cursors)
 (vendor 'deft)
 (vendor 'cheat)
-(vendor 'rect-mark)
-
+;; (vendor 'rect-mark)
 ;; (vendor 'dash)
 ;; (vendor 'sackspace)
 
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
-
-;; ack searching `brew install ack`
-(vendor 'ack-and-a-half)
-(setq ack-and-a-half-arguments "--nosql")
 
 (setq auto-save-default nil)
 (setq make-backup-files nil)
@@ -106,5 +101,6 @@
 (add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.cfm" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 
 (provide 'hemacs-config)

@@ -18,4 +18,11 @@
 (setq kill-do-not-save-duplicates t)
 ;; (setq save-interprogram-paste-before-kill t)
 
+;; osx-ish style conveniency bindings
+(global-set-key (kbd "s-s") 'save-buffer)
+(global-set-key (kbd "s-w") 'kill-this-buffer)
+(global-set-key (kbd "s-z") 'undo)
+(global-set-key (kbd "s--") 'text-scale-decrease)
+(global-set-key (kbd "s-=") 'text-scale-increase)
+
 (provide 'hemacs-osx)
