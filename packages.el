@@ -9,15 +9,15 @@
 
 (defvar packages
   '(diminish
+    elisp-slime-nav
+    php-mode
     slime
     slime-repl
     slime-js
     exec-path-from-shell
     markdown-mode
     perspective
-    textmate
-    yari
-    )
+    textmate)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (package packages)

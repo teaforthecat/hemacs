@@ -13,16 +13,3 @@
  '(slim-backspace-backdents-nesting nil)
  '(term-buffer-maximum-size 256)
  '(term-completion-autolist t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(font-lock-function-name-face ((t (:weight normal))))
- '(ido-subdir ((t (:inherit font-lock-keyword-face))))
- '(mode-line ((t (:box nil :height 120))))
- '(mode-line-inactive ((t (:box nil :height 120))))
- '(powerline-active1 ((t (:foreground nil :height 130 :inherit default))))
- '(powerline-active2 ((t (:foreground nil :height 130 :inherit default))))
- '(powerline-inactive1 ((t (:foreground nil :inherit font-lock-comment-face))))
- '(powerline-inactive2 ((t (:foreground nil :inherit font-lock-comment-face)))))

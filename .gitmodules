@@ -172,3 +172,6 @@
 [submodule "vendor/browse-kill-ring.el"]
 	path = vendor/browse-kill-ring.el
 	url = git://github.com/browse-kill-ring/browse-kill-ring.git
+[submodule "vendor/full-ack.el"]
+	path = vendor/full-ack.el
+	url = git://github.com/nschum/full-ack.git

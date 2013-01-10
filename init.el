@@ -1,20 +1,23 @@
-(setq *is-a-mac* (eq system-type 'darwin))
+(setq
+ ;; internal settings
+ *is-a-mac* (eq system-type 'darwin)
+ hemacs-dir (file-name-directory load-file-name)
+ vendor-dir (expand-file-name "vendor" hemacs-dir)
+ custom-file (expand-file-name "custom.el" hemacs-dir)
+
+ ;; default settings
+ code-dir "~/code/"
+ default-font "Meslo LG M DZ-16:weight=normal"
+ )
 
 ;; hide everything
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 ;; load paths
-(add-to-list 'load-path "~/.emacs.d")
-(setq vendor-dir  "~/.emacs.d/vendor")
-(setq custom-file "~/.emacs.d/custom.el")
+(add-to-list 'load-path hemacs-dir)
 (when (file-exists-p vendor-dir) (add-to-list 'load-path vendor-dir))
 (when (file-exists-p custom-file) (load custom-file))
-
-;; default settings
-(setq code-dir "~/code/"
-      default-font "Meslo LG M DZ-16:weight=normal"
-      )
 
 ;; elpa packages (most packages are submoduled with git in ./vendor)
 (require 'packages)
@@ -42,6 +45,7 @@
 (require 'hemacs-javascripts)
 (require 'hemacs-ui)
 (require 'hemacs-webkit)
+(require 'hemacs-writing)
 (require 'hemacs-org)
 
 (provide 'init)

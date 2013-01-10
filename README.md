@@ -17,7 +17,7 @@ installing emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/ho
 
 since we are already brewing, you might want to make sure you have these programs installed as well => 
 
-`brew install git ack markdown`
+`brew install git ack markdown ispell`
 
 also, the first time you boot a handful of elisp packages will be installed so just relax for a sec dude.
 
