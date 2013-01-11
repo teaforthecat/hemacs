@@ -19,7 +19,14 @@
 (loop for c from ?A to ?Z do (add-hyper-char-to-ace-jump-word-mode c))
 (loop for c from ?a to ?z do (add-hyper-char-to-ace-jump-word-mode c))
 
-;; hot ace jump buffer selection
+;; hot ace jump buffer selection (broken)
+
+;; (defadvice select-window (after maybe-bs-ace-jump activate)
+;;   (if (string-match (buffer-name) "*buffer-selection*")
+;;       (ace-jump-mode)
+;;     )
+;;   t)
+
 (defun bs-ace-jump-end-hook ()
   (interactive)
   (if (string-match (buffer-name) "*buffer-selection*")

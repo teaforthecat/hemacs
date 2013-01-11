@@ -15,7 +15,7 @@ installing emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/ho
 
 `brew linkapps`
 
-since we are already brewing, you might want to make sure you have these programs installed as well => 
+since we are already brewing, you might want to make sure you have these programs installed as well =>
 
 `brew install git ack markdown ispell`
 
@@ -41,36 +41,45 @@ also, the first time you boot a handful of elisp packages will be installed so j
 
 * `hemacs-scrolling` - buffer scrolling behavior
 
-* `hemacs-projects` - project workspace management and conveniences with persp-mode, popwin
+* `hemacs-projects` - project workspace management and conveniences with `persp-mode.el` and `popwin.el`
 
 * `hemacs-osx` - carbon / osx related settings (ignored if booted from terminal)
 
 * `hemacs-ui` - font, theme massaging, highlight-tail, powerline, eliminating clutter
 
+* `hemacs-todo` - a simple global todo list system using `org-capture`, grouped by project headers
+
 * `hemacs-console` - trying to make eshell, shell, and terminal more usable
+
+* `hemacs-lisp` - elisp-related customizations and extensions
+
+* `hemacs-writing` - spell-checking and text-writing assistance
+
+* `hemacs-ack` - fast file searching with `ack` via `ack-and-a-half.el`
+
+* `hemacs-yankill` - yanking and killing helper functions and bindings
+
+* `hemacs-jump` - power cursor jumping and buffer switching with `ace-jump-mode.el` *experimental*
 
 * `hemacs-webkit` - browser consoling via [swank js](https://github.com/swank-js/swank-js) *experimental*
 
-* support for the following langauges: 
+* support for the following langauges:
   - ruby
   - javascript
   - coffeescript
   - mustache / handlebars
-  - css
-  - less css
-  - scss
-  - sass
-  - erb / rhtml
-  - haml
-  - slim
+  - css / less css / scss
+  - sass / haml / slim / jade
+  - html / erb
   - json
   - yaml
   - markdown
+  - php
 
 ## default settings
 
 within `init.el` there a few basic settings you might want to override.
 
-* `code-dir` - this is the root folder where all your projects reside, for the purpose of [`hemacs-projecs`](https://github.com/waymondo/hemacs/tree/master/vendor). i have this set to `~/code/`.
+* `code-dir` - this is the root folder where all your projects reside, for the purpose of [`hemacs-projects`](https://github.com/waymondo/hemacs/tree/master/vendor). i have this set to `~/code/`.
 
 * `default-font` - i'm grooving on [Meslo](https://github.com/andreberg/Meslo-Font) but you can change it to whatever. if the named font isn't found, it will usewhatever your emacs default is at 16px.

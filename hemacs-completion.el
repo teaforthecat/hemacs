@@ -86,6 +86,14 @@
                 ))
    (add-to-list 'ac-modes mode))
 
+;; (setq ac-dwim nil)
+
+;; (set-default 'ac-sources
+;;              '(ac-source-dictionary
+;;                ac-source-words-in-buffer
+;;                ac-source-words-in-same-mode-buffers
+;;                ac-source-words-in-all-buffer))
+
 ;; smart tab
 ;; (vendor 'smart-tab)
 ;; (global-smart-tab-mode 1)
