@@ -98,6 +98,7 @@
 (defun massage-theme-colors ()
   (interactive)
   (let (
+        (default (face-attribute 'default :foreground))
         (bg (face-attribute 'default :background))
         (font-lock-comment-base (face-attribute 'font-lock-comment-face :foreground))
         (highlight-base (face-attribute 'highlight :background))
@@ -108,6 +109,10 @@
     (set-face-attribute 'mode-line nil
                         :foreground bg
                         :background font-lock-comment-base)
+
+    (set-face-attribute 'header-line nil
+                        :foreground default
+                        :background (color-lighten-name bg 12))
 
     (set-face-attribute 'mode-line-inactive nil
                         :background (color-darken-name bg 5))
