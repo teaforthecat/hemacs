@@ -43,6 +43,8 @@
         ("\\*slime-repl JS\\*.*" :regexp t :position left :width .5)
         ("\\*eshell\\*.*" :regexp t :position left :width .5 :stick t)
         ("\\*shell\\*.*" :regexp t :position left :width .5)
+        ("\\*shell\\*.*" :regexp t :position left :width .5)
+        ("CAPTURE-todo.org" :height 5)
         ))
 
 (global-set-key (kbd "C-z") popwin:keymap)
