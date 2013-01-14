@@ -35,9 +35,11 @@ also, the first time you boot a handful of elisp packages will be installed so j
 
 * `hemacs-dired` - dired detail hiding and buffer reuse / reverting
 
-* `hemacs-pairs` - global electric pair mode with hungry delete and delete-active-region compatibility
+* `hemacs-electric` - global electric modes with hungry delete and delete-active-region compatibility for `electric-pair-mode`
 
 * `hemacs-bindings` - bindings for modes, defuns, and some
+
+* `hemacs-chords` - `keychord-mode` chords for common things and global common things bound to semi-colon
 
 * `hemacs-scrolling` - buffer scrolling behavior
 

@@ -1,6 +1,4 @@
 (vendor 'coffee-mode)
-(vendor 'handlebars-mode)
-(vendor 'jade-mode)
 (vendor 'js2-mode)
 (vendor 'json-mode)
 
@@ -9,9 +7,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-(add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache$" . handlebars-mode))
-
 
 (eval-after-load 'coffee-mode
   '(progn

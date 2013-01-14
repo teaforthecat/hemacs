@@ -5,18 +5,10 @@
 (vendor 'bundler)
 (vendor 'foreman)
 (vendor 'heroku)
-(vendor 'slim-mode)
-(vendor 'rhtml-mode)
-(vendor 'haml-mode)
-(vendor 'yaml-mode)
 
 (dolist (regex '("\\.rake$" "\\.gemspec$" "\\.ru$" "Guardfile$" "Vagrantfile$"
                  "Rakefile$" "Gemfile$" "Capfile$" "Procfile$" "\\.rabl$" "\\.gems$"))
   (add-to-list 'auto-mode-alist `(,regex . ruby-mode)))
-
-(add-to-list 'auto-mode-alist '("\\.hamlbars$" . haml-mode))
-(add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 
 ;; indentation fixing
 (setq ruby-deep-indent-paren nil)
@@ -58,9 +50,5 @@
      (define-key ruby-mode-map (kbd "s-{") 'pad-brackets)
 
      ))
-
-(define-key haml-mode-map (kbd "s-{") 'pad-brackets)
-(define-key haml-mode-map (kbd "s->") 'arrow)
-(define-key slim-mode-map (kbd "s-{") 'pad-brackets)
 
 (provide 'hemacs-ruby)

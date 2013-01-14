@@ -44,6 +44,7 @@
 (require 'hemacs-console)
 (require 'hemacs-lisp)
 (require 'hemacs-ruby)
+(require 'hemacs-templating)
 (require 'hemacs-stylesheets)
 (require 'hemacs-javascripts)
 (require 'hemacs-ui)
