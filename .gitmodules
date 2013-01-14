@@ -175,3 +175,6 @@
 [submodule "vendor/full-ack.el"]
 	path = vendor/full-ack.el
 	url = git://github.com/nschum/full-ack.git
+[submodule "vendor/wanderlust"]
+	path = vendor/wanderlust
+	url = git://github.com/wanderlust/wanderlust.git
