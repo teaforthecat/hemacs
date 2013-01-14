@@ -68,6 +68,9 @@
   (beginning-of-line)
   (yank))
 
+;; define as yank-command for delsel.el
+(put 'yank-indented 'delete-selection 'yank-indented)
+
 ;; !! overrides
 (global-set-key (kbd "C-k") 'kill-and-join-forward)
 (global-set-key (kbd "M-w") 'save-region-or-current-line)

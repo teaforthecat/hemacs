@@ -60,26 +60,12 @@
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
-;; define as yank-command for delsel.el
-(put 'yank-indented 'delete-selection 'yank-indented)
-
 (defun kill-and-join-forward (&optional arg)
   "If at end of line, join with following; otherwise kill line. Deletes whitespace at join."
   (interactive "P")
   (if (and (eolp) (not (bolp)))
       (delete-indentation t)
     (kill-line arg)))
-
-;; (defun yank-and-indent ()
-;;   "Yank and then indent the newly formed region according to mode."
-;;   (interactive)
-;;   (yank)
-;;   (call-interactively 'indent-region))
-
-;; (defun add-auto-mode (mode &rest patterns)
-;;   "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
-;;   (dolist (pattern patterns)
-;;     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
 (defun finder ()
   "Open the current working directory in finder."
@@ -91,43 +77,6 @@
   (set-window-margins (selected-window) 0 0)
   (let ((marginwidth (/ (- (window-width) 80) 2)))
     (set-window-margins (selected-window) marginwidth marginwidth)))
-
-(defun swap-windows ()
-  "If you have 2 windows, it swaps them."
-  (interactive)
-  (cond ((not (= (count-windows) 2))
-         (message "You need exactly 2 windows to do this."))
-        (t
-         (let* ((w1 (first (window-list)))
-                (w2 (second (window-list)))
-                (b1 (window-buffer w1))
-                (b2 (window-buffer w2))
-                (s1 (window-start w1))
-                (s2 (window-start w2)))
-           (set-window-buffer w1 b2)
-           (set-window-buffer w2 b1)
-           (set-window-start w1 s2)
-           (set-window-start w2 s1)))))
-
-(defun shell-other-window (&optional buffer)
-  (interactive
-   (list
-    (and current-prefix-arg
-         (prog1
-             (read-buffer "Shell buffer: "
-                          (generate-new-buffer-name "*shell*"))
-           (if (file-remote-p default-directory)
-               ;; It must be possible to declare a local default-directory.
-               ;; FIXME: This can't be right: it changes the default-directory
-               ;; of the current-buffer rather than of the *shell* buffer.
-               (setq default-directory
-                     (expand-file-name
-                      (read-directory-name
-                       "Default directory: " default-directory default-directory
-                       t nil))))))))
-  (let ((buffer (save-window-excursion
-                  (shell buffer))))
-    (switch-to-buffer-other-window buffer)))
 
 (defun find-file-in-project-other-window ()
   "Find a file in the current project in the other window."

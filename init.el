@@ -35,7 +35,7 @@
 (require 'hemacs-config)
 (require 'hemacs-git)
 (require 'hemacs-dired)
-(require 'hemacs-pairs)
+(require 'hemacs-electric)
 (require 'hemacs-scrolling)
 (require 'hemacs-chords)
 (require 'hemacs-bindings)
