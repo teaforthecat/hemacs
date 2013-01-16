@@ -14,5 +14,8 @@
 (key-chord-define-global ";t" 'hemacs-goto-todos)
 (key-chord-define-global ";o" 'magit-in-perspective)
 (key-chord-define-global ";s" 'persp-switch)
+(key-chord-define-global ";l" 'persp-shell)
+(key-chord-define-global ";d" 'dired-jump-other-window)
+(key-chord-define-global ";a" 'ack-and-a-half)
 
 (provide 'hemacs-chords)
