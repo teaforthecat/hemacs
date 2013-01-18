@@ -6,11 +6,11 @@
 (global-set-key (kbd "C-c m") 'persp-async-command)
 
 (defmacro custom-persp (name &rest body)
-       `(let ((initialize (not (gethash ,name perspectives-hash)))
-              (current-perspective persp-curr))
-          (persp-switch ,name)
-          (when initialize ,@body)
-          (setq persp-last current-perspective)))
+  `(let ((initialize (not (gethash ,name perspectives-hash)))
+         (current-perspective persp-curr))
+     (persp-switch ,name)
+     (when initialize ,@body)
+     (setq persp-last current-perspective)))
 
 (defun magit-in-perspective ()
   "Use ido to find or create a perspective for a project and open it in magit"
@@ -30,15 +30,25 @@
          (call-interactively 'eshell)))
    :default-config-keywords '(:position :left :width 0.5)))
 
+(defun make-persp-shell ()
+  (interactive)
+  (cd (shell-quote-argument (textmate-project-root)))
+  (shell shell-buffer-name)
+  (get-buffer shell-buffer-name))
+
 (defun persp-shell ()
+  (interactive)
+  (let* ((shell-buffer-name (concat "*" (persp-name persp-curr) "-shell*")))
+    (display-buffer
+     (or (get-buffer shell-buffer-name)
+         (save-window-excursion (make-persp-shell))))))
+
+(defun popwin:persp-shell ()
   (interactive)
   (let* ((shell-buffer-name (concat "*" (persp-name persp-curr) "-shell*")))
     (popwin:display-buffer-1
      (or (get-buffer shell-buffer-name)
-         (save-window-excursion
-           (cd (shell-quote-argument (textmate-project-root)))
-           (shell shell-buffer-name)
-           (get-buffer shell-buffer-name)))
+         (save-window-excursion (make-persp-shell)))
      :default-config-keywords '(:position :bottom :height 0.5))))
 
 (defun persp-async-command ()
