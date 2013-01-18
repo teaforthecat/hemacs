@@ -18,6 +18,8 @@
 ;; regions
 (global-set-key (kbd "s-'") 'er/expand-region)
 (global-set-key (kbd "s-;") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
 
 ;; !! overrides
 (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
@@ -43,7 +45,6 @@
 
 ;; open files
 (global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
-(global-set-key (kbd "C-c C-o") 'open-file-in-github)
 
 ;; override enter behavior
 (global-set-key (kbd "<s-return>") 'insert-empty-line)

@@ -178,3 +178,9 @@
 [submodule "vendor/wanderlust"]
 	path = vendor/wanderlust
 	url = git://github.com/wanderlust/wanderlust.git
+[submodule "vendor/hippie-with-ac.el"]
+	path = vendor/hippie-with-ac.el
+	url = git://github.com/ispinfx/hippie-with-ac.el.git
+[submodule "vendor/change-inner.el"]
+	path = vendor/change-inner.el
+	url = git://github.com/magnars/change-inner.el.git

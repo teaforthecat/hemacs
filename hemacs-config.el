@@ -1,22 +1,16 @@
 (vendor 'expand-region)
+(vendor 'change-inner)
 (vendor 'multiple-cursors)
 (vendor 'deft)
 (vendor 'cheat)
-;; (vendor 'rect-mark)
-;; (vendor 'dash)
-;; (vendor 'sackspace)
 
+;; enable features
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; no auto saving or backup files
 (setq auto-save-default nil)
 (setq make-backup-files nil)
-;; move autosave and backup files out of project workspaces
-;; (defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
-;; (defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
-;; (setq backup-directory-alist (list (cons ".*" backup-dir)))
-;; (setq auto-save-list-file-prefix autosave-dir)
-;; (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
 ;; save cursor places in files and usage history
 (require 'saveplace)
@@ -34,6 +28,7 @@
 (require 'midnight)
 (setq midnight-period 7200) ;; (eq (* 2 60 60) "2 hours")
 
+;; the undo tree
 (vendor 'undo-tree)
 (global-undo-tree-mode)
 
@@ -72,9 +67,6 @@
 (require 'perspective)
 (persp-mode t)
 
-;; (vendor 'helm)
-;; (require 'helm-config)
-
 ;; treat camelcasing and underscoring as stop points
 (global-subword-mode 1)
 
@@ -91,7 +83,7 @@
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq show-trailing-whitespace t)
 (setq pop-up-windows nil)
-;; (setq max-lisp-eval-depth 100000)
+(setq max-lisp-eval-depth 100000)
 
 ;; file types
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))

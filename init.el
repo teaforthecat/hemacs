@@ -52,4 +52,9 @@
 (require 'hemacs-writing)
 (require 'hemacs-todo)
 
+;; run emacs client server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 (provide 'init)
