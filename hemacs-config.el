@@ -3,6 +3,7 @@
 (vendor 'multiple-cursors)
 (vendor 'deft)
 (vendor 'cheat)
+(vendor 'regex-tool)
 
 ;; enable features
 (put 'downcase-region 'disabled nil)

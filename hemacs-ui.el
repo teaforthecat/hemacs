@@ -1,60 +1,38 @@
-(require 'color)
-;; (vendor 'volatile-highlights)
 (vendor 'highlight-tail)
 (vendor 'powerline)
+(vendor 'mic-paren)
 
 ;; set font
-(if (font-existsp default-font)
-    (set-face-attribute 'default nil :font default-font)
-  (set-face-attribute 'default nil :height 160))
+;; (if (and *is-a-mac* window-system (font-existsp default-font))
+;;     (set-face-attribute 'default nil :font default-font)
+;;   (set-face-attribute 'default nil :height 160))
+
+(set-face-attribute 'default nil :height 160)
 
 ;; fullscreen
 (when (and *is-a-mac* window-system)
   (ns-toggle-fullscreen))
-
-(load-theme 'misterioso)
 
 (setq color-theme-is-global t
       font-lock-maximum-decoration t
       ring-bell-function 'ignore
       truncate-partial-width-windows nil)
 
-(set-default 'fill-column 72)
-
 (transient-mark-mode t)
 (show-paren-mode t)
 (blink-cursor-mode 0)
 (size-indication-mode t)
 (global-font-lock-mode t)
-(tooltip-mode -1)
+;; (paren-activate)
 
-;; no fringe
-(fringe-mode 0)
-(set-fringe-style -1)
+(set-fringe-style '(6. 0))
 
 ;; because coding is magic
 (highlight-tail-mode 1)
 (setq highlight-tail-steps 24
-      highlight-tail-timer 0.01)
+      highlight-tail-timer 0.005)
 
-(custom-set-faces
- '(font-lock-function-name-face ((t (:weight normal)))) ;; makes scrolling sticky
- '(ido-subdir ((t (:inherit font-lock-keyword-face))))
- '(mode-line ((t (:box nil :height 130 :inherit font-lock-comment-face))))
- '(mode-line-inactive ((t (:box nil :height 130 :foreground nil :inherit font-lock-comment-face))))
- '(powerline-active1 ((t (:foreground nil :height 130 :inherit default))))
- '(powerline-active2 ((t (:foreground nil :height 130 :inherit default))))
- '(powerline-inactive1 ((t (:foreground nil :inherit font-lock-comment-face))))
- '(powerline-inactive2 ((t (:foreground nil :inherit font-lock-comment-face))))
- )
-
-;; colored diffs
-(set-face-attribute 'diff-added nil
-                    :foreground (color-lighten-name "Green" 20))
-(set-face-attribute 'success nil
-                    :foreground (color-lighten-name "Green" 20))
-(set-face-attribute 'diff-removed nil
-                    :foreground (color-lighten-name "Red" 20))
+(load-theme 'misteroizo)
 
 (defun powerline-waymondo-theme ()
   (interactive)
@@ -65,20 +43,19 @@
                           (face1 (if active 'powerline-active1 'powerline-inactive1))
                           (face2 (if active 'powerline-active2 'powerline-inactive2))
                           (lhs (list
-                                (powerline-raw " ")
+                                (powerline-raw "%*" nil 'l)
                                 (powerline-buffer-id nil 'l)
                                 (powerline-raw " ")
                                 (powerline-arrow-right nil face1)
-                                (powerline-raw "%*" face1 'l)
                                 (powerline-raw " " face1)
-                                ;; (powerline-hud face2 face1)
-                                ;; (powerline-raw " " face1)
-                                (powerline-raw "%3l" face1 'r)
+                                (powerline-hud face2 face1)
+                                (powerline-raw " " face1)
+                                ;; (powerline-raw "%3lL" face1 'r)
                                 (powerline-buffer-size face1 'l)
                                 (powerline-raw " " face1)
                                 (powerline-arrow-right face1 face2)
-                                (powerline-major-mode face2 'l)
-                                (powerline-minor-modes face2 'l)
+                                ;; (powerline-major-mode face2 'l)
+                                ;; (powerline-minor-modes face2 'l)
                                 (powerline-raw mode-line-process face2 'l)
                                 ))
                           (rhs (list
@@ -95,75 +72,6 @@
                       (powerline-fill face2 (powerline-width rhs))
                       (powerline-render rhs)))))))
 
-(defun massage-theme-colors ()
-  (interactive)
-  (let (
-        (default (face-attribute 'default :foreground))
-        (bg (face-attribute 'default :background))
-        (font-lock-comment-base (face-attribute 'font-lock-comment-face :foreground))
-        (highlight-base (face-attribute 'highlight :background))
-        (flash-base (face-attribute 'isearch :background))
-        (tail-base (face-attribute 'match :background))
-        )
-
-    (set-face-attribute 'mode-line nil
-                        :foreground bg
-                        :background font-lock-comment-base)
-
-    (set-face-attribute 'header-line nil
-                        :foreground default
-                        :background (color-lighten-name bg 12))
-
-    (set-face-attribute 'mode-line-inactive nil
-                        :background (color-darken-name bg 5))
-
-    (set-face-attribute 'powerline-active1 nil
-                        :background (color-lighten-name bg 18))
-
-    (set-face-attribute 'powerline-active2 nil
-                        :background (color-lighten-name bg 12))
-
-    (set-face-attribute 'powerline-inactive1 nil
-                        :background (color-lighten-name bg 10))
-
-    (set-face-attribute 'powerline-inactive2 nil
-                        :background (color-lighten-name bg 6))
-
-    (set-face-attribute 'cursor nil
-                        :background font-lock-comment-base)
-
-    (setq highlight-tail-colors (list (cons tail-base 0)
-                                      (cons highlight-base 24)))
-
-    (set-face-attribute 'magit-item-highlight nil
-                        :background (color-lighten-name bg 5)
-                        :inherit nil)
-
-    (set-face-attribute 'diff-hunk-header nil
-                        :background (color-lighten-name bg 15)
-                        :inherit nil)
-
-    (set-face-attribute 'diff-file-header nil
-                        :background (color-lighten-name bg 15)
-                        :inherit nil)
-
-    (highlight-tail-reload)
-    (powerline-waymondo-theme)
-
-    ))
-(massage-theme-colors)
-
-;; diminish mode names in mode line
-(require 'diminish)
-(eval-after-load "textmate" '(diminish 'textmate-mode))
-(eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
-(eval-after-load "ruby-end" '(diminish 'ruby-end-mode))
-(eval-after-load "rinari" '(diminish 'rinari-minor-mode "rails"))
-(eval-after-load "highlight-tail" '(diminish 'highlight-tail-mode))
-(eval-after-load "volatile-highlights" '(diminish 'volatile-highlights-mode))
-(eval-after-load "slime-js" '(diminish 'slime-js-minor-mode))
-(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
-(eval-after-load 'elisp-slime-nav '(diminish 'elisp-slime-nav-mode))
-(add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "el")))
+(powerline-waymondo-theme)
 
 (provide 'hemacs-ui)
