@@ -1,4 +1,3 @@
-;; (vendor 'inf-ruby)
 (vendor 'ruby-tools)
 (vendor 'ruby-end)
 (vendor 'rinari)

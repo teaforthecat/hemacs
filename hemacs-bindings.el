@@ -50,4 +50,7 @@
 (global-set-key (kbd "<s-return>") 'insert-empty-line)
 ;; (global-set-key (kbd "RET") 'newline-and-indent)
 
+;; unset the unneeded
+(global-unset-key (kbd "s-p")) ; ns-print-buffer
+
 (provide 'hemacs-bindings)

@@ -1,5 +1,5 @@
-(global-set-key (kbd "s-o") 'magit-in-perspective) ;; project open
-(global-set-key (kbd "s-p") 'persp-switch) ;; project switch
+;; (global-set-key (kbd "s-o") 'magit-in-perspective) ;; project open
+;; (global-set-key (kbd "s-p") 'persp-switch) ;; project switch
 
 (global-set-key (kbd "C-c x") 'persp-shell)
 (global-set-key (kbd "C-c X") 'persp-eshell)
