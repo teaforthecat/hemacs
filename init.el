@@ -41,7 +41,7 @@
 (require 'hemacs-bindings)
 (require 'hemacs-projects)
 (when (and *is-a-mac* window-system) (require 'hemacs-osx))
-(require 'hemacs-console)
+(require 'hemacs-shell)
 (require 'hemacs-lisp)
 (require 'hemacs-ruby)
 (require 'hemacs-templating)
