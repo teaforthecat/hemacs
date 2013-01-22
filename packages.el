@@ -8,16 +8,19 @@
   (package-refresh-contents))
 
 (defvar packages
-  '(diminish
-    elisp-slime-nav
+  '(elisp-slime-nav
     php-mode
+    rainbow-mode
     slime
     slime-repl
     slime-js
     exec-path-from-shell
     markdown-mode
     perspective
-    textmate)
+    textmate
+    solarized-theme
+    zenburn-theme
+    )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (package packages)

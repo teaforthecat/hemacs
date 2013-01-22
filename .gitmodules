@@ -184,3 +184,12 @@
 [submodule "vendor/change-inner.el"]
 	path = vendor/change-inner.el
 	url = git://github.com/magnars/change-inner.el.git
+[submodule "vendor/regex-tool.el"]
+	path = vendor/regex-tool.el
+	url = git://github.com/jwiegley/regex-tool.git
+[submodule "themes/almost-monokai"]
+	path = themes/almost-monokai
+	url = git://github.com/lut4rp/almost-monokai.git
+[submodule "vendor/mic-paren.el"]
+	path = vendor/mic-paren.el
+	url = git://github.com/emacsmirror/mic-paren.git
