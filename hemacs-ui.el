@@ -7,8 +7,6 @@
 ;;     (set-face-attribute 'default nil :font default-font)
 ;;   (set-face-attribute 'default nil :height 160))
 
-(set-face-attribute 'default nil :height 160)
-
 ;; fullscreen
 (when (and *is-a-mac* window-system)
   (ns-toggle-fullscreen))
@@ -19,18 +17,19 @@
       truncate-partial-width-windows nil)
 
 (transient-mark-mode t)
-(show-paren-mode t)
-(blink-cursor-mode 0)
+;; (show-paren-mode 1)
+(paren-activate)
+(blink-cursor-mode 1)
 (size-indication-mode t)
 (global-font-lock-mode t)
-;; (paren-activate)
+(set-fringe-style '(4. 0))
 
-(set-fringe-style '(6. 0))
+(global-linum-mode t)
 
 ;; because coding is magic
-(highlight-tail-mode 1)
-(setq highlight-tail-steps 24
-      highlight-tail-timer 0.005)
+;; (highlight-tail-mode 1)
+;; (setq highlight-tail-steps 24
+;;       highlight-tail-timer 0.005)
 
 (load-theme 'misteroizo)
 

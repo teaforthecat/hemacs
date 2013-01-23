@@ -9,22 +9,22 @@
  'misteroizo
  '(cursor ((((class color) (min-colors 89)) (:background "#34cae2"))))
  '(highlight ((((class color) (min-colors 89)) (:background "#008b8b"))))
- '(region ((((class color) (min-colors 89)) (:background "#2d2d2d" :foreground "#e1e1e0"))))
+ '(region ((((class color) (min-colors 89)) (:background "#222222" :foreground "#e1e1e0"))))
 
  '(fringe ((((class color) (min-colors 89)) (:background "#3a3a3a" :foreground "#3a3a3a"))))
  '(linum ((((class color) (min-colors 89)) (:height 0.8125 :foreground "#666666"))))
 
- '(header-line ((((class color) (min-colors 89)) (:background "#2d3743" :foreground "#e1e1e0" :weight bold))))
+ '(header-line ((((class color) (min-colors 89)) (:background "#2d3743" :foreground "#e1e1e0" :height 160 :weight bold))))
 
  '(isearch ((((class color) (min-colors 89)) (:background "#fcffad" :foreground "#000000"))))
  '(lazy-highlight ((((class color) (min-colors 89)) (:background "#338f86"))))
 
- '(vertical-border ((((class color) (min-colors 89)) (:foreground "#74af58"))))
+ '(vertical-border ((((class color) (min-colors 89)) (:foreground "#666666"))))
  '(trailing-whitespace ((((class color) (min-colors 89)) (:background "#ff4242"))))
  '(minibuffer-prompt ((((class color) (min-colors 89)) (:foreground "#729fcf" :weight bold))))
 
- '(mode-line ((((class color) (min-colors 89)) (:background "#222222" :foreground "#eeeeec" :height 0.8125 :box nil))))
- '(mode-line-inactive ((((class color) (min-colors 89)) (:background "#666666" :foreground "#eeeeec" :height 0.8125 :box nil))))
+ '(mode-line ((((class color) (min-colors 89)) (:background "#222222" :foreground "#eeeeec" :height 120 :box nil))))
+ '(mode-line-inactive ((((class color) (min-colors 89)) (:background "#666666" :foreground "#eeeeec" :height 120 :box nil))))
 
  '(diff-added ((((class color) (min-colors 89)) (:foreground "#74af68"))))
  '(diff-changed ((((class color) (min-colors 89)) (:foreground "#dbdb95"))))
@@ -53,8 +53,8 @@
  '(font-lock-variable-name-face ((((class color) (min-colors 89)) (:foreground "#dbdb95"))))
  '(font-lock-warning-face ((((class color) (min-colors 89)) (:foreground "#ff4242" :weight bold))))
 
- '(ac-candidate-face ((((class color) (min-colors 89)) (:background "#212931" :foreground "#eeeeec"))))
- '(ac-selection-face ((((class color) (min-colors 89)) (:background "#fcffad" :foreground "#000000"))))
+ '(ac-candidate-face ((((class color) (min-colors 89)) (:background "#666666" :foreground "#eeeeec"))))
+ '(ac-selection-face ((((class color) (min-colors 89)) (:background "#34cae2" :foreground "#000000"))))
 
  '(button ((((class color) (min-colors 89)) (:underline t))))
  '(link ((((class color) (min-colors 89)) (:foreground "#59e9ff" :underline t))))
@@ -91,6 +91,6 @@
  '(message-cited-text ((((class color) (min-colors 89)) (:foreground "#74af68"))))
  '(message-separator ((((class color) (min-colors 89)) (:foreground "#23d7d7"))))
 
- '(default ((((class color) (min-colors 89)) (:background "#3a3a3a" :foreground "#e1e1e0")))))
+ '(default ((((class color) (min-colors 89)) (:background "#3a3a3a" :height 160 :foreground "#e1e1e0")))))
 
 (provide-theme 'misteroizo)

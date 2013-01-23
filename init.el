@@ -47,10 +47,10 @@
 (require 'hemacs-templating)
 (require 'hemacs-stylesheets)
 (require 'hemacs-javascripts)
-(require 'hemacs-ui)
-(require 'hemacs-webkit)
+;; (require 'hemacs-webkit)
 (require 'hemacs-writing)
 (require 'hemacs-todo)
+(require 'hemacs-ui)
 
 ;; run emacs client server
 (require 'server)
