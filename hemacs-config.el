@@ -74,9 +74,23 @@
 ;; any key deletes active region
 (delete-selection-mode t)
 
+;; go to line with feedback
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+
 ;; save hook
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'maybe-deactivate-mark)
+
+(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 
 ;; convenience and prefs
 (setq inhibit-startup-message t)
@@ -88,6 +102,7 @@
 
 ;; file types
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
