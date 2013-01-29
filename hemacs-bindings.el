@@ -1,3 +1,5 @@
+(global-set-key (kbd "C-x \\") 'align-regexp)
+
 ;; font scaling
 (global-set-key (kbd "C-=") 'delete-other-windows)
 (global-set-key (kbd "C-+") 'ns-toggle-fullscreen)
@@ -22,7 +24,7 @@
 (global-set-key (kbd "M-o") 'change-outer)
 
 ;; !! overrides
-(global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
+;; (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "C-o") 'open-line-and-indent)
 (global-set-key (kbd "C-/") 'hippie-expand-lines)
@@ -40,7 +42,6 @@
 
 ;; toggling
 (global-set-key (kbd "s-`") 'switch-to-previous-buffer)
-(global-set-key (kbd "M-`") 'popwin:display-last-buffer)
 ;; (global-set-key (kbd "C-`") 'persp-switch-last)
 
 ;; open files
@@ -52,5 +53,6 @@
 
 ;; unset the unneeded
 (global-unset-key (kbd "s-p")) ; ns-print-buffer
+(global-unset-key (kbd "s-q")) ; save-all-buffers-kill-emacs
 
 (provide 'hemacs-bindings)
