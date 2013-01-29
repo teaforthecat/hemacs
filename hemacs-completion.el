@@ -1,14 +1,18 @@
-;; ido
 (vendor 'ido-ubiquitous)
+(vendor 'smart-tab)
+(vendor 'popup)
+(vendor 'auto-complete)
+(vendor 'hippie-with-ac)
+
+;; ido
 (ido-mode t)
-;; (ido-everywhere t)
 (ido-ubiquitous t)
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t ;; include non-existent buffers
       ido-auto-merge-work-directories-length nil
       ido-use-filename-at-point nil
-      ido-max-window-height 16
-      ido-max-prospects 12
+      ido-max-window-height 14
+      ido-max-prospects 10
 
       ;; vertical ido results!
       ido-decorations (quote ("\n=> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
@@ -31,7 +35,7 @@
 
 (defun ido-sort-mtime ()
   (setq ido-temp-list
-        (sort ido-temp-list 
+        (sort ido-temp-list
               (lambda (a b)
                 (time-less-p
                  (sixth (file-attributes (concat ido-current-directory b)))
@@ -42,12 +46,12 @@
               ido-temp-list))))
 
 ;; hippie expand match order
-(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev-closest-first
                                          try-expand-dabbrev-all-buffers
                                          try-expand-dabbrev-from-kill
+                                         try-expand-all-abbrevs
                                          try-complete-file-name-partially
                                          try-complete-file-name
-                                         try-expand-all-abbrevs
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
@@ -57,25 +61,33 @@
                                             try-expand-line-all-buffers)))
     (hippie-expand nil)))
 
+(defun hippie-expand-no-case-fold ()
+  (interactive)
+  (let ((case-fold-search nil))
+    (hippie-expand nil)))
+
 ;; autocomplete
-(vendor 'popup)
-(vendor 'auto-complete)
-(vendor 'readline-complete)
 (global-auto-complete-mode t)
 
+;; set ac sources
+(setq ac-sources
+      '(ac-source-abbrev
+        ac-source-dictionary
+        ac-source-words-in-buffer
+        ac-source-words-in-same-mode-buffers
+        ac-source-css-property
+        ac-source-words-in-all-buffer
+        ac-source-files-in-current-dir))
+
+;; tab should partially complete
+(setq ac-dwim nil)
+
+;; add modes
 (dolist (mode '(yaml-mode
-                html-mode
-                nxml-mode
-                sh-mode
-                lisp-mode
                 markdown-mode
-                css-mode
                 less-css-mode
                 ruby-mode
-                javascript-mode
-                js-mode
                 js2-mode
-                js3-mode
                 php-mode
                 sass-mode
                 slim-mode
@@ -83,19 +95,12 @@
                 rhtml-mode
                 mustache-mode
                 haml-mode
+                stylus-mode
+                objc-mode
                 ))
    (add-to-list 'ac-modes mode))
 
-;; (setq ac-dwim nil)
-
-;; (set-default 'ac-sources
-;;              '(ac-source-dictionary
-;;                ac-source-words-in-buffer
-;;                ac-source-words-in-same-mode-buffers
-;;                ac-source-words-in-all-buffer))
-
 ;; smart tab
-;; (vendor 'smart-tab)
-;; (global-smart-tab-mode 1)
+(global-smart-tab-mode 1)
 
 (provide 'hemacs-completion)
