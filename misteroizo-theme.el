@@ -11,10 +11,9 @@
  '(highlight ((((class color) (min-colors 89)) (:background "#008b8b"))))
  '(region ((((class color) (min-colors 89)) (:background "#222222" :foreground "#e1e1e0"))))
 
- '(fringe ((((class color) (min-colors 89)) (:background "#3a3a3a" :foreground "#3a3a3a"))))
+ '(fringe ((((class color) (min-colors 89)) (:background "#313131" :foreground "#3a3a3a"))))
  '(linum ((((class color) (min-colors 89)) (:height 0.8125 :foreground "#666666"))))
-
- '(header-line ((((class color) (min-colors 89)) (:background "#2d3743" :foreground "#e1e1e0" :height 160 :weight bold))))
+ '(header-line ((((class color) (min-colors 89)) (:background "#313131" :foreground "#e1e1e0" :height 160))))
 
  '(isearch ((((class color) (min-colors 89)) (:background "#fcffad" :foreground "#000000"))))
  '(lazy-highlight ((((class color) (min-colors 89)) (:background "#338f86"))))
@@ -23,8 +22,8 @@
  '(trailing-whitespace ((((class color) (min-colors 89)) (:background "#ff4242"))))
  '(minibuffer-prompt ((((class color) (min-colors 89)) (:foreground "#729fcf" :weight bold))))
 
- '(mode-line ((((class color) (min-colors 89)) (:background "#222222" :foreground "#eeeeec" :height 120 :box nil))))
- '(mode-line-inactive ((((class color) (min-colors 89)) (:background "#666666" :foreground "#eeeeec" :height 120 :box nil))))
+ '(mode-line ((((class color) (min-colors 89)) (:background "#111111" :foreground "#eeeeec" :height 120 :box nil))))
+ '(mode-line-inactive ((((class color) (min-colors 89)) (:background "#555555" :foreground "#eeeeec" :height 120 :box nil))))
 
  '(diff-added ((((class color) (min-colors 89)) (:foreground "#74af68"))))
  '(diff-changed ((((class color) (min-colors 89)) (:foreground "#dbdb95"))))

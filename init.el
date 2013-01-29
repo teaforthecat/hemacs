@@ -15,15 +15,25 @@
   (when (fboundp mode) (funcall mode -1)))
 
 ;; load paths
+(defun add-subfolders-to-load-path (parent-dir)
+ "Adds all first level `parent-dir' subdirs to the Emacs load path."
+ (dolist (f (directory-files parent-dir))
+   (let ((name (expand-file-name f parent-dir)))
+     (when (and (file-directory-p name)
+     (not (equal f ".."))
+     (not (equal f ".")))
+       (add-to-list 'load-path name)))))
+
 (add-to-list 'load-path hemacs-dir)
 (when (file-exists-p vendor-dir) (add-to-list 'load-path vendor-dir))
 (when (file-exists-p custom-file) (load custom-file))
-
-;; elpa packages (most packages are submoduled with git in ./vendor)
-(require 'packages)
+(add-subfolders-to-load-path vendor-dir)
 
 ;; hemacs lisps
 (require 'defuns)
+
+;; elpa packages (most packages are submoduled with git in ./vendor)
+(require 'packages)
 
 ;; do it
 (require 'hemacs-ack)
