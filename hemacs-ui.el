@@ -7,10 +7,6 @@
 ;;     (set-face-attribute 'default nil :font default-font)
 ;;   (set-face-attribute 'default nil :height 160))
 
-;; fullscreen
-(when (and *is-a-mac* window-system)
-  (ns-toggle-fullscreen))
-
 (setq color-theme-is-global t
       font-lock-maximum-decoration t
       ring-bell-function 'ignore
@@ -20,18 +16,14 @@
 ;; (show-paren-mode 1)
 (paren-activate)
 (blink-cursor-mode 1)
-(size-indication-mode t)
 (global-font-lock-mode t)
-(set-fringe-style '(4. 0))
-
-(global-linum-mode t)
+;; (fringe-mode 'no-fringe)
+(set-fringe-style '(4 . 0))
 
 ;; because coding is magic
 ;; (highlight-tail-mode 1)
 ;; (setq highlight-tail-steps 24
 ;;       highlight-tail-timer 0.005)
-
-(load-theme 'misteroizo)
 
 (defun powerline-waymondo-theme ()
   (interactive)
@@ -72,5 +64,12 @@
                       (powerline-render rhs)))))))
 
 (powerline-waymondo-theme)
+
+;; load theme
+(load-theme 'misteroizo t)
+
+;; go fullscreen
+(when (and *is-a-mac* window-system)
+  (ns-toggle-fullscreen))
 
 (provide 'hemacs-ui)
