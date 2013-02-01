@@ -35,31 +35,6 @@
         dir
       (find-git-repo (expand-file-name "../" dir)))))
 
-(defun toggle-window-split ()
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
-
 (defun kill-and-join-forward (&optional arg)
   "If at end of line, join with following; otherwise kill line. Deletes whitespace at join."
   (interactive "P")
@@ -299,7 +274,12 @@ file of a buffer in an external program."
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."
   (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+  (let* ((home (expand-file-name (getenv "HOME")))
+        (file (ido-completing-read "Choose recent file: "
+                          (mapcar (lambda (path)
+                                    (replace-regexp-in-string home "~" path))
+                                  recentf-list)
+                          nil t)))
     (when file
       (find-file file))))
 
@@ -326,6 +306,11 @@ file of a buffer in an external program."
   (indent-according-to-mode)
   )
 
+(defun newline-indent-relative ()
+  (interactive)
+  (newline)
+  (indent-relative))
+
 (defun swap-buffers-in-windows ()
   "Put the buffer from the selected window in next window, and vice versa"
   (interactive)
@@ -336,12 +321,6 @@ file of a buffer in an external program."
     (set-window-buffer other this-buffer)
     (set-window-buffer this other-buffer)
     )
-  )
-
-(defun enter-as-newline-and-indent ()
-  "A hook to remap RET to C-j"
-  (local-set-key (kbd "RET") (key-binding (kbd "C-j")))
-  (local-set-key (kbd "<C-return>") 'newline)
   )
 
 (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
