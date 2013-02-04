@@ -11,7 +11,7 @@
  )
 
 ;; hide everything
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+(dolist (mode '(tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 ;; load paths
@@ -37,6 +37,7 @@
 
 ;; do it
 (require 'hemacs-ack)
+(require 'hemacs-ido)
 (require 'hemacs-completion)
 (require 'hemacs-jump)
 (require 'hemacs-evil)

@@ -271,18 +271,6 @@ file of a buffer in an external program."
                   (point))))
       (buffer-substring start end))))
 
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let* ((home (expand-file-name (getenv "HOME")))
-        (file (ido-completing-read "Choose recent file: "
-                          (mapcar (lambda (path)
-                                    (replace-regexp-in-string home "~" path))
-                                  recentf-list)
-                          nil t)))
-    (when file
-      (find-file file))))
-
 (defun keyboard-quit-or-abort-recursive-edit ()
   "Escape the keyboard or abort recursively if in the minibuffer"
   (interactive)

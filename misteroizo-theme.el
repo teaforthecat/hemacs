@@ -11,7 +11,7 @@
  '(highlight ((((class color) (min-colors 89)) (:background "#008b8b"))))
  '(region ((((class color) (min-colors 89)) (:background "#222222" :foreground "#e1e1e0"))))
 
- '(fringe ((((class color) (min-colors 89)) (:background "#313131" :foreground "#3a3a3a"))))
+ '(fringe ((((class color) (min-colors 89)) (:height 0.8125 :background "#313131" :foreground "#3a3a3a"))))
  '(linum ((((class color) (min-colors 89)) (:height 0.8125 :foreground "#666666"))))
  '(header-line ((((class color) (min-colors 89)) (:background "#313131" :foreground "#e1e1e0" :height 160))))
 
@@ -53,6 +53,7 @@
  '(font-lock-warning-face ((((class color) (min-colors 89)) (:foreground "#ff4242" :weight bold))))
 
  '(ac-candidate-face ((((class color) (min-colors 89)) (:background "#666666" :foreground "#eeeeec"))))
+ '(ac-candidate-mouse-face ((((class color) (min-colors 89)) (:background "#666666" :foreground "#eeeeec"))))
  '(ac-selection-face ((((class color) (min-colors 89)) (:background "#34cae2" :foreground "#000000"))))
 
  '(button ((((class color) (min-colors 89)) (:underline t))))
