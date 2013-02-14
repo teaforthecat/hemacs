@@ -1,4 +1,4 @@
-(vendor 'popwin)
+(require 'popwin)
 (require 'buffer-move)
 
 ;; split windows horizontally by default

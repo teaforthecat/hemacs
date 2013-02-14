@@ -1,5 +1,5 @@
 ;; keychord
-(vendor 'key-chord)
+(require 'key-chord)
 (key-chord-mode 1)
 
 (key-chord-define-global "<>" 'sgml-close-tag)

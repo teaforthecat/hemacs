@@ -1,9 +1,9 @@
-(vendor 'expand-region)
-(vendor 'change-inner)
-(vendor 'multiple-cursors)
-(vendor 'deft)
-(vendor 'cheat)
-(vendor 'regex-tool)
+(require 'expand-region)
+(require 'change-inner)
+(require 'multiple-cursors)
+(require 'smart-forward)
+(require 'nav)
+(require 'regex-tool)
 
 ;; enable features
 (put 'downcase-region 'disabled nil)
@@ -17,7 +17,7 @@
 (require 'saveplace)
 (require 'recentf)
 (setq-default save-place t)
-(setq recentf-max-saved-items 100)
+(setq recentf-max-saved-items 200)
 (setq recentf-save-file "~/.emacs.d/recentf")
 (setq savehist-file "~/.emacs.d/savehist")
 (setq save-place-file "~/.emacs.d/places")
@@ -30,7 +30,7 @@
 (setq midnight-period 7200) ;; (eq (* 2 60 60) "2 hours")
 
 ;; the undo tree
-(vendor 'undo-tree)
+(require 'undo-tree)
 (global-undo-tree-mode)
 
 ;; minibuffer
@@ -59,7 +59,7 @@
       uniquify-after-kill-buffer-p t    ; rename after killing uniquified
       uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
-(vendor 'smex)
+(require 'smex)
 (smex-initialize)
 
 (require 'textmate)
@@ -76,15 +76,6 @@
 
 ;; go to line with feedback
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
-
-(defun goto-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the line number input"
-  (interactive)
-  (unwind-protect
-      (progn
-        (linum-mode 1)
-        (goto-line (read-number "Goto line: ")))
-    (linum-mode -1)))
 
 ;; save hook
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

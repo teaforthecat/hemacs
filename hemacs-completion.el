@@ -1,7 +1,19 @@
-(vendor 'smart-tab)
-(vendor 'popup)
-(vendor 'auto-complete)
-(vendor 'hippie-with-ac)
+(require 'smart-tab)
+(require 'auto-complete)
+(require 'hippie-with-ac)
+(require 'bash-completion)
+(require 'shell-command)
+
+(autoload 'bash-completion-dynamic-complete
+  "bash-completion"
+  "BASH completion hook")
+(add-hook 'shell-dynamic-complete-functions
+          'bash-completion-dynamic-complete)
+(add-hook 'shell-command-complete-functions
+          'bash-completion-dynamic-complete)
+
+(shell-command-completion-mode)
+
 
 ;; hippie expand match order
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev-closest-first

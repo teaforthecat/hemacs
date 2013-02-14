@@ -1,12 +1,12 @@
-(vendor 'ruby-tools)
-(vendor 'ruby-end)
-(vendor 'rinari)
-(vendor 'bundler)
-(vendor 'foreman)
-(vendor 'heroku)
+(require 'rinari)
+(require 'bundler)
+(require 'ruby-end)
+
+(add-hook 'ruby-mode-hook 'robe-mode)
+(push 'ac-source-robe ac-sources)
 
 (dolist (regex '("\\.rake$" "\\.gemspec$" "\\.ru$" "Guardfile$" "Vagrantfile$"
-                 "Rakefile$" "Gemfile$" "Capfile$" "Procfile$" "\\.rabl$" "\\.gems$"))
+                 "Rakefile$" "Gemfile$" "Capfile$" "Procfile$" "\\.rabl$" "\\.gems$" "\\.feature$"))
   (add-to-list 'auto-mode-alist `(,regex . ruby-mode)))
 
 ;; indentation fixing

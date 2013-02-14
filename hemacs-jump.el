@@ -1,5 +1,5 @@
-(vendor 'ace-jump-mode)
-(vendor 'jump-char)
+(require 'ace-jump-mode)
+(require 'jump-char)
 
 (global-set-key (kbd "s-m") 'ace-jump-mode)
 (global-set-key (kbd "s-M") 'ace-jump-char-mode)

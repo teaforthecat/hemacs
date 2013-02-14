@@ -1,6 +1,6 @@
-;; (vendor 'json)
-;; (vendor 'websocket)
-;; (vendor 'kite)
+(require 'json)
+(require 'websocket)
+(require 'kite)
 ;; open /Applications/Google\ Chrome.app --args --remote-debugging-port=9222
 
 (require 'slime)

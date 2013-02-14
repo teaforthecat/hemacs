@@ -1,6 +1,5 @@
 (require 'dired)
-(vendor 'dired-details)
-;; (vendor 'dash)
+(require 'dired-details)
 
 (setq-default dired-details-hidden-string "- ")
 (setq dired-use-ls-dired nil)

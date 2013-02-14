@@ -1,6 +1,6 @@
-(vendor 'magit)
-(vendor 'magithub)
-(vendor 'open-file-in-github)
+(require 'magit)
+(require 'magithub)
+(require 'open-file-in-github)
 
 ;; open file in github
 (defun open-file-in-github-maybe-region-highlighted ()

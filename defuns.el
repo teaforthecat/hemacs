@@ -83,6 +83,57 @@
 
 (add-hook 'prog-mode-hook 'pretty-lambdas)
 
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+(defun new-line-in-between ()
+  (interactive)
+  (newline)
+  (save-excursion
+    (newline)
+    (indent-for-tab-command))
+  (indent-for-tab-command))
+
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated."
+  (interactive "p")
+  (save-excursion
+    (if (region-active-p)
+        (duplicate-region arg)
+      (duplicate-current-line arg))))
+
+(defun duplicate-region (num &optional start end)
+  "Duplicates the region bounded by START and END NUM times.
+If no START and END is provided, the current region-beginning and
+region-end is used."
+  (interactive "p")
+  (let* ((start (or start (region-beginning)))
+         (end (or end (region-end)))
+         (region (buffer-substring start end)))
+    (goto-char start)
+    (dotimes (i num)
+      (insert region))))
+
+(defun duplicate-current-line (num)
+  "Duplicate the current line NUM times."
+  (interactive "p")
+  (when (eq (point-at-eol) (point-max))
+    (goto-char (point-max))
+    (newline)
+    (forward-char -1))
+  (duplicate-region num (point-at-bol) (1+ (point-at-eol))))
+
 (defun untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))
@@ -114,6 +165,24 @@
           "reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
           "culpa qui officia deserunt mollit anim id est laborum."))
+
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+
+(defun snakeify-current-word ()
+  (interactive)
+  (er/mark-word)
+  (let* ((beg (region-beginning))
+         (end (region-end))
+         (current-word (buffer-substring-no-properties beg end))
+         (snakified (snake-case current-word)))
+    (replace-string current-word snakified nil beg end)))
 
 ;; short snips
 
@@ -155,6 +224,15 @@
 (defun pad-colon ()
   (interactive)
   (insert ": "))
+
+(defun pad-colon-function-arrow ()
+  (interactive)
+  (insert ": ->"))
+
+(defun pad-colon-function-arrow-arguments ()
+  (interactive)
+  (insert ": () ->")
+  (backward-char 4))
 
 (defun word-count ()
   (interactive)
@@ -327,21 +405,7 @@ file of a buffer in an external program."
 
 (defun persp-switch-last ()
   (interactive)
-  (persp-switch persp-last)
-  )
-
-(defun vendor (library)
-  (let* ((file (symbol-name library))
-         (normal (concat "~/.emacs.d/vendor/" file))
-         (suffix (concat normal ".el")))
-    (cond
-     ((file-directory-p normal)
-      (add-to-list 'load-path normal)
-      (require library))
-     ((file-directory-p suffix)
-      (add-to-list 'load-path suffix)
-      (require library))
-     ((file-exists-p suffix) (require library)))))
+  (persp-switch persp-last))
 
 (defun font-candidate (&rest fonts)
      "Return existing font which first match."

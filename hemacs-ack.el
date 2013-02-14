@@ -1,5 +1,5 @@
 ;; ack searching `brew install ack`
-(vendor 'ack-and-a-half)
+(require 'ack-and-a-half)
 (setq ack-and-a-half-arguments "--nosql")
 
 ;; ack
