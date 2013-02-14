@@ -40,7 +40,6 @@
 (require 'hemacs-ido)
 (require 'hemacs-completion)
 (require 'hemacs-jump)
-(require 'hemacs-evil)
 (require 'hemacs-windows)
 (require 'hemacs-yankill)
 (require 'hemacs-config)

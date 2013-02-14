@@ -9,19 +9,58 @@
   (package-refresh-contents))
 
 (defvar packages
-  '(elisp-slime-nav
+  '(ace-jump-mode
+    ack-and-a-half
+    auto-complete
+    bash-completion
+    browse-kill-ring
+    buffer-move
+    bundler
+    change-inner
+    coffee-mode
+    dash
+    dired-details
+    elisp-slime-nav
+    exec-path-from-shell
+    expand-region
+    handlebars-mode
+    ido-ubiquitous
+    jade-mode
+    jump-char
+    key-chord
+    ;; kite
+    less-css-mode
+    magit
+    magithub
+    markdown-mode
+    mic-paren
+    multiple-cursors
+    nav
+    page-break-lines
+    perspective
     php-mode
+    popwin
+    powerline
+    projectile
     rainbow-mode
+    regex-tool
+    robe
+    ruby-end
+    sass-mode
+    ;; shell-command
+    shell-here
+    slim-mode
     slime
     slime-repl
     slime-js
-    exec-path-from-shell
-    markdown-mode
+    smex
+    smart-forward
+    ;; smart-tab
+    stylus-mode
     perspective
     textmate
-    solarized-theme
-    zenburn-theme
-    )
+    undo-tree
+    yaml-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (package packages)
