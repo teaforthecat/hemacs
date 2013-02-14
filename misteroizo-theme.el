@@ -11,12 +11,13 @@
  '(highlight ((((class color) (min-colors 89)) (:background "#008b8b"))))
  '(region ((((class color) (min-colors 89)) (:background "#222222" :foreground "#e1e1e0"))))
 
- '(fringe ((((class color) (min-colors 89)) (:height 0.8125 :background "#313131" :foreground "#3a3a3a"))))
+ '(fringe ((((class color) (min-colors 89)) (:height 0.8125 :background "#272727" :foreground "#333333"))))
  '(linum ((((class color) (min-colors 89)) (:height 0.8125 :foreground "#666666"))))
- '(header-line ((((class color) (min-colors 89)) (:background "#313131" :foreground "#e1e1e0" :height 160))))
+ '(header-line ((((class color) (min-colors 89)) (:background "#272727" :foreground "#e1e1e0" :height 150))))
 
  '(isearch ((((class color) (min-colors 89)) (:background "#fcffad" :foreground "#000000"))))
  '(lazy-highlight ((((class color) (min-colors 89)) (:background "#338f86"))))
+ '(paren-face-match ((((class color) (min-colors 89)) (:background "#338f86"))))
 
  '(vertical-border ((((class color) (min-colors 89)) (:foreground "#666666"))))
  '(trailing-whitespace ((((class color) (min-colors 89)) (:background "#ff4242"))))
@@ -24,6 +25,10 @@
 
  '(mode-line ((((class color) (min-colors 89)) (:background "#111111" :foreground "#eeeeec" :height 120 :box nil))))
  '(mode-line-inactive ((((class color) (min-colors 89)) (:background "#555555" :foreground "#eeeeec" :height 120 :box nil))))
+ '(powerline-active1 ((((class color) (min-colors 89)) (:background "grey28"))))
+ '(powerline-active2 ((((class color) (min-colors 89)) (:background "grey36"))))
+ '(powerline-inactive1 ((((class color) (min-colors 89)) (:background "grey12"))))
+ '(powerline-inactive2 ((((class color) (min-colors 89)) (:background "grey24"))))
 
  '(diff-added ((((class color) (min-colors 89)) (:foreground "#74af68"))))
  '(diff-changed ((((class color) (min-colors 89)) (:foreground "#dbdb95"))))
@@ -34,6 +39,7 @@
  '(success ((((class color) (min-colors 89)) (:foreground "#74af68"))))
 
  '(ido-first-match ((((class color) (min-colors 89)) (:foreground "#ffffff"))))
+ '(ido-only-match ((((class color) (min-colors 89)) (:foreground "#00ede1"))))
  '(ido-subdir ((((class color) (min-colors 89)) (:foreground "#ffad29"))))
 
  '(magit-section-title ((((class color) (min-colors 89)) (:foreground "#dbdb95" :weight bold))))
@@ -91,6 +97,6 @@
  '(message-cited-text ((((class color) (min-colors 89)) (:foreground "#74af68"))))
  '(message-separator ((((class color) (min-colors 89)) (:foreground "#23d7d7"))))
 
- '(default ((((class color) (min-colors 89)) (:background "#3a3a3a" :height 160 :foreground "#e1e1e0")))))
+ '(default ((((class color) (min-colors 89)) (:background "#333333" :height 150 :foreground "#e1e1e0")))))
 
 (provide-theme 'misteroizo)

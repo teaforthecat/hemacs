@@ -1,6 +1,6 @@
-(vendor 'highlight-tail)
-(vendor 'powerline)
-(vendor 'mic-paren)
+(require 'highlight-tail)
+(require 'powerline)
+(require 'mic-paren)
 
 ;; set font
 ;; (if (and *is-a-mac* window-system (font-existsp default-font))
@@ -19,6 +19,7 @@
 (global-font-lock-mode t)
 ;; (fringe-mode 'no-fringe)
 (set-fringe-style '(4 . 0))
+(global-page-break-lines-mode)
 
 ;; because coding is magic
 ;; (highlight-tail-mode 1)

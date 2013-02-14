@@ -7,11 +7,11 @@
 
  ;; default settings
  code-dir "~/code/"
- default-font "Meslo LG M DZ-16:weight=normal"
+ default-font "Meslo LG M DZ-14:weight=normal"
  )
 
 ;; hide everything
-(dolist (mode '(tool-bar-mode scroll-bar-mode))
+(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 ;; load paths
