@@ -57,6 +57,7 @@
 (require 'hemacs-templating)
 (require 'hemacs-stylesheets)
 (require 'hemacs-javascripts)
+(require 'hemacs-coffee)
 ;; (require 'hemacs-webkit)
 (require 'hemacs-writing)
 (require 'hemacs-todo)
