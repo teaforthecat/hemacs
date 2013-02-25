@@ -6,24 +6,23 @@ one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm main
 
 (backup any existing ~/.emacs.d first)
 
-1. `git clone git://github.com/waymondo/hemacs ~/.emacs.d`
-2. `cd ~/.emacs.d && git submodule update --init --recursive`
+`git clone --recursive git://github.com/waymondo/hemacs ~/.emacs.d`
 
-installing emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew) =>
+indeed, installing carbon emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew) =>
 
 `brew install emacs --cocoa --use-git-head --srgba`
 
-`brew linkapps`
+then run `brew linkapps` to symlink the built package, or move the Emacs.app from your homebrew cellar to your `/Applications` directory.
 
 since we are already brewing, you might want to make sure you have these programs installed as well =>
 
-`brew install git ack markdown ispell`
+`brew install git ack markdown ispell bash-completion`
 
-also, the first time you boot a handful of elisp packages will be installed so just relax for a sec dude.
+also, the first time you boot a whole bunch of elisp packages will be installed so just relax and check your tweets.
 
 ## what does it come with?
 
-* hemacs is basically just sprinkles on a cake of [all of these](https://github.com/waymondo/hemacs/tree/master/vendor)
+* hemacs is basically just sprinkles on a cake of [all of these](https://github.com/waymondo/hemacs/blob/master/packages.el)
 
 * `hemacs-completion` - less typing with autocomplete, ido, and hippie expand
 
@@ -51,13 +50,11 @@ also, the first time you boot a handful of elisp packages will be installed so j
 
 * `hemacs-todo` - a simple global todo list system using `org-capture`, grouped by project headers
 
-* `hemacs-console` - trying to make eshell, shell, and terminal more usable
+* `hemacs-shell` - shell config, bash completion, and comint history completion bindings
 
 * `hemacs-lisp` - elisp-related customizations and extensions
 
 * `hemacs-writing` - spell-checking and text-writing assistance
-
-* `hemacs-ack` - fast file searching with `ack` via `ack-and-a-half.el`
 
 * `hemacs-yankill` - yanking and killing helper functions and bindings
 
@@ -84,4 +81,4 @@ within `init.el` there a few basic settings you might want to override.
 
 * `code-dir` - this is the root folder where all your projects reside, for the purpose of [`hemacs-projects`](https://github.com/waymondo/hemacs/tree/master/vendor). i have this set to `~/code/`.
 
-* `default-font` - i'm grooving on [Meslo](https://github.com/andreberg/Meslo-Font) but you can change it to whatever. if the named font isn't found, it will usewhatever your emacs default is at 16px.
+* `default-font` - i'm grooving on [Meslo](https://github.com/andreberg/Meslo-Font) but you can change it to whatever. if the named font isn't found, it will usewhatever your emacs default is at 14px.
