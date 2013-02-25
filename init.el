@@ -1,4 +1,5 @@
 (setq
+
  ;; internal settings
  *is-a-mac* (eq system-type 'darwin)
  hemacs-dir (file-name-directory load-file-name)
@@ -8,6 +9,7 @@
  ;; default settings
  code-dir "~/code/"
  default-font "Meslo LG M DZ-14:weight=normal"
+
  )
 
 ;; hide everything
@@ -26,17 +28,19 @@
 
 (add-to-list 'load-path hemacs-dir)
 (when (file-exists-p vendor-dir) (add-to-list 'load-path vendor-dir))
-(when (file-exists-p custom-file) (load custom-file))
 (add-subfolders-to-load-path vendor-dir)
+(when (file-exists-p custom-file) (load custom-file))
 
 ;; hemacs lisps
 (require 'defuns)
 
-;; elpa packages (most packages are submoduled with git in ./vendor)
+;; elpa packages
 (require 'packages)
 
+;; exec path
+(when (and *is-a-mac* window-system) (exec-path-from-shell-initialize))
+
 ;; do it
-(require 'hemacs-ack)
 (require 'hemacs-ido)
 (require 'hemacs-completion)
 (require 'hemacs-jump)
