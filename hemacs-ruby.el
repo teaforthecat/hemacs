@@ -6,7 +6,8 @@
 (push 'ac-source-robe ac-sources)
 
 (dolist (regex '("\\.rake$" "\\.gemspec$" "\\.ru$" "Guardfile$" "Vagrantfile$"
-                 "Rakefile$" "Gemfile$" "Capfile$" "Procfile$" "\\.rabl$" "\\.gems$" "\\.feature$"))
+                 "Rakefile$" "Gemfile$" "Capfile$" "Procfile$" "\\.rabl$"
+                 "\\.gems$" "\\.feature$" "\\.builder$"))
   (add-to-list 'auto-mode-alist `(,regex . ruby-mode)))
 
 ;; indentation fixing
