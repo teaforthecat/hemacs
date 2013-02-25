@@ -1,3 +1,6 @@
+(defun hemacs-filter (condp lst)
+  (delq nil (mapcar (lambda (x) (and (funcall condp x) x)) lst)))
+
 (defun string-rtrim (str)
   "Remove trailing whitespace from `STR'."
   (replace-regexp-in-string "[ \t\n]*$" "" str))
