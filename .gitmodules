@@ -1,33 +1,9 @@
-[submodule "vendor/bundler.el"]
-	path = vendor/bundler.el
-	url = git://github.com/tobiassvn/bundler.el.git
-[submodule "vendor/foreman.el"]
-	path = vendor/foreman.el
-	url = git://github.com/waymondo/foreman.el.git
 [submodule "vendor/cheat.el"]
 	path = vendor/cheat.el
 	url = https://github.com/defunkt/cheat.el.git
-[submodule "vendor/powerline.el"]
-	path = vendor/powerline.el
-	url = https://github.com/milkypostman/powerline.git
 [submodule "vendor/deft.el"]
 	path = vendor/deft.el
 	url = git://jblevins.org/git/deft.git
-[submodule "vendor/evil.el"]
-	path = vendor/evil.el
-	url = git://gitorious.org/evil/evil.git
-[submodule "vendor/switch-window.el"]
-	path = vendor/switch-window.el
-	url = git://github.com/dimitri/switch-window.git
-[submodule "vendor/zoom-frm.el"]
-	path = vendor/zoom-frm.el
-	url = git://github.com/emacsmirror/zoom-frm.git
-[submodule "vendor/coffee-mode.el"]
-	path = vendor/coffee-mode.el
-	url = git://github.com/defunkt/coffee-mode.git
-[submodule "vendor/haml-mode.el"]
-	path = vendor/haml-mode.el
-	url = git://github.com/nex3/haml-mode.git
 [submodule "vendor/rhtml-mode.el"]
 	path = vendor/rhtml-mode.el
 	url = git://github.com/eschulte/rhtml.git
@@ -37,36 +13,12 @@
 [submodule "vendor/predictive.el"]
 	path = vendor/predictive.el
 	url = git://github.com/emacsmirror/predictive.git
-[submodule "vendor/ac-predictive.el"]
-	path = vendor/ac-predictive.el
-	url = git://github.com/tkosaka/ac-predictive.git
-[submodule "vendor/slime.el"]
-	path = vendor/slime.el
-	url = git://github.com/nablaone/slime.git
 [submodule "vendor/highlight-tail.el"]
 	path = vendor/highlight-tail.el
 	url = git://github.com/emacsmirror/highlight-tail.git
-[submodule "vendor/js2-mode.el"]
-	path = vendor/js2-mode.el
-	url = git://github.com/mooz/js2-mode.git
-[submodule "vendor/slime-js.el"]
-	path = vendor/slime-js.el
-	url = git://github.com/swank-js/swank-js.git
-[submodule "vendor/js2-refactor.el"]
-	path = vendor/js2-refactor.el
-	url = git://github.com/magnars/js2-refactor.el.git
-[submodule "vendor/smart-tab.el"]
-	path = vendor/smart-tab.el
-	url = git://github.com/genehack/smart-tab.git
 [submodule "vendor/gist.el"]
 	path = vendor/gist.el
 	url = git://github.com/defunkt/gist.el.git
-[submodule "vendor/json.el"]
-	path = vendor/json.el
-	url = git://github.com/thorstadt/json.el.git
-[submodule "vendor/websocket.el"]
-	path = vendor/websocket.el
-	url = git://github.com/ahyatt/emacs-websocket.git
 [submodule "vendor/wanderlust"]
 	path = vendor/wanderlust
 	url = git://github.com/wanderlust/wanderlust.git

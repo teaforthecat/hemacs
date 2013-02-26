@@ -13,7 +13,8 @@
     ack-and-a-half
     auto-complete
     bash-completion
-    browse-kill-ring
+    birds-of-paradise-plus-theme
+    ;; browse-kill-ring
     buffer-move
     bundler
     change-inner
@@ -23,6 +24,7 @@
     elisp-slime-nav
     exec-path-from-shell
     expand-region
+    haml-mode
     handlebars-mode
     ido-ubiquitous
     jade-mode
@@ -36,6 +38,7 @@
     mic-paren
     multiple-cursors
     nav
+    nurumacs
     page-break-lines
     perspective
     php-mode
@@ -47,18 +50,16 @@
     robe
     ruby-end
     sass-mode
-    ;; shell-command
     shell-here
     slim-mode
     slime
     slime-repl
     slime-js
     smex
-    smart-forward
-    ;; smart-tab
+    ;; smart-forward
+    smart-tab
     stylus-mode
     perspective
-    textmate
     undo-tree
     yaml-mode)
   "A list of packages to ensure are installed at launch.")
