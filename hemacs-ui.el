@@ -5,7 +5,7 @@
 ;; set font
 ;; (if (and *is-a-mac* window-system (font-existsp default-font))
 ;;     (set-face-attribute 'default nil :font default-font)
-;;   (set-face-attribute 'default nil :height 160))
+;;   (set-face-attribute 'default nil :height 140))
 
 (setq color-theme-is-global t
       font-lock-maximum-decoration t
@@ -13,13 +13,12 @@
       truncate-partial-width-windows nil)
 
 (transient-mark-mode t)
-;; (show-paren-mode 1)
+(show-paren-mode 1)
 (paren-activate)
 (blink-cursor-mode 1)
 (global-font-lock-mode t)
-;; (fringe-mode 'no-fringe)
-(set-fringe-style '(4 . 0))
-(global-page-break-lines-mode)
+(set-fringe-style '(4 . 0)) ;; just a lil padding
+(global-page-break-lines-mode) ;; get rid of ^L
 
 ;; because coding is magic
 ;; (highlight-tail-mode 1)
@@ -67,7 +66,7 @@
 (powerline-waymondo-theme)
 
 ;; load theme
-(load-theme 'misteroizo t)
+(load-theme 'birds-of-paradise t)
 
 ;; go fullscreen
 (when (and *is-a-mac* window-system)
