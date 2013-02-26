@@ -1,6 +1,7 @@
 ;; Elisp go-to-definition with M-. and back again with M-,
 (autoload 'elisp-slime-nav-mode "elisp-slime-nav")
 (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
+(add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save)
 
 (defun eval-region-and-maybe-deactivate-mark ()
   (interactive)
@@ -20,7 +21,5 @@
             (lambda ()
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))))
-
-(add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save)
 
 (provide 'hemacs-lisp)

@@ -22,7 +22,7 @@
 
 (defun make-persp-shell ()
   (interactive)
-  (cd (shell-quote-argument (textmate-project-root)))
+  (cd (shell-quote-argument (projectile-project-root)))
   (shell shell-buffer-name)
   (get-buffer shell-buffer-name))
 
@@ -41,16 +41,6 @@
          (save-window-excursion (make-persp-shell)))
      :default-config-keywords '(:position :bottom :height 0.5))))
 
-(defun persp-switch-to-shell ()
-  "Ido switch to another shell in this project"
-  (interactive)
-  (let* ((persp-ido-buffer-list (let ((names (remq nil (mapcar 'buffer-name (persp-buffers persp-curr)))))
-                                  (or (remove-if (lambda (name) (eq (string-to-char name) ? )) names) names)))
-         (shell-buffer-list (hemacs-filter (lambda (x) (string-match "*shell" x)) persp-ido-buffer-list))
-         (shell-buffer (ido-completing-read "Choose project shell: " shell-buffer-list nil t)))
-    (when shell-buffer
-      (switch-to-buffer shell-buffer))))
-
 (defun persp-async-command ()
   (interactive)
   (let* ((cmd (read-from-minibuffer "Shell command: " nil nil nil 'shell-command-history))
@@ -58,9 +48,25 @@
     (popwin:display-buffer-1
      (or (get-buffer command-buffer-name)
          (save-window-excursion
-           (cd (shell-quote-argument (textmate-project-root)))
+           (cd (shell-quote-argument (projectile-project-root)))
            (async-shell-command cmd command-buffer-name)
            (get-buffer command-buffer-name)))
      :default-config-keywords '(:position :bottom :height 0.5))))
+
+;; persp command at current dir
+
+(defun persp-background-command ()
+  (interactive)
+  (let* ((cmd (read-from-minibuffer "Shell command: " nil nil nil 'shell-command-history)))
+    (setq last-background-command
+          (substring (shell-command-to-string cmd) 0 -1))
+    (minibuffer-message (concat cmd " - finished"))))
+
+(defun show-last-persp-background-command ()
+  (interactive)
+  (display-buffer last-background-command))
+
+(global-set-key (kbd "C-c x") 'persp-shell)
+(global-set-key (kbd "C-c m") 'persp-async-command)
 
 (provide 'hemacs-projects)

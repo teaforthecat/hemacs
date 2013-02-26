@@ -13,30 +13,6 @@
 ;; indentation fixing
 (setq ruby-deep-indent-paren nil)
 
-;; (defun foreman-start ()
-;;   (interactive)
-;;   (let ((process-connection-type nil))
-;;     (defvar *process-buffer-name* (concat "*" (persp-name persp-curr) " Foreman*"))
-;;     (cd (shell-quote-argument (textmate-project-root)))
-;;     (start-process *process-buffer-name* nil "foreman" "start")
-;;     ;; (pop-to-buffer (get-buffer *process-buffer-name*))
-;;     ;; (comint-mode)
-;;     ;; (nice-log-scrolling)
-;;     ;; (get-buffer *process-buffer-name*)
-;;     ))
-
-;; (defun rails-console ()
-;;   "Create a rails console process, if one doesn't exist. And switch to *rails-console* buffer."
-;;   (interactive)
-;;   (if (null (get-buffer "*rails-console*"))
-;;       (progn
-;;          (term "/usr/local/bin/bash")
-;;         (term-send-string (get-buffer-process "*terminal*") "rails console\n")
-;;         (switch-to-buffer "*terminal*")
-;;         (rename-buffer "*rails-console*")
-;;         (term-line-mode))
-;;     (switch-to-buffer "*rails-console*")))
-
 (eval-after-load 'ruby-mode
   '(progn
 

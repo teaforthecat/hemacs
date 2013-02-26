@@ -1,7 +1,6 @@
 (require 'expand-region)
 (require 'change-inner)
 (require 'multiple-cursors)
-(require 'smart-forward)
 (require 'nav)
 (require 'regex-tool)
 
@@ -65,9 +64,6 @@
 
 (require 'smex)
 (smex-initialize)
-
-(require 'textmate)
-(textmate-mode)
 
 ;; treat camelcasing and underscoring as stop points
 (global-subword-mode 1)

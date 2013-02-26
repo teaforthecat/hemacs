@@ -1,5 +1,5 @@
-(require 'browse-kill-ring)
-(browse-kill-ring-default-keybindings)
+;; (require 'browse-kill-ring)
+;; (browse-kill-ring-default-keybindings)
 
 (defun yank-indented ()
   (interactive)
