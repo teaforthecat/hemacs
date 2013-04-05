@@ -6,12 +6,21 @@
         coffee-dedent-line-backspace
         dabbrev-expand
         indent-for-tab-command
+        kill-rectangle
         maybe-delete-selection-and-yank
         ruby-end-space
+        slim-electric-backspace
         smart-tab
+        zap-up-to-char
         ))
 
 (setq mc/cmds-to-run-once
       '(
         ace-jump-mode
+        beginning-of-buffer
+        end-of-buffer
+        goto-line-with-feedback
+        next-error
+        persp-switch
+        smex
         ))

@@ -3,14 +3,14 @@
 
 (custom-theme-set-variables
  'birds-of-paradise
- '(ansi-color-names-vector ["#1E1C1C" "#FF7575" "#8CFF8C" "#EFAC32" "#6C99BB" "#BE73FD" "#7DAF9C" "#E6E1C4"]))
+ '(ansi-color-names-vector ["#1F1611" "#FF7575" "#8CFF8C" "#EFAC32" "#6C99BB" "#BE73FD" "#7DAF9C" "#E6E1C4"]))
 
 (custom-theme-set-faces
  'birds-of-paradise
  '(cursor ((t (:foreground "#865C38" :background "#E6E1C4"))))
  '(highlight ((t (:background "#1F1611" :foreground "#E6E1C4"))))
  '(hl-line ((t (:background "#3E2929"))))
- '(region ((t (:background "#1E1C1C"))))
+ '(region ((t (:background "#000000"))))
  '(escape-glyph ((t (:foreground "#BE73FD"))))
  '(minibuffer-prompt ((t (:foreground "#6C99BB"))))
  '(font-lock-builtin-face ((t (:foreground "#6C99BB"))))
@@ -28,8 +28,8 @@
  '(font-lock-warning-face ((t (:background "#990000" :foreground "white"))))
  '(link ((t (:foreground "#D9D762"))))
  '(button ((t (:foreground "#D9D762" :background "#7DAF9C" :weight bold :underline t))))
- '(mode-line ((t (:background "#865C38" :foreground "#E6E1C4"))))
- '(mode-line-inactive ((t (:background "#5C413D" :foreground "#E6E1C4"))))
+ '(mode-line ((t (:background "#865C38" :foreground "#E6E1C4" :height 110 :box nil))))
+ '(mode-line-inactive ((t (:background "#5C413D" :foreground "#E6E1C4" :height 110 :box nil))))
  '(powerline-active1 ((t (:background "#3D2B28"))))
  '(powerline-active2 ((t (:background "#5C413D"))))
  '(powerline-inactive1 ((t (:background "#3D2B28"))))
@@ -54,9 +54,18 @@
  '(whitespace-trailing ((t (:background "#CC4232"))))
  '(flyspell-incorrect ((t (:underline "firebrick4"))))
  '(flyspell-duplicate ((t (:underline "firebrick4"))))
+ '(compilation-info ((t (:foreground "#D9D762"))))
+ '(diff-added ((t (:foreground "#8CFF8C"))))
+ '(diff-removed ((t (:foreground "#FF7575"))))
+ '(diff-header ((t (:background nil))))
+ '(diff-hunk-header ((t (:background "#5C413D"))))
+ '(diff-file-header ((t (:background "#5C413D"))))
+ '(git-gutter-fr:added ((t (:foreground "#523D2B"))))
+ '(git-gutter-fr:deleted ((t (:foreground "#523D2B"))))
+ '(git-gutter-fr:modified ((t (:foreground "#523D2B"))))
  '(magit-diff-add ((t (:foreground "#8CFF8C"))))
  '(magit-diff-del ((t (:foreground "#FF7575"))))
- '(magit-item-highlight ((t (:background "#392626"))))
+ '(magit-item-highlight ((t (:background "#1F1611" :foreground nil))))
  '(ecb-default-highlight-face ((t (:background "#990000"))))
  '(elscreen-tab-background-face ((t (:background "#4B3330"))))
  '(elscreen-tab-control-face ((t (:background "#865C38" :foreground "#E6E1C4" :underline nil))))

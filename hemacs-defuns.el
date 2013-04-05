@@ -5,32 +5,6 @@
   "Remove trailing whitespace from `STR'."
   (replace-regexp-in-string "[ \t\n]*$" "" str))
 
-(defun shift-text (distance)
-  (if (use-region-p)
-      (let ((mark (mark)))
-        (save-excursion
-          (indent-rigidly (region-beginning)
-                          (region-end)
-                          distance)
-          (push-mark mark t t)
-          (setq deactivate-mark nil)))
-    (indent-rigidly (line-beginning-position)
-                    (line-end-position)
-                    distance)))
-
-(defun text-scale-decrease-one ()
-  (interactive)
-  (text-scale-decrease 1)
-  )
-
-(defun shift-right (count)
-  (interactive "p")
-  (shift-text count))
-
-(defun shift-left (count)
-  (interactive "p")
-  (shift-text (- count)))
-
 (defun find-git-repo (dir)
   (if (string= "/" dir)
       (message "not in a git repo.")
@@ -38,12 +12,23 @@
         dir
       (find-git-repo (expand-file-name "../" dir)))))
 
-(defun kill-and-join-forward (&optional arg)
-  "If at end of line, join with following; otherwise kill line. Deletes whitespace at join."
-  (interactive "P")
-  (if (and (eolp) (not (bolp)))
-      (delete-indentation t)
-    (kill-line arg)))
+(defmacro allow-line-as-region-for-function (orig-function)
+  `(defun ,(intern (concat (symbol-name orig-function) "-or-line"))
+     ()
+     ,(format "Like `%s', but acts on the current line if mark is not active."
+              orig-function)
+     (interactive)
+     (if mark-active
+         (call-interactively (function ,orig-function))
+       (save-excursion
+         ;; define a region (temporarily) -- so any C-u prefixes etc. are preserved.
+         (beginning-of-line)
+         (set-mark (point))
+         (end-of-line)
+         (call-interactively (function ,orig-function))))))
+
+(unless (fboundp 'comment-or-uncomment-region-or-line)
+  (allow-line-as-region-for-function comment-or-uncomment-region))
 
 (defun finder ()
   "Open the current working directory in finder."
@@ -55,19 +40,6 @@
   (set-window-margins (selected-window) 0 0)
   (let ((marginwidth (/ (- (window-width) 80) 2)))
     (set-window-margins (selected-window) marginwidth marginwidth)))
-
-(defun find-file-in-project-other-window ()
-  "Find a file in the current project in the other window."
-  (interactive)
-  (let ((buffer (save-window-excursion (find-file-in-project))))
-    (switch-to-buffer-other-window buffer)))
-
-(defun split-window-horizontally-previous-buffer-select ()
-  (interactive)
-  (split-window-horizontally)
-  (other-window 1)
-  (switch-to-buffer (other-buffer))
-  )
 
 (defun delete-this-file ()
   (interactive)
@@ -178,15 +150,6 @@ region-end is used."
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
 
-(defun snakeify-current-word ()
-  (interactive)
-  (er/mark-word)
-  (let* ((beg (region-beginning))
-         (end (region-end))
-         (current-word (buffer-substring-no-properties beg end))
-         (snakified (snake-case current-word)))
-    (replace-string current-word snakified nil beg end)))
-
 ;; short snips
 
 (defun arrow ()
@@ -200,14 +163,27 @@ region-end is used."
   (previous-line)
   (indent-according-to-mode))
 
+(defun make-ruby-block()
+  (interactive)
+  (insert " do\n\nend")
+  (indent-according-to-mode)
+  (previous-line)
+  (indent-according-to-mode))
+
+(defun indent-and-ruby-end()
+  (interactive)
+  (insert " \n\nend")
+  (indent-according-to-mode)
+  (previous-line)
+  (indent-according-to-mode))
+
 (defun pad-colon-and-maybe-semicolon()
   (interactive)
   (if (looking-at "\;.*")
       (insert ": ")
     (insert ": ;")
     (backward-char)
-    )
-  )
+    ))
 
 (defun string-interpolate ()
   "In a double quoted string, interpolate."
@@ -248,22 +224,7 @@ region-end is used."
 
 (defun switch-to-previous-buffer ()
   (interactive)
-  (switch-to-buffer (other-buffer))
-  )
-
-(defun js-insert-console ()
-  (interactive)
-  (insert "console.log()")
-  (backward-char))
-
-(defun ruby-insert-console ()
-  (interactive)
-  (insert "logger.info "))
-
-(defun recompile-init ()
-  "Byte-compile all your dotfiles again."
-  (interactive)
-  (byte-recompile-directory "~/.emacs.d" 0))
+  (switch-to-buffer (other-buffer)))
 
 (defun close-buffer ()
   (interactive)
@@ -273,15 +234,6 @@ region-end is used."
   (interactive)
   (if (region-active-p)
       (deactivate-mark t)))
-
-(defun insert-empty-line ()
-  "Insert an empty line after the current line and positon
-the curson at its beginning, according to the current mode."
-  (interactive)
-  (move-end-of-line nil)
-  (open-line 1)
-  (next-line 1)
-  (indent-according-to-mode))
 
 (defun open-with ()
   "Simple function that allows us to open the underlying
@@ -372,8 +324,7 @@ file of a buffer in an external program."
   (next-line 1)
   (indent-according-to-mode)
   (previous-line 1)
-  (indent-according-to-mode)
-  )
+  (indent-according-to-mode))
 
 (defun newline-indent-relative ()
   (interactive)
@@ -388,9 +339,7 @@ file of a buffer in an external program."
          (this-buffer (window-buffer this))
          (other-buffer (window-buffer other)))
     (set-window-buffer other this-buffer)
-    (set-window-buffer this other-buffer)
-    )
-  )
+    (set-window-buffer this other-buffer)))
 
 (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
   "Create parent directory if not exists while visiting file."
@@ -418,4 +367,47 @@ file of a buffer in an external program."
   (if (null (x-list-fonts font))
       nil t))
 
-(provide 'defuns)
+(defun growl (title message)
+  (start-process "growl" " growl" "growlnotify" title "-a" "Emacs")
+  (process-send-string " growl" message)
+  (process-send-string " growl" "\n")
+  (process-send-eof " growl"))
+
+(defun terminal-notifier (title message)
+  (start-process "terminal-notifier" "*terminal-notifier*" "terminal-notifier" "-title" title "-message" message))
+
+(defun mapc-buffers (fn)
+  (mapc (lambda (buffer)
+          (with-current-buffer buffer
+            (funcall fn)))
+        (buffer-list)))
+
+(defun right-subword (&optional n)
+  "Move point N subwords to the right (to the left if N is negative)."
+  (interactive "^p")
+  (if (eq (current-bidi-paragraph-direction) 'left-to-right)
+      (subword-forward n)
+    (subword-backward n)))
+
+(defun left-subword (&optional n)
+  "Move point N subwords to the left (to the right if N is negative)."
+  (interactive "^p")
+  (if (eq (current-bidi-paragraph-direction) 'left-to-right)
+      (subword-backward n)
+    (subword-forward n)))
+
+(defmacro custom-persp (name &rest body)
+  `(let ((initialize (not (gethash ,name perspectives-hash)))
+         (current-perspective persp-curr))
+     (persp-switch ,name)
+     (when initialize ,@body)
+     (setq persp-last current-perspective)))
+
+(defun magit-in-perspective ()
+  "Use ido to find or create a perspective for a project and open it in magit"
+  (interactive)
+  (let ((project-name (ido-completing-read "Open project: " (directory-files code-dir nil "^[^.]"))))
+    (custom-persp project-name)
+    (magit-status (concat code-dir project-name))))
+
+(provide 'hemacs-defuns)
