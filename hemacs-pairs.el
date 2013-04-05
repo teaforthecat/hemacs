@@ -26,11 +26,7 @@
          (delete-char 1))))
 
 ;; always electric -> () {} [] || <> ""
-(setq electric-pair-pairs (quote ((60 . 62) (124 . 124) (91 . 93) (40 . 41) (123 . 125) (34 . 34)))
-      electric-pair-skip-self nil)
-
+(setq electric-pair-pairs (quote ((60 . 62) (124 . 124) (91 . 93) (40 . 41) (123 . 125) (34 . 34))))
 (electric-pair-mode t)
-(electric-layout-mode)
-(electric-indent-mode)
 
-(provide 'hemacs-electric)
+(provide 'hemacs-pairs)
