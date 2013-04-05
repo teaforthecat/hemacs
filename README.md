@@ -1,6 +1,7 @@
 # hemacs
 
-one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm mainly writing ruby, java-and-coffee scripting, interfacing with git, command-lining, and writing object-oriented css. i'm opting to use git submodules for managing vendored packages in most cases over ELPA. things should be kind of document and organized and tweakable at this point.
+one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm mainly writing ruby, java-and-coffee scripting, interfacing with git, command-lining, and writing object-oriented stylesheets and templates. the code should be somewhat documented and organized and tweakable at this point.
+
 
 ## installation
 
@@ -8,11 +9,11 @@ one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm main
 
 `git clone --recursive git://github.com/waymondo/hemacs ~/.emacs.d`
 
-indeed, installing carbon emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew) =>
+indeed, installing carbon emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew). i go cutting edge like this =>
 
-`brew install emacs --cocoa --use-git-head --srgba`
+`brew install emacs --cocoa --use-git-head --srgba --HEAD`
 
-then run `brew linkapps` to symlink the built package, or move the Emacs.app from your homebrew cellar to your `/Applications` directory.
+then run `brew linkapps` or, better yet, move the Emacs.app from your homebrew cellar to your `/Applications` directory.
 
 since we are already brewing, you might want to make sure you have these programs installed as well =>
 
@@ -22,47 +23,44 @@ also, the first time you boot a whole bunch of elisp packages will be installed 
 
 ## what does it come with?
 
-* hemacs is basically just sprinkles on a cake of [all of these](https://github.com/waymondo/hemacs/blob/master/packages.el)
+hemacs is basically just sprinkles on a cake of [all of these](https://github.com/waymondo/hemacs/blob/master/packages.el)
 
-* `hemacs-completion` - less typing with autocomplete, ido, and hippie expand
+and two 24+ modified color themes:
+- [misteroizo](https://github.com/waymondo/hemacs/blob/master/misteroizo-theme.el)
+- [birds-of-paradise](https://github.com/waymondo/hemacs/blob/master/birds-of-paradise-theme.el)
 
-* `hemacs-windows` - popwin and buffer/window movement
 
-* `hemacs-config`  - general default customizations and mode enabling
+### then there are these modules
 
-* `hemacs-git` - magit, magithub, open file in github
+* `hemacs-base` - bunch of general configurations
 
-* `hemacs-dired` - dired detail hiding and buffer reuse / reverting
+* `hemacs-ido` - minibuffer cycling related
 
-* `hemacs-electric` - global electric modes with hungry delete and delete-active-region compatibility for `electric-pair-mode`
+* `hemacs-hippie` - (usually) tab-based completion tweaking
 
-* `hemacs-bindings` - bindings for modes, defuns, and some
+* `hemacs-jump-buff` - lightning fast buffer switching
 
-* `hemacs-chords` - `keychord-mode` chords for common things and global common things bound to semi-colon
+* `hemacs-windows`  - window management and `popwin` settings
 
-* `hemacs-scrolling` - buffer scrolling behavior
+* `hemacs-indent` - indent on enter and pasting with shifting bindings
 
-* `hemacs-projects` - project workspace management and conveniences with `persp-mode.el` and `popwin.el`
+* `hemacs-copy-paste` - yank and kill modifications
 
-* `hemacs-osx` - carbon / osx related settings (ignored if booted from terminal)
+* `hemacs-pairs` - `electric-pair` tweaks for hungry delete behavior and `delete-selection-mode` compatibility
 
-* `hemacs-ui` - font, theme massaging, highlight-tail, powerline, eliminating clutter
+* `hemacs-bindings` & `hemacs-chords` - global key bindings and abusing `keychord-mode`
+
+* `hemacs-git` - git and github helpers
+
+* `hemacs-shell` - attempting to make emacs shell actually usable
+
+* `hemacs-project-shell` - using `perspective-mode` to spawn project shells, command buffers, and background processes
 
 * `hemacs-todo` - a simple global todo list system using `org-capture`, grouped by project headers
 
-* `hemacs-shell` - shell config, bash completion, and comint history completion bindings
+* `hemacs-ui` - `git-gutter`, `powerline`, scrolling behavior, fullscreen, and other visual changes
 
-* `hemacs-lisp` - elisp-related customizations and extensions
-
-* `hemacs-writing` - spell-checking and text-writing assistance
-
-* `hemacs-yankill` - yanking and killing helper functions and bindings
-
-* `hemacs-jump` - power cursor jumping and buffer switching with `ace-jump-mode.el` *experimental*
-
-* `hemacs-webkit` - browser consoling via [swank js](https://github.com/swank-js/swank-js) *experimental*
-
-* support for the following langauges:
+* as well as support for the following languages:
   - ruby
   - javascript
   - coffeescript
@@ -80,5 +78,3 @@ also, the first time you boot a whole bunch of elisp packages will be installed 
 within `init.el` there a few basic settings you might want to override.
 
 * `code-dir` - this is the root folder where all your projects reside, for the purpose of [`hemacs-projects`](https://github.com/waymondo/hemacs/tree/master/vendor). i have this set to `~/code/`.
-
-* `default-font` - i'm grooving on [Meslo](https://github.com/andreberg/Meslo-Font) but you can change it to whatever. if the named font isn't found, it will usewhatever your emacs default is at 14px.
