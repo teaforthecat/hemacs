@@ -1,9 +1,11 @@
 (require 'js2-mode)
-;; (require 'json-mode)
+
+(defun js-insert-console ()
+  (interactive)
+  (insert "console.log()")
+  (backward-char))
 
 (autoload 'js2-mode "js2-mode" nil t)
-
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 
 (add-hook 'js-mode-hook
           '(lambda ()
@@ -24,6 +26,5 @@
 
 (define-key js-mode-map (kbd "C-l") 'js-insert-console)
 (define-key js-mode-map (kbd "s-{") 'open-brackets-newline-and-indent)
-(define-key js-mode-map (kbd "RET") 'newline-and-indent)
 
 (provide 'hemacs-javascripts)

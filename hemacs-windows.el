@@ -1,5 +1,12 @@
-(require 'popwin)
 (require 'buffer-move)
+
+(defun toggle-split-window-horizontally ()
+  (interactive)
+  (if (> (count-windows) 1)
+      (delete-other-windows)
+    (split-window-horizontally)
+    (other-window 1)
+    (switch-to-buffer (other-buffer))))
 
 ;; split windows horizontally by default
 (setq split-height-threshold nil
@@ -46,8 +53,17 @@
         ("CAPTURE-todo.org" :height 5)
         ))
 
+;; (defun popwin:close-or-display-last-buffer ()
+;;   (interactive)
+;;   (if (popwin:popup-window-live-p)
+;;       (popwin:close-popup-window)
+;;     (popwin:display-last-buffer)))
+
 (global-set-key (kbd "C-z") popwin:keymap)
-(global-set-key (kbd "C-z l") 'popwin:persp-shell)
 (global-set-key (kbd "C-z d") 'dired-jump-other-window)
+
+;; nav toggle following popwin C-z convention
+(global-set-key (kbd "C-z n") 'nav-toggle)
+(global-set-key (kbd "C-z C-n") 'nav-toggle)
 
 (provide 'hemacs-windows)

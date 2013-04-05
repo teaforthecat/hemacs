@@ -11,34 +11,39 @@
 (defvar packages
   '(ace-jump-mode
     ack-and-a-half
-    auto-complete
+    ag
+    ;; auto-complete
     bash-completion
-    birds-of-paradise-plus-theme
-    ;; browse-kill-ring
+    browse-kill-ring
     buffer-move
     bundler
     change-inner
     coffee-mode
     dash
-    dired-details
+    ;; dired-details
     elisp-slime-nav
     exec-path-from-shell
     expand-region
+    git-gutter
+    git-gutter-fringe
     haml-mode
     handlebars-mode
     ido-ubiquitous
     jade-mode
+    js2-mode
     jump-char
     key-chord
     ;; kite
+    kill-ring-search
     less-css-mode
     magit
     magithub
     markdown-mode
     mic-paren
+    mmm-mode
     multiple-cursors
     nav
-    nurumacs
+    ;; nurumacs
     page-break-lines
     perspective
     php-mode
@@ -46,17 +51,15 @@
     powerline
     projectile
     rainbow-mode
-    regex-tool
-    robe
-    ruby-end
+    ;; regex-tool
+    ;; robe
     sass-mode
-    shell-here
+    shell-command
     slim-mode
-    slime
-    slime-repl
-    slime-js
+    ;; slime
+    ;; slime-repl
+    ;; slime-js
     smex
-    ;; smart-forward
     smart-tab
     stylus-mode
     perspective

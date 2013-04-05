@@ -9,8 +9,7 @@
                (region-end))
   (if (region-active-p)
       (deactivate-mark t))
-  (minibuffer-message "Lisp evaluated")
-)
+  (minibuffer-message "Lisp evaluated"))
 
 (define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-region-and-maybe-deactivate-mark)
 

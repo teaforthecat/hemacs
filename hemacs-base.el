@@ -1,8 +1,16 @@
+;; require crucial packages
+(require 'ace-jump-mode)
+(require 'popwin)
+(require 'projectile)
 (require 'expand-region)
 (require 'change-inner)
 (require 'multiple-cursors)
 (require 'nav)
-(require 'regex-tool)
+(require 'ag)
+
+;; heavily relying on persp for projects
+(require 'perspective)
+(persp-mode t)
 
 ;; enable features
 (put 'downcase-region 'disabled nil)
@@ -32,9 +40,25 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+;; 80 character columns indicator
+(require 'whitespace)
+(setq fill-column 80)
+(setq whitespace-style '(lines-tail))
+(global-whitespace-mode t)
+
 ;; minibuffer
 ;; (setq minibuffer-auto-raise t)
-(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+(setq minibuffer-prompt-properties
+      (quote
+       (read-only
+        t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+(setq minibuffer-eldef-shorten-default t)
+(minibuffer-electric-default-mode t)
+
+;; smarter minibuffer history cycling
+(define-key minibuffer-local-map [up] 'previous-complete-history-element)
+(define-key minibuffer-local-map [down] 'next-complete-history-element)
+
 
 ;; tab and indent always two spaces
 (setq-default tab-width 2)
@@ -51,6 +75,11 @@
 (prefer-coding-system 'utf-8-unix)
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
+(autoload 'kill-ring-search "kill-ring-search"
+ "Search the kill ring in the minibuffer."
+ (interactive))
+;; (global-set-key "\M-\C-y" 'kill-ring-search)
+
 ;; ack
 (require 'ack-and-a-half)
 (setq ack-and-a-half-arguments "--nosql")
@@ -62,6 +91,7 @@
       uniquify-after-kill-buffer-p t    ; rename after killing uniquified
       uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
+;; smart M-x ido action
 (require 'smex)
 (smex-initialize)
 
@@ -78,23 +108,33 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'maybe-deactivate-mark)
 
-(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
 
 ;; convenience and prefs
-(setq inhibit-startup-message t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq show-trailing-whitespace t)
 (setq pop-up-windows nil)
 (setq max-lisp-eval-depth 100000)
 
-;; file types
-(add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.h$" . objc-mode))
-(add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.cfm" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+;; writing helpers
+(add-hook 'markdown-mode-hook 'visual-line-mode)
+(add-hook 'markdown-mode-hook 'flyspell-mode)
 
-(provide 'hemacs-config)
+;; (require 'jump-char)
+
+;; (defun add-hyper-char-to-jump-char-mode (c)
+;;   (define-key global-map
+;;     (read-kbd-macro (concat "H-" (string c)))
+;;     `(lambda ()
+;;        (interactive)
+;;        (setq jump-char-initial-char (make-string 1 ,c))
+;;        (call-interactively 'jump-char-process-char)
+;;        )))
+
+;; (loop for c from ?0 to ?9 do (add-hyper-char-to-jump-char-mode c))
+;; (loop for c from ?A to ?Z do (add-hyper-char-to-jump-char-mode c))
+;; (loop for c from ?a to ?z do (add-hyper-char-to-jump-char-mode c))
+
+(provide 'hemacs-base)
