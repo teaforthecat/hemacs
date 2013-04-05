@@ -1,13 +1,43 @@
-(require 'highlight-tail)
+;; (require 'highlight-tail)
 (require 'powerline)
 (require 'mic-paren)
+(require 'git-gutter)
+(require 'git-gutter-fringe)
+
+;; (require 'nurumacs)
+
+;; scrolling
+;; (setq scroll-margin 24)
+;; (setq scroll-conservatively 100000)
+;; (setq scroll-preserve-screen-position t)
+
+(defun nice-scrolling ()
+  "Turn on smooth buffered scrolling"
+  (interactive)
+  (set (make-local-variable 'scroll-margin) 24)
+  (set (make-local-variable 'scroll-conservatively) 100000)
+  (set (make-local-variable 'scroll-preserve-screen-position) t))
+
+(defun no-nice-scrolling ()
+  "Turn on smooth buffered scrolling"
+  (interactive)
+  (setq scroll-margin 0)
+  (setq scroll-conservatively 0)
+  (setq scroll-preserve-screen-position nil))
+
+;; smooth scrolling
+(dolist (hook '(prog-mode-hook
+                js2-mode-hook))
+  (add-hook hook 'nice-scrolling))
 
 ;; set font
 ;; (if (and *is-a-mac* window-system (font-existsp default-font))
 ;;     (set-face-attribute 'default nil :font default-font)
-;;   (set-face-attribute 'default nil :height 140))
+;;   (set-face-attribute 'default nil :height 130))
+(set-face-attribute 'default nil :height 130)
 
-(setq color-theme-is-global t
+(setq inhibit-startup-message t
+      color-theme-is-global t
       font-lock-maximum-decoration t
       ring-bell-function 'ignore
       truncate-partial-width-windows nil)
@@ -15,10 +45,11 @@
 (transient-mark-mode t)
 (show-paren-mode 1)
 (paren-activate)
-(blink-cursor-mode 1)
+(blink-cursor-mode 0)
 (global-font-lock-mode t)
-(set-fringe-style '(4 . 0)) ;; just a lil padding
+(set-fringe-style '(8 . 0)) ;; just a lil padding
 (global-page-break-lines-mode) ;; get rid of ^L
+(global-git-gutter-mode)
 
 ;; because coding is magic
 ;; (highlight-tail-mode 1)
@@ -41,12 +72,9 @@
                                 (powerline-raw " " face1)
                                 (powerline-hud face2 face1)
                                 (powerline-raw " " face1)
-                                ;; (powerline-raw "%3lL" face1 'r)
                                 (powerline-buffer-size face1 'l)
                                 (powerline-raw " " face1)
                                 (powerline-arrow-right face1 face2)
-                                ;; (powerline-major-mode face2 'l)
-                                ;; (powerline-minor-modes face2 'l)
                                 (powerline-raw mode-line-process face2 'l)
                                 ))
                           (rhs (list
@@ -70,6 +98,9 @@
 
 ;; go fullscreen
 (when (and *is-a-mac* window-system)
-  (ns-toggle-fullscreen))
+  (if (functionp 'ns-toggle-fullscreen)
+    (ns-toggle-fullscreen)
+    (if (functionp 'toggle-frame-fullscreen)
+        (toggle-frame-fullscreen))))
 
 (provide 'hemacs-ui)
