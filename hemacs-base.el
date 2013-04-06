@@ -58,6 +58,7 @@
 ;; smarter minibuffer history cycling
 (define-key minibuffer-local-map [up] 'previous-complete-history-element)
 (define-key minibuffer-local-map [down] 'next-complete-history-element)
+(define-key minibuffer-local-map (kbd "TAB") 'completion-at-point)
 
 ;; visual mark history navigation
 (require 'back-button)

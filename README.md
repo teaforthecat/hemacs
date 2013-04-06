@@ -1,12 +1,12 @@
 # hemacs
 
-one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm mainly writing ruby, java-and-coffee scripting, interfacing with git, command-lining, and writing object-oriented stylesheets and templates. the code should be somewhat documented and organized and tweakable at this point.
+one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm mainly writing ruby, java-and-coffee scripting, interfacing with git, command-lining, and writing object-oriented stylesheets and templates. [MELPA](http://melpa.milkbox.net) is my preferred external package archive manager. the code should be somewhat documented and organized and tweakable at this point.
 
 ## installation
 
 (backup any existing ~/.emacs.d first)
 
-`git clone --recursive git://github.com/waymondo/hemacs ~/.emacs.d`
+`git clone git://github.com/waymondo/hemacs ~/.emacs.d`
 
 indeed, installing carbon emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew). i go cutting edge like this =>
 
