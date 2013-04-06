@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        back-to-indentation-or-beginning
         coffee-dedent-line-backspace
         dabbrev-expand
         indent-for-tab-command

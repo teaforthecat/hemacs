@@ -43,6 +43,7 @@ and then there are these tuning modules =>
 * `hemacs-git` - git and github helpers
 * `hemacs-shell` - attempting to make emacs shell actually usable
 * `hemacs-project-shell` - using `perspective-mode` to spawn project shells, command buffers, and background processes
+* `hemacs-dired` - a less noisy dired with auto-revert and buffer reuse
 * `hemacs-todo` - a simple global todo list system using `org-capture`, grouped by project headers
 * `hemacs-ui` - `git-gutter`, `powerline`, scrolling behavior, fullscreen, and other visual changes
 

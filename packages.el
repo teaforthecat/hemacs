@@ -20,7 +20,7 @@
     change-inner
     coffee-mode
     dash
-    ;; dired-details
+    dired-details
     elisp-slime-nav
     exec-path-from-shell
     expand-region
