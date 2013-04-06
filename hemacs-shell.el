@@ -1,4 +1,5 @@
 (require 'bash-completion)
+(require 'pcmpl-args)
 ;; (require 'shell-command)
 
 ;; use bash tab completion
@@ -13,7 +14,7 @@
 (shell-command-completion-mode)
 
 (setq comint-prompt-read-only t
-      ;; comint-move-point-for-output t
+      comint-move-point-for-output t
       comint-scroll-show-maximum-output t
       process-read-adaptive-buffering nil
       ;; comint-process-echoes t
@@ -30,7 +31,9 @@
 ;; (add-hook 'comint-exec-hook 'exec-use-utf8)
 ;; (add-hook 'shell-mode-hook 'turn-off-auto-fill)
 
-(add-hook 'comint-mode-hook 'lambda () (text-scale-decrease 1))
+(add-hook 'comint-mode-hook '(lambda ()
+                               (text-scale-decrease 1)
+                               (smart-tab-mode 0)))
 
 ;; persist shell and REPL command history
 (defun comint-write-history-on-exit (process event)

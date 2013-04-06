@@ -35,17 +35,18 @@
     jump-char
     key-chord
     ;; kite
-    kill-ring-search
     less-css-mode
     magit
+    ;; magit-gh-pulls
     magithub
     markdown-mode
     mic-paren
     mmm-mode
     multiple-cursors
     nav
-    ;; nurumacs
+    nurumacs
     page-break-lines
+    pcmpl-args
     perspective
     php-mode
     popwin
