@@ -18,10 +18,8 @@
   "Insert an empty line after the current line and positon
 the curson at its beginning, according to the current mode."
   (interactive)
-  (move-end-of-line nil)
-  (open-line 1)
-  (next-line 1)
-  (indent-according-to-mode))
+  (end-of-line)
+  (newline-and-indent))
 
 ;; auto-indent pasted texted
 (defvar yank-indent-modes '(prog-mode
