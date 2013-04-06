@@ -96,7 +96,7 @@
  '(message-header-to ((((class color) (min-colors 89)) (:foreground "#00ede1"))))
  '(message-cited-text ((((class color) (min-colors 89)) (:foreground "#74af68"))))
  '(message-separator ((((class color) (min-colors 89)) (:foreground "#23d7d7"))))
-
+ '(auto-dim-other-buffers-face ((((class color) (min-colors 89)) (:background "#303030"))))
  '(default ((((class color) (min-colors 89)) (:background "#333333" :height 150 :foreground "#e1e1e0")))))
 
 (provide-theme 'misteroizo)

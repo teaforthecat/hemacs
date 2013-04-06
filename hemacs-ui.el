@@ -1,62 +1,13 @@
 ;; (require 'highlight-tail)
+;; (require 'nurumacs)
 (require 'powerline)
 (require 'mic-paren)
 (require 'git-gutter)
 (require 'git-gutter-fringe)
+(require 'auto-dim-other-buffers)
 
-;; (require 'nurumacs)
-
-;; scrolling
-;; (setq scroll-margin 24)
-;; (setq scroll-conservatively 100000)
-;; (setq scroll-preserve-screen-position t)
-
-(defun nice-scrolling ()
-  "Turn on smooth buffered scrolling"
-  (interactive)
-  (set (make-local-variable 'scroll-margin) 24)
-  (set (make-local-variable 'scroll-conservatively) 100000)
-  (set (make-local-variable 'scroll-preserve-screen-position) t))
-
-(defun no-nice-scrolling ()
-  "Turn on smooth buffered scrolling"
-  (interactive)
-  (setq scroll-margin 0)
-  (setq scroll-conservatively 0)
-  (setq scroll-preserve-screen-position nil))
-
-;; smooth scrolling
-(dolist (hook '(prog-mode-hook
-                js2-mode-hook))
-  (add-hook hook 'nice-scrolling))
-
-;; set font
-;; (if (and *is-a-mac* window-system (font-existsp default-font))
-;;     (set-face-attribute 'default nil :font default-font)
-;;   (set-face-attribute 'default nil :height 130))
-(set-face-attribute 'default nil :height 130)
-
-(setq inhibit-startup-message t
-      color-theme-is-global t
-      font-lock-maximum-decoration t
-      ring-bell-function 'ignore
-      truncate-partial-width-windows nil)
-
-(transient-mark-mode t)
-(show-paren-mode 1)
-(paren-activate)
-(blink-cursor-mode 0)
-(global-font-lock-mode t)
-(set-fringe-style '(8 . 0)) ;; just a lil padding
-(global-page-break-lines-mode) ;; get rid of ^L
-(global-git-gutter-mode)
-
-;; because coding is magic
-;; (highlight-tail-mode 1)
-;; (setq highlight-tail-steps 24
-;;       highlight-tail-timer 0.005)
-
-(defun powerline-waymondo-theme ()
+;; custom, minimal powerline
+(defun hemacs-powerline-theme ()
   (interactive)
   (setq-default mode-line-format
                 '("%e"
@@ -91,16 +42,48 @@
                       (powerline-fill face2 (powerline-width rhs))
                       (powerline-render rhs)))))))
 
-(powerline-waymondo-theme)
+;; nice scrolling
+(defun nice-scrolling ()
+  "Turn on smooth buffered scrolling"
+  (interactive)
+  (set (make-local-variable 'scroll-margin) 24)
+  (set (make-local-variable 'scroll-conservatively) 100000)
+  (set (make-local-variable 'scroll-preserve-screen-position) t))
 
-;; load theme
+;; smooth scrolling
+(dolist (hook '(prog-mode-hook
+                js2-mode-hook))
+  (add-hook hook 'nice-scrolling))
+
+;; set font
+(if (and *is-a-mac* window-system (font-existsp default-font))
+    (set-face-attribute 'default nil :font default-font)
+  (set-face-attribute 'default nil :height 130))
+
+(setq inhibit-startup-message t
+      color-theme-is-global t
+      font-lock-maximum-decoration t
+      ring-bell-function 'ignore
+      truncate-partial-width-windows nil)
+
+(transient-mark-mode t)
+(show-paren-mode 1)
+(paren-activate)
+(blink-cursor-mode 1)
+(global-font-lock-mode t)
+(set-fringe-style '(8 . 0)) ;; just a lil padding
+(global-page-break-lines-mode) ;; get rid of ^L
+(global-git-gutter-mode)
+(auto-dim-other-buffers-mode)
+(hemacs-powerline-theme)
 (load-theme 'birds-of-paradise t)
+(toggle-fullscreen)
 
-;; go fullscreen
-(when (and *is-a-mac* window-system)
-  (if (functionp 'ns-toggle-fullscreen)
-    (ns-toggle-fullscreen)
-    (if (functionp 'toggle-frame-fullscreen)
-        (toggle-frame-fullscreen))))
+;; because coding is magic
+;; (setq highlight-tail-steps 48
+;;       highlight-tail-timer 0.01
+;;       highlight-tail-colors '(("#865C38" . 0)
+;;                               ("#523D2B" . 20)))
+;; (highlight-tail-mode 1)
 
 (provide 'hemacs-ui)

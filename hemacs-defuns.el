@@ -56,8 +56,6 @@
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
 
-(add-hook 'prog-mode-hook 'pretty-lambdas)
-
 (defun open-line-below ()
   (interactive)
   (end-of-line)
@@ -409,5 +407,12 @@ file of a buffer in an external program."
   (let ((project-name (ido-completing-read "Open project: " (directory-files code-dir nil "^[^.]"))))
     (custom-persp project-name)
     (magit-status (concat code-dir project-name))))
+
+(defun toggle-fullscreen ()
+  (when (and *is-a-mac* window-system)
+    (if (functionp 'ns-toggle-fullscreen)
+        (ns-toggle-fullscreen)
+      (if (functionp 'toggle-frame-fullscreen)
+          (toggle-frame-fullscreen)))))
 
 (provide 'hemacs-defuns)

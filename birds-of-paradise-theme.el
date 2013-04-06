@@ -115,6 +115,7 @@
  '(nxml-cdata-section-content ((t (:foreground "#CC4232"))))
  '(nxml-attribute-local-name ((t (:foreground "#EF5D32"))))
  '(nxml-attribute-value ((t (:foreground "#D9D762"))))
+ '(auto-dim-other-buffers-face ((t (:background "#302020"))))
  '(default ((t (:background "#372725" :foreground "#E6E1C4")))))
 
 (provide-theme 'birds-of-paradise)

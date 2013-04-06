@@ -59,6 +59,9 @@
 (define-key minibuffer-local-map [up] 'previous-complete-history-element)
 (define-key minibuffer-local-map [down] 'next-complete-history-element)
 
+;; visual mark history navigation
+(require 'back-button)
+(back-button-mode 1)
 
 ;; tab and indent always two spaces
 (setq-default tab-width 2)
@@ -74,11 +77,6 @@
 (set-selection-coding-system 'utf-8-unix)
 (prefer-coding-system 'utf-8-unix)
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
-
-(autoload 'kill-ring-search "kill-ring-search"
- "Search the kill ring in the minibuffer."
- (interactive))
-;; (global-set-key "\M-\C-y" 'kill-ring-search)
 
 ;; ack
 (require 'ack-and-a-half)
@@ -121,6 +119,9 @@
 ;; writing helpers
 (add-hook 'markdown-mode-hook 'visual-line-mode)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
+
+;; pretty lambda
+(add-hook 'prog-mode-hook 'pretty-lambdas)
 
 ;; (require 'jump-char)
 

@@ -12,7 +12,8 @@
   '(ace-jump-mode
     ack-and-a-half
     ag
-    ;; auto-complete
+    auto-dim-other-buffers
+    back-button
     bash-completion
     browse-kill-ring
     buffer-move
