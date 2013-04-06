@@ -1,8 +1,5 @@
-(require 'smart-tab)
-
-;; smart tab
-(setq smart-tab-using-hippie-expand t)
-(global-smart-tab-mode 1)
+;; suppress "complete, but not unique" popup
+(setq completion-cycle-threshold t)
 
 ;; hippie expand match order
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev-visible
@@ -16,9 +13,6 @@
                                          try-complete-file-name
                                          try-expand-whole-kill))
 
-;; suppress "complete, but not unique" popup
-(setq completion-cycle-threshold t)
-
 (defadvice hippie-expand (around hippie-expand-case-fold)
   "Try to do case-sensitive matching (not effective with all functions)."
   (let ((case-fold-search nil))
@@ -31,7 +25,35 @@
                                             try-expand-line-all-buffers)))
     (hippie-expand nil)))
 
-(global-set-key (kbd "M-TAB") 'hippie-expand)
-(global-set-key (kbd "C-/") 'hippie-expand-lines)
+(defun he-string-beg ()
+  "A helper function to return the point at the beginning of the symbol to be completed."
+  (let ((p))
+    (save-excursion
+      (backward-word 1)
+      (setq p (point)))
+    p))
+
+(defun try-expand-from-string-in-list (old)
+  "Try to hippie expand from a string in `he-string-list`"
+  (unless old
+    (he-init-string (he-string-beg) (point))
+    (setq he-expand-list (sort
+                          (all-completions he-search-string (mapcar 'list he-string-list))
+                          'string-lessp)))
+  (while (and he-expand-list
+              (he-string-member (car he-expand-list) he-tried-table))
+    (setq he-expand-list (cdr he-expand-list)))
+  (if (null he-expand-list)
+      (progn
+        (when old (he-reset-string))
+        ())
+    (he-substitute-string (car he-expand-list))
+    (setq he-expand-list (cdr he-expand-list))
+    t))
+
+;; smart tab for hippie or indenting
+(require 'smart-tab)
+(setq smart-tab-using-hippie-expand t)
+(global-smart-tab-mode 1)
 
 (provide 'hemacs-hippie)
