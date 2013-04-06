@@ -27,8 +27,7 @@
   (interactive)
   (bs--show-with-configuration "persp")
   (setq ace-jump-mode-scope 'window)
+  (beginning-of-buffer)
   (call-interactively 'ace-jump-line-mode))
-
-(global-set-key (kbd "s-b") 'hemacs-jump-buff)
 
 (provide 'hemacs-jump-buff)

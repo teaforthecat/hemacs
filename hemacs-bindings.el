@@ -1,6 +1,6 @@
 ;; concentrate, focus power
 (global-set-key (kbd "C-=") 'delete-other-windows)
-(global-set-key (kbd "C-+") 'ns-toggle-fullscreen)
+(global-set-key (kbd "C-+") 'toggle-fullscreen)
 
 ;; keyboard scrolling
 (global-set-key (kbd "s-,") 'next-line)
@@ -19,9 +19,13 @@
 ;; dupe dwim
 (global-set-key (kbd "s-u") 'duplicate-current-line-or-region)
 
+;; hippie expand line
+(global-set-key (kbd "C-/") 'hippie-expand-lines)
+
 ;; ace jump mode
 (global-set-key (kbd "s-m") 'ace-jump-mode)
 (global-set-key (kbd "s-M") 'ace-jump-char-mode)
+(global-set-key (kbd "s-b") 'hemacs-jump-buff)
 
 ;; delete file
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
@@ -44,8 +48,6 @@
 ;; (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "C-o") 'open-line-and-indent)
-;; (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
-;; (global-set-key (kbd "C-x C-c") 'delete-frame)
 
 ;; super colon with space
 (global-set-key (kbd "s-:") 'pad-colon)

@@ -11,7 +11,7 @@
 ;; semi-colon chordage
 
 ;; buffer hopping
-(key-chord-define-global ";b" 'bs-ace-jump-buffer)
+(key-chord-define-global ";b" 'hemacs-jump-buff)
 (key-chord-define-global ";s" 'ido-switch-buffer)
 (key-chord-define-global ";r" 'recentf-ido-find-file)
 (key-chord-define-global ";t" 'projectile-find-file)
