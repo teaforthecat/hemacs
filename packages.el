@@ -53,19 +53,16 @@
     projectile
     rainbow-mode
     ;; regex-tool
-    ;; robe
     sass-mode
     shell-command
     slim-mode
-    ;; slime
-    ;; slime-repl
-    ;; slime-js
     smex
     smart-tab
     stylus-mode
     perspective
     undo-tree
-    yaml-mode)
+    yaml-mode
+    zossima)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (package packages)

@@ -161,20 +161,6 @@ region-end is used."
   (previous-line)
   (indent-according-to-mode))
 
-(defun make-ruby-block()
-  (interactive)
-  (insert " do\n\nend")
-  (indent-according-to-mode)
-  (previous-line)
-  (indent-according-to-mode))
-
-(defun indent-and-ruby-end()
-  (interactive)
-  (insert " \n\nend")
-  (indent-according-to-mode)
-  (previous-line)
-  (indent-according-to-mode))
-
 (defun pad-colon-and-maybe-semicolon()
   (interactive)
   (if (looking-at "\;.*")
