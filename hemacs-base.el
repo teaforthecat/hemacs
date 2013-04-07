@@ -121,6 +121,10 @@
 (add-hook 'markdown-mode-hook 'visual-line-mode)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 
+;; blogging
+(require 'octomacs)
+(setq octomacs-workdir-alist (quote (("waymondo blog" . "~/code/octopress"))))
+
 ;; pretty lambda
 (add-hook 'prog-mode-hook 'pretty-lambdas)
 

@@ -45,6 +45,7 @@
     multiple-cursors
     nav
     nurumacs
+    octomacs
     page-break-lines
     pcmpl-args
     perspective
