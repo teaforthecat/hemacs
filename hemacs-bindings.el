@@ -49,14 +49,13 @@
 (global-set-key (kbd "s-:") 'pad-colon)
 
 ;; necessities
-(global-set-key (kbd "C-c g") 'magit-status)
 (global-set-key (kbd "s-x") 'smex)
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c O") 'github-browse-file)
+(global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
 
 ;; toggling
 (global-set-key (kbd "s-`") 'switch-to-previous-buffer)
-
-;; open files
-(global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
 
 ;; unset the unneeded
 (global-unset-key (kbd "s-t")) ; ns-popup-font-panel

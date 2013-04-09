@@ -1,6 +1,5 @@
 (require 'magit)
 (require 'magithub)
-(require 'open-file-in-github)
 
 ;; always update files, i.e. after git pull
 (global-auto-revert-mode 1)
@@ -9,15 +8,6 @@
 
 ;; don't do ediff with popup
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-;; open file in github
-(defun open-file-in-github-maybe-region-highlighted ()
-  (interactive)
-  (if (region-active-p)
-      (open-file-in-github-region-highlighted)
-    (open-file-in-github)))
-
-(global-set-key (kbd "C-c O") 'open-file-in-github-maybe-region-highlighted)
 
 (defun magit-kill-file-on-line ()
   "Show file on current magit line and prompt for deletion."

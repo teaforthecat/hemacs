@@ -27,6 +27,7 @@
     expand-region
     git-gutter
     git-gutter-fringe
+    github-browse-file
     haml-mode
     handlebars-mode
     ido-ubiquitous
