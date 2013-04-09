@@ -3,7 +3,7 @@
 (require 'perspective)
 
 ;; simple layout, increase window height
-(setq bs-max-window-height 30
+(setq bs-max-window-height 26
       bs-attributes-list (quote (("" 2 2 left " ")
                                  ("" 1 1 left bs--get-marked-string)
                                  ("" 1 1 left " ")

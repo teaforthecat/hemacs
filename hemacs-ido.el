@@ -6,6 +6,7 @@
 
 (setq ido-enable-flex-matching t ;; fuzzy matching
       ido-use-filename-at-point nil ;; don't guess based on cursor position
+      ido-auto-merge-work-directories-length -1 ;; don't merge to other dirs
       ido-max-window-height 20
       ido-max-prospects 18)
 

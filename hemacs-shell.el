@@ -1,6 +1,6 @@
 (require 'bash-completion)
 (require 'pcmpl-args)
-;; (require 'shell-command)
+(require 'shell-command)
 
 ;; use bash tab completion
 (autoload 'bash-completion-dynamic-complete
