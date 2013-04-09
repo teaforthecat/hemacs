@@ -52,5 +52,6 @@
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
+(setq magit-save-some-buffers nil) ;; don't ask to save buffers
 
 (provide 'hemacs-git)
