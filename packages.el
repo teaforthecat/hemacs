@@ -10,7 +10,7 @@
 
 (defvar packages
   '(ace-jump-mode
-    ack-and-a-half
+    ;; ack-and-a-half
     ag
     auto-dim-other-buffers
     back-button

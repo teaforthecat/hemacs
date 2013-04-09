@@ -26,11 +26,10 @@
 (key-chord-define-global ";l" 'persp-switch)
 (key-chord-define-global ";," 'magit-status)
 (key-chord-define-global ";k" 'ack-and-a-half)
-(key-chord-define-global ";g" 'ag)
+(key-chord-define-global ";g" 'ag-project-at-point)
 
 ;; editing
 (key-chord-define-global ";z" 'zap-up-to-char)
-(key-chord-define-global ";a" 'ace-jump-mode)
 
 ;; todos
 (key-chord-define-global ";e" 'hemacs-todo-capture)

@@ -40,10 +40,6 @@
 (global-set-key (kbd "s-i") 'change-inner)
 (global-set-key (kbd "s-o") 'change-outer)
 
-;; ack
-(global-set-key (kbd "C-c a") 'ack-and-a-half)
-(global-set-key (kbd "C-c C-a") 'ack-and-a-half-same)
-
 ;; !! overrides
 ;; (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)

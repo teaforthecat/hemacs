@@ -79,10 +79,6 @@
 (prefer-coding-system 'utf-8-unix)
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
-;; ack
-(require 'ack-and-a-half)
-(setq ack-and-a-half-arguments "--nosql")
-
 ;; meaningful uniqueness
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward
