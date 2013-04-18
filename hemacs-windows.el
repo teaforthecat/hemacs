@@ -1,5 +1,3 @@
-(require 'buffer-move)
-
 (defun toggle-split-window-horizontally ()
   (interactive)
   (if (> (count-windows) 1)
@@ -17,6 +15,7 @@
 (setq windmove-wrap-around t)
 
 ;; shift + control + arrows to swap buffers in windows
+(require 'buffer-move)
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
@@ -46,6 +45,7 @@
         ("*magit-edit-log*" :height 5 :dedicated t)
         ;; (dired-mode :position left :width .3)
         (" *undo-tree*" :position right :width .3 :dedicated t)
+        ("*Kill Ring*" :position right :width .3 :dedicated t)
         ("\\*ansi-term\\*.*" :regexp t :position left :width .5)
         ("\\Foreman\\*.*" :regexp t :position left :width .5)
         ("\\*slime-repl JS\\*.*" :regexp t :position left :width .5)

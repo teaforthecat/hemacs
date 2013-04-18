@@ -9,7 +9,7 @@
  'birds-of-paradise
  '(cursor ((t (:foreground "#865C38" :background "#E6E1C4"))))
  '(highlight ((t (:background "#1F1611" :foreground "#E6E1C4"))))
- '(hl-line ((t (:background "#3E2929"))))
+ '(hl-line ((t (:background "#3D2B28"))))
  '(region ((t (:background "#000000"))))
  '(escape-glyph ((t (:foreground "#BE73FD"))))
  '(minibuffer-prompt ((t (:foreground "#6C99BB"))))
@@ -27,7 +27,7 @@
  '(font-lock-variable-name-face ((t (:foreground "#7DAF9C"))))
  '(font-lock-warning-face ((t (:background "#990000" :foreground "white"))))
  '(link ((t (:foreground "#D9D762"))))
- '(button ((t (:foreground "#D9D762" :background "#7DAF9C" :weight bold :underline t))))
+ '(button ((t (:foreground "#D9D762" :background "#3D2B28" :weight bold :underline t))))
  '(mode-line ((t (:background "#865C38" :foreground "#E6E1C4" :height 110 :box nil))))
  '(mode-line-inactive ((t (:background "#5C413D" :foreground "#E6E1C4" :height 110 :box nil))))
  '(powerline-active1 ((t (:background "#3D2B28"))))
