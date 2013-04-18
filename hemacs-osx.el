@@ -1,6 +1,3 @@
-;; fn as hyper
-(setq mac-function-modifier 'hyper)
-
 ;; delete to an emacs folder in trash
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.Trash/emacs")

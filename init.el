@@ -44,6 +44,7 @@
 ;; global bindings and keychord
 (require 'hemacs-bindings)
 (require 'hemacs-chords)
+(require 'hemacs-hyper-jump)
 
 ;; utility
 (require 'hemacs-git)
