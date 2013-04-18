@@ -9,6 +9,7 @@
         indent-for-tab-command
         kill-rectangle
         maybe-delete-selection-and-yank
+        right-subword
         ruby-end-space
         slim-electric-backspace
         smart-tab
@@ -21,6 +22,7 @@
         beginning-of-buffer
         end-of-buffer
         goto-line-with-feedback
+        ido-find-file
         next-error
         persp-switch
         smex
