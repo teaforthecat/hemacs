@@ -100,44 +100,20 @@
 ;; go to line with feedback
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
-;; save hook
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-(add-hook 'before-save-hook 'maybe-deactivate-mark)
-
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR.")
-
 ;; convenience and prefs
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq confirm-nonexistent-file-or-buffer nil)
 (setq show-trailing-whitespace t)
 (setq pop-up-windows nil)
 (setq max-lisp-eval-depth 100000)
-
-;; writing helpers
-(add-hook 'markdown-mode-hook 'visual-line-mode)
-(add-hook 'markdown-mode-hook 'flyspell-mode)
+(setq ring-bell-function 'ignore)
 
 ;; blogging
 (require 'octomacs)
 (setq octomacs-workdir-alist (quote (("waymondo blog" . "~/code/octopress"))))
 
-;; pretty lambda
-(add-hook 'prog-mode-hook 'pretty-lambdas)
-
-;; (require 'jump-char)
-
-;; (defun add-hyper-char-to-jump-char-mode (c)
-;;   (define-key global-map
-;;     (read-kbd-macro (concat "H-" (string c)))
-;;     `(lambda ()
-;;        (interactive)
-;;        (setq jump-char-initial-char (make-string 1 ,c))
-;;        (call-interactively 'jump-char-process-char)
-;;        )))
-
-;; (loop for c from ?0 to ?9 do (add-hyper-char-to-jump-char-mode c))
-;; (loop for c from ?A to ?Z do (add-hyper-char-to-jump-char-mode c))
-;; (loop for c from ?a to ?z do (add-hyper-char-to-jump-char-mode c))
+;; org
+(setq org-replace-disputed-keys t)
+(setq org-src-fontify-natively t)
 
 (provide 'hemacs-base)

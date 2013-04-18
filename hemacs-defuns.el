@@ -401,4 +401,17 @@ file of a buffer in an external program."
       (if (functionp 'toggle-frame-fullscreen)
           (toggle-frame-fullscreen)))))
 
+(defun nice-scrolling ()
+  "Turn on smooth buffered scrolling"
+  (interactive)
+  (set (make-local-variable 'scroll-margin) 24)
+  (set (make-local-variable 'scroll-conservatively) 100000)
+  (set (make-local-variable 'scroll-preserve-screen-position) t))
+
+(defun maybe-turn-on-rainbow-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match ".*theme.el" buffer-file-name))
+
+    (rainbow-mode)))
+
 (provide 'hemacs-defuns)

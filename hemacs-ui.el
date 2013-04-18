@@ -1,4 +1,3 @@
-;; (require 'highlight-tail)
 ;; (require 'nurumacs)
 (require 'powerline)
 (require 'mic-paren)
@@ -42,19 +41,6 @@
                       (powerline-fill face2 (powerline-width rhs))
                       (powerline-render rhs)))))))
 
-;; nice scrolling
-(defun nice-scrolling ()
-  "Turn on smooth buffered scrolling"
-  (interactive)
-  (set (make-local-variable 'scroll-margin) 24)
-  (set (make-local-variable 'scroll-conservatively) 100000)
-  (set (make-local-variable 'scroll-preserve-screen-position) t))
-
-;; smooth scrolling
-(dolist (hook '(prog-mode-hook
-                js2-mode-hook))
-  (add-hook hook 'nice-scrolling))
-
 ;; set font
 (if (and *is-a-mac* window-system (font-existsp default-font))
     (set-face-attribute 'default nil :font default-font)
@@ -63,27 +49,30 @@
 (setq inhibit-startup-message t
       color-theme-is-global t
       font-lock-maximum-decoration t
-      ring-bell-function 'ignore
       truncate-partial-width-windows nil)
+
+;; padding for line numbers
+(setq linum-format (lambda (line)
+                     (propertize
+                      (format (concat " %"
+                                      (number-to-string
+                                       (length (number-to-string
+                                                (line-number-at-pos (point-max)))))
+                                      "d ")
+                              line)
+                      'face 'linum)))
 
 (transient-mark-mode t)
 (show-paren-mode 1)
 (paren-activate)
 (blink-cursor-mode 1)
 (global-font-lock-mode t)
-(set-fringe-style '(8 . 0)) ;; just a lil padding
+(set-fringe-style (cons 1 0)) ;; left only
 (global-page-break-lines-mode) ;; get rid of ^L
 (global-git-gutter-mode)
 (auto-dim-other-buffers-mode)
 (hemacs-powerline-theme)
 (load-theme 'birds-of-paradise t)
 (toggle-fullscreen)
-
-;; because coding is magic
-;; (setq highlight-tail-steps 48
-;;       highlight-tail-timer 0.01
-;;       highlight-tail-colors '(("#865C38" . 0)
-;;                               ("#523D2B" . 20)))
-;; (highlight-tail-mode 1)
 
 (provide 'hemacs-ui)

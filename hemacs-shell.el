@@ -24,17 +24,6 @@
       ;; shell-prompt-pattern "^[^#$%>]*[#$%>] *"
 )
 
-;; force utf8 on I/O
-;; (defun exec-use-utf8 ()
-;;   (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-
-;; (add-hook 'comint-exec-hook 'exec-use-utf8)
-;; (add-hook 'shell-mode-hook 'turn-off-auto-fill)
-
-(add-hook 'comint-mode-hook '(lambda ()
-                               (text-scale-decrease 1)
-                               (smart-tab-mode 0)))
-
 ;; persist shell and REPL command history
 (defun comint-write-history-on-exit (process event)
   (comint-write-input-ring)
