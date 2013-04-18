@@ -59,9 +59,11 @@
     sass-mode
     shell-command
     slim-mode
+    smartparens
     smex
     smart-tab
     stylus-mode
+    tagedit
     perspective
     undo-tree
     yaml-mode
