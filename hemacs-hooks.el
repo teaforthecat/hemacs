@@ -10,23 +10,25 @@
 (add-hook 'prog-mode-hook 'pretty-lambdas)
 
 ;; (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; turn on rainbow mode when editing themes
 (add-hook 'find-file-hook 'maybe-turn-on-rainbow-mode)
+(add-hook 'css-mode-hook 'rainbow-mode)
 
 ;; nice scrolling for most modes
-(dolist (hook '(prog-mode-hook
-                html-mode-hook
-                css-mode-hook
-                sass-mode-hook
-                magit-log-mode-hook
-                magit-mode-hook
-                slim-mode-hook
-                ;; coffee-mode-hook
-                haml-mode-hook
-                markdown-mode-hook
-                js2-mode-hook))
-  (add-hook hook 'nice-scrolling))
+;; (dolist (hook '(prog-mode-hook
+;;                 html-mode-hook
+;;                 css-mode-hook
+;;                 sass-mode-hook
+;;                 magit-log-mode-hook
+;;                 magit-mode-hook
+;;                 slim-mode-hook
+;;                 ;; coffee-mode-hook
+;;                 haml-mode-hook
+;;                 markdown-mode-hook
+;;                 js2-mode-hook))
+;;   (add-hook hook 'nice-scrolling))
 
 ;; text scale down one and turn off smart tab for shell-ish modes
 (add-hook 'comint-mode-hook '(lambda ()

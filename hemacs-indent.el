@@ -1,3 +1,8 @@
+;; tab and indent always two spaces
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq normal-erase-is-backspace 2)
+
 ;; indent shifting textmate-like bindings
 (defun shift-right (&optional arg)
   "Shift the line or region to the ARG places to the right.
@@ -15,8 +20,8 @@
   (shift-right (* -1 (or arg 1))))
 
 (defun end-of-line-then-newline-and-indent ()
-  "Insert an empty line after the current line and positon
-the curson at its beginning, according to the current mode."
+  "Insert an empty line after the current line and position
+the cursor at its beginning, according to the current mode."
   (interactive)
   (end-of-line)
   (newline-and-indent))
@@ -24,6 +29,7 @@ the curson at its beginning, according to the current mode."
 ;; auto-indent pasted texted
 (defvar yank-indent-modes '(prog-mode
                             sgml-mode
+                            css-mode
                             js2-mode)
   "Modes in which to indent regions that are yanked (or yank-popped)")
 
@@ -38,28 +44,25 @@ the curson at its beginning, according to the current mode."
 (defadvice yank (after yank-indent activate)
   "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
-           (--any? (derived-mode-p it) yank-indent-modes))
+           (member major-mode yank-indent-modes))
       (let ((transient-mark-mode nil))
-        (yank-advised-indent-function (region-beginning) (region-end)))))
+    (yank-advised-indent-function (region-beginning) (region-end)))))
 
 (defadvice yank-pop (after yank-pop-indent activate)
   "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
            (member major-mode yank-indent-modes))
-      (let ((transient-mark-mode nil))
-        (yank-advised-indent-function (region-beginning) (region-end)))))
+    (let ((transient-mark-mode nil))
+    (yank-advised-indent-function (region-beginning) (region-end)))))
 
 (defun yank-unindented ()
   (interactive)
   (yank 1))
-
 
 (global-set-key (kbd "s-]") 'shift-right)
 (global-set-key (kbd "s-[") 'shift-left)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "<s-return>") 'end-of-line-then-newline-and-indent)
-
-(global-set-key (kbd "s-V") 'yank-unindented)
 
 (provide 'hemacs-indent)

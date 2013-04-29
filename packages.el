@@ -56,15 +56,20 @@
     powerline
     projectile
     rainbow-mode
+    rainbow-delimiters
+    rbenv
     ;; regex-tool
+    s
     sass-mode
     shell-command
+    simplezen
     slim-mode
     smartparens
     smex
     smart-tab
+    smooth-scrolling
     stylus-mode
-    tagedit
+    ;; sublimity
     perspective
     undo-tree
     yaml-mode

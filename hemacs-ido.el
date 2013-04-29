@@ -1,8 +1,10 @@
 (require 'ido-ubiquitous)
+(require 'smex)
 
 (ido-mode t)
 (ido-everywhere t)
 (ido-ubiquitous t)
+(smex-initialize) ;; smart super-x ido action
 
 (setq ido-enable-flex-matching t ;; fuzzy matching
       ido-use-filename-at-point nil ;; don't guess based on cursor position
@@ -21,8 +23,9 @@
 (add-to-list 'ido-ignore-directories "vendor")
 
 ;; vertical ido results!
-(setq ido-decorations (quote ("\n=> " "" "\n   " "\n   ..." "[" "]" " [No match]"
-                              " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+(setq ido-decorations (quote ("\n=> " "" "\n   " "\n   ..."
+                              "[" "]" " [No match]" " [Matched]"
+                              " [Not readable]" " [Too big]" " [Confirm]")))
 
 ;; up/down should work as expected in vertical results
 (defun ido-up-down-fix ()
