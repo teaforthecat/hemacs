@@ -8,9 +8,12 @@
         dabbrev-expand
         indent-for-tab-command
         kill-rectangle
+        left-subword
         maybe-delete-selection-and-yank
+        pad-colon
         right-subword
         ruby-end-space
+        sgml-close-tag
         slim-electric-backspace
         smart-tab
         zap-up-to-char
