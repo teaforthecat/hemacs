@@ -43,6 +43,7 @@
     markdown-mode
     mic-paren
     mmm-mode
+    move-text
     multiple-cursors
     nav
     nurumacs
