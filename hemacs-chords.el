@@ -11,7 +11,7 @@
 ;; semi-colon chordage
 
 ;; buffer hopping
-(key-chord-define-global ";b" 'hemacs-jump-buff)
+(key-chord-define-global ",." 'ace-jump-buff)
 (key-chord-define-global ";s" 'ido-switch-buffer)
 (key-chord-define-global ";r" 'recentf-ido-find-file)
 (key-chord-define-global ";t" 'projectile-find-file)
@@ -22,7 +22,7 @@
 (key-chord-define-global ";c" 'switch-to-or-create-project-shell)
 
 ;; project-ish
-(key-chord-define-global ";'" 'magit-in-perspective)
+(key-chord-define-global ";'" 'open-project)
 (key-chord-define-global ";l" 'persp-switch)
 (key-chord-define-global ";," 'magit-status)
 (key-chord-define-global ";k" 'ack-and-a-half)
