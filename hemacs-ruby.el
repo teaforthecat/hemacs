@@ -1,3 +1,6 @@
+(require 'rbenv)
+(global-rbenv-mode)
+
 ;; jump to and from definition with M-. / M-,
 (autoload 'zossima-mode "zossima" "" t)
 (add-hook 'ruby-mode-hook 'zossima-mode)
@@ -5,9 +8,14 @@
 ;; indentation fixing
 (setq ruby-deep-indent-paren nil)
 
-(defun ruby-insert-console ()
+(defun rails-insert-console ()
   (interactive)
   (insert "logger.info "))
+
+(defun erb-render-tag ()
+  (interactive)
+  (insert "<%= %>")
+  (backward-char 3))
 
 (defun make-ruby-block()
   (interactive)
@@ -18,6 +26,7 @@
 
 (defun indent-and-ruby-end()
   (interactive)
+  (end-of-line)
   (insert " \n\nend")
   (indent-according-to-mode)
   (previous-line)
@@ -38,10 +47,9 @@
   '(progn
      (define-key ruby-mode-map (kbd "M-RET") 'make-ruby-block)
      (define-key ruby-mode-map (kbd "<C-return>") 'indent-and-ruby-end)
-     (define-key ruby-mode-map (kbd "C-l") 'ruby-insert-console)
+     (define-key ruby-mode-map (kbd "C-l") 'rails-insert-console)
      (define-key ruby-mode-map (kbd "M-#") 'string-interpolate)
-     (define-key ruby-mode-map (kbd "s->") 'arrow)
-     (define-key ruby-mode-map (kbd "s-{") 'pad-brackets)
+     (define-key ruby-mode-map (kbd "C-c }") 'pad-brackets)
      (define-key ruby-mode-map (kbd "C-c :") 'ruby-toggle-hash-syntax)))
 
 ;; bundler bindings
