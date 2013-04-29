@@ -22,6 +22,7 @@
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 ;; popwin
+(require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer
       popwin:popup-window-height 0.5
       popwin:special-display-config
@@ -38,7 +39,7 @@
         "*ruby*"
         "*helm mini*"
         "*Deft*"
-        "*magit-process*"
+        ("*magit-process*" :position right :width .5 :dedicated t)
         ("*Occur*" :noselect t)
         ("*magit-commit*" :noselect t)
         ("*magit-diff*" :noselect t)

@@ -206,14 +206,6 @@ region-end is used."
   (other-window 1)
   (delete-other-windows))
 
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer)))
-
-(defun close-buffer ()
-  (interactive)
-  (kill-buffer (current-buffer)))
-
 (defun maybe-deactivate-mark ()
   (interactive)
   (if (region-active-p)
@@ -315,15 +307,15 @@ file of a buffer in an external program."
   (newline)
   (indent-relative))
 
-(defun swap-buffers-in-windows ()
-  "Put the buffer from the selected window in next window, and vice versa"
-  (interactive)
-  (let* ((this (selected-window))
-         (other (next-window))
-         (this-buffer (window-buffer this))
-         (other-buffer (window-buffer other)))
-    (set-window-buffer other this-buffer)
-    (set-window-buffer this other-buffer)))
+;; (defun swap-buffers-in-windows ()
+;;   "Put the buffer from the selected window in next window, and vice versa"
+;;   (interactive)
+;;   (let* ((this (selected-window))
+;;          (other (next-window))
+;;          (this-buffer (window-buffer this))
+;;          (other-buffer (window-buffer other)))
+;;     (set-window-buffer other this-buffer)
+;;     (set-window-buffer this other-buffer)))
 
 (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
   "Create parent directory if not exists while visiting file."
@@ -380,21 +372,8 @@ file of a buffer in an external program."
       (subword-backward n)
     (subword-forward n)))
 
-(defmacro custom-persp (name &rest body)
-  `(let ((initialize (not (gethash ,name perspectives-hash)))
-         (current-perspective persp-curr))
-     (persp-switch ,name)
-     (when initialize ,@body)
-     (setq persp-last current-perspective)))
-
-(defun magit-in-perspective ()
-  "Use ido to find or create a perspective for a project and open it in magit"
-  (interactive)
-  (let ((project-name (ido-completing-read "Open project: " (directory-files code-dir nil "^[^.]"))))
-    (custom-persp project-name)
-    (magit-status (concat code-dir project-name))))
-
 (defun toggle-fullscreen ()
+  (interactive)
   (when (and *is-a-mac* window-system)
     (if (functionp 'ns-toggle-fullscreen)
         (ns-toggle-fullscreen)
@@ -411,7 +390,24 @@ file of a buffer in an external program."
 (defun maybe-turn-on-rainbow-mode ()
   (when (and (stringp buffer-file-name)
              (string-match ".*theme.el" buffer-file-name))
-
     (rainbow-mode)))
+
+(defun region-as-string ()
+  (buffer-substring (region-beginning)
+                    (region-end)))
+
+(defun isearch-forward-use-region ()
+  (interactive)
+  (when (region-active-p)
+    (add-to-history 'search-ring (region-as-string))
+    (deactivate-mark))
+  (call-interactively 'isearch-forward))
+
+(defun isearch-backward-use-region ()
+  (interactive)
+  (when (region-active-p)
+    (add-to-history 'search-ring (region-as-string))
+    (deactivate-mark))
+  (call-interactively 'isearch-backward))
 
 (provide 'hemacs-defuns)

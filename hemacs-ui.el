@@ -4,6 +4,7 @@
 (require 'git-gutter)
 (require 'git-gutter-fringe)
 (require 'auto-dim-other-buffers)
+(require 'smooth-scrolling)
 
 ;; custom, minimal powerline
 (defun hemacs-powerline-theme ()
