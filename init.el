@@ -61,7 +61,6 @@
 (require 'hemacs-mode-map)
 (require 'hemacs-lisp)
 (require 'hemacs-ruby)
-(require 'hemacs-templating)
 (require 'hemacs-stylesheets)
 (require 'hemacs-javascripts)
 (require 'hemacs-coffee)
