@@ -5,7 +5,7 @@
 ;; simple layout, increase window height
 (setq-default ace-jump-buff-on nil
               bs-header-lines-length 0
-              bs-max-window-height 26
+              bs-max-window-height 27
               bs-attributes-list (quote (("" 2 2 left " ")
                                  ("" 1 1 left bs--get-marked-string)
                                  ("" 1 1 left " ")
