@@ -32,7 +32,7 @@
 
 ;; do what i mean
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "s-u") 'duplicate-current-line-or-region)
+(global-set-key (kbd "s-u") 'duplicate-dwim)
 
 ;; hippie expand line
 (global-set-key (kbd "C-/") 'hippie-expand-lines)

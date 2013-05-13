@@ -77,14 +77,26 @@
     (indent-for-tab-command))
   (indent-for-tab-command))
 
-(defun duplicate-current-line-or-region (arg)
-  "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated."
+(defmacro line-as-string ()
+  "Returns the current line as a string."
+  `(buffer-substring (point-at-bol) (point-at-eol)))
+
+(defun blank-line-p ()
+  "If line contains only spaces."
+  (string-match-p "^[ ]*$" (line-as-string)))
+
+(defun duplicate-dwim (arg)
+  "Duplicate:
+a) region (if active) ARG times,
+b) or the line above starting at the current column poisition (if the current line is blank),
+c) or the current line ARG times."
   (interactive "p")
   (save-excursion
     (if (region-active-p)
         (duplicate-region arg)
-      (duplicate-current-line arg))))
+      (if (blank-line-p)
+          (copy-from-above-command)
+        (duplicate-current-line arg)))))
 
 (defun duplicate-region (num &optional start end)
   "Duplicates the region bounded by START and END NUM times.
@@ -187,15 +199,6 @@ region-end is used."
 (defun pad-colon ()
   (interactive)
   (insert ": "))
-
-(defun pad-colon-function-arrow ()
-  (interactive)
-  (insert ": ->"))
-
-(defun pad-colon-function-arrow-arguments ()
-  (interactive)
-  (insert ": () ->")
-  (backward-char 4))
 
 (defun word-count ()
   (interactive)
@@ -357,20 +360,6 @@ file of a buffer in an external program."
           (with-current-buffer buffer
             (funcall fn)))
         (buffer-list)))
-
-(defun right-subword (&optional n)
-  "Move point N subwords to the right (to the left if N is negative)."
-  (interactive "^p")
-  (if (eq (current-bidi-paragraph-direction) 'left-to-right)
-      (subword-forward n)
-    (subword-backward n)))
-
-(defun left-subword (&optional n)
-  "Move point N subwords to the left (to the right if N is negative)."
-  (interactive "^p")
-  (if (eq (current-bidi-paragraph-direction) 'left-to-right)
-      (subword-backward n)
-    (subword-forward n)))
 
 (defun toggle-fullscreen ()
   (interactive)

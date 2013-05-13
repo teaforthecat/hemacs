@@ -1,5 +1,14 @@
 (require 'coffee-mode)
 
+(defun pad-colon-function-arrow ()
+  (interactive)
+  (insert ": ->"))
+
+(defun pad-colon-function-arrow-arguments ()
+  (interactive)
+  (insert ": () ->")
+  (backward-char 4))
+
 (defun coffee-function-newline-and-indent()
   (interactive)
   (insert "->")
