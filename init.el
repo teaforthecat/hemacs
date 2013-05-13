@@ -32,6 +32,7 @@
 (require 'hemacs-base)
 
 ;; editing modules
+(require 'hemacs-subword)
 (require 'hemacs-hooks)
 (require 'hemacs-ido)
 (require 'hemacs-hippie)
