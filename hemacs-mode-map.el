@@ -18,12 +18,13 @@
 (add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache$" . handlebars-mode))
 
-(add-to-list 'auto-mode-alist '("\\.styl$" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . less-css-mode))
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee.erb$" . coffee-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 (provide 'hemacs-mode-map)

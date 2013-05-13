@@ -15,6 +15,7 @@
 ;; turn on rainbow mode when editing themes
 (add-hook 'find-file-hook 'maybe-turn-on-rainbow-mode)
 (add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'stylus-mode-hook 'rainbow-mode)
 
 ;; nice scrolling for most modes
 ;; (dolist (hook '(prog-mode-hook

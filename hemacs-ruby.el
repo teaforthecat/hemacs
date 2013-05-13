@@ -52,6 +52,8 @@
      (define-key ruby-mode-map (kbd "C-c }") 'pad-brackets)
      (define-key ruby-mode-map (kbd "C-c :") 'ruby-toggle-hash-syntax)))
 
+(define-key slim-mode-map (kbd "C-c :") 'ruby-toggle-hash-syntax)
+
 ;; bundler bindings
 (require 'bundler)
 (global-set-key (kbd "C-c b i") 'bundle-install)
