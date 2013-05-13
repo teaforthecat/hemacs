@@ -29,16 +29,19 @@
 (savehist-mode t)
 (recentf-mode t)
 
-;; clean up buffers that are stale over 15 minutes every 2 hours
-(setq midnight-period 7200 ;; 2x60x60 = "2 hours"
-      clean-buffer-list-delay-special 900 ;; 15x60 = "15 minutes"
-      clean-buffer-list-kill-regexps '("^.*$")
-      clean-buffer-list-kill-never-regexps '("^ \\*Minibuf-.*\\*$" "\\\\*shell\\\\*.*"))
-(require 'midnight)
+;; pairs
+(require 'smartparens-config)
+(smartparens-global-mode 1)
+(show-smartparens-global-mode t)
+(sp-with-modes '(html-mode sgml-mode handlebars-mode)
+  (sp-local-pair "<" ">"))
 
-;; the undo tree
-(require 'undo-tree)
-(global-undo-tree-mode)
+;; clean up buffers that are stale over 15 minutes every 2 hours
+;; (setq midnight-period 7200 ;; 2x60x60 = "2 hours"
+;;       clean-buffer-list-delay-special 900 ;; 15x60 = "15 minutes"
+;;       clean-buffer-list-kill-regexps '("^.*$")
+;;       clean-buffer-list-kill-never-regexps '("^ \\*Minibuf-.*\\*$" "\\\\*shell\\\\*.*"))
+;; (require 'midnight)
 
 ;; 80 character columns indicator
 ;; (require 'whitespace)
@@ -77,8 +80,6 @@
       uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 (require 'uniquify)
 
-
-(global-subword-mode 1) ;; treat camelcasing and underscoring as stop points
 (delete-selection-mode t) ;; any key deletes active region
 
 ;; convenience and prefs

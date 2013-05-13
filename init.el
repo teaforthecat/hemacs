@@ -40,7 +40,7 @@
 (require 'hemacs-windows)
 (require 'hemacs-indent)
 (require 'hemacs-copy-paste)
-(require 'hemacs-pairs)
+;; (require 'hemacs-pairs)
 
 ;; global bindings and keychord
 (require 'hemacs-bindings)
