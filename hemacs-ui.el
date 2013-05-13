@@ -1,10 +1,12 @@
 ;; (require 'nurumacs)
 (require 'powerline)
-(require 'mic-paren)
+;; (require 'mic-paren)
 (require 'git-gutter)
 (require 'git-gutter-fringe)
 (require 'auto-dim-other-buffers)
-(require 'smooth-scrolling)
+;; (require 'smooth-scrolling)
+(require 'sublimity-scroll)
+;; (require 'sublimity-map)
 
 ;; custom, minimal powerline
 (defun hemacs-powerline-theme ()
@@ -64,8 +66,7 @@
                       'face 'linum)))
 
 (transient-mark-mode t)
-(show-paren-mode 1)
-(paren-activate)
+;; (show-paren-mode 1)
 (blink-cursor-mode 1)
 (global-font-lock-mode t)
 (set-fringe-style (cons 1 0)) ;; left only

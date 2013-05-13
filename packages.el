@@ -10,7 +10,6 @@
 
 (defvar packages
   '(ace-jump-mode
-    ;; ack-and-a-half
     ag
     auto-dim-other-buffers
     back-button
@@ -41,12 +40,9 @@
     ;; magit-gh-pulls
     magithub
     markdown-mode
-    mic-paren
     mmm-mode
-    move-text
     multiple-cursors
     nav
-    nurumacs
     octomacs
     page-break-lines
     pcmpl-args
@@ -67,9 +63,9 @@
     smartparens
     smex
     smart-tab
-    smooth-scrolling
+    ;; smooth-scrolling
     stylus-mode
-    ;; sublimity
+    sublimity
     perspective
     undo-tree
     yaml-mode
