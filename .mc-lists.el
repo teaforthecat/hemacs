@@ -28,5 +28,6 @@
         ido-find-file
         next-error
         persp-switch
+        query-replace
         smex
         ))

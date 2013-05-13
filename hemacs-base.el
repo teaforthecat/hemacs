@@ -1,7 +1,3 @@
-;; require crucial packages
-(require 'expand-region)
-(require 'change-inner)
-(require 'multiple-cursors)
 (require 'nav)
 (require 'ag)
 
@@ -10,11 +6,12 @@
 (persp-mode t)
 
 ;; enable features
+(require 'misc)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR.")
+;; (autoload 'zap-up-to-char "misc"
+;;   "Kill up to, but not including ARGth occurrence of CHAR.")
 
 ;; no auto saving or backup files
 (setq auto-save-default nil)
@@ -68,16 +65,7 @@
 (define-key minibuffer-local-map [down] 'next-complete-history-element)
 ;; (define-key minibuffer-local-map (kbd "TAB") 'completion-at-point)
 
-;; visual mark history navigation C-x [left/right]
-(require 'back-button)
-(back-button-mode 1)
-
 ;; forcefully applying utf-8
-;; (setq locale-coding-system 'utf-8-unix)
-;; (setq buffer-file-coding-system 'utf-8-unix)
-;; (set-buffer-file-coding-system 'utf-8-unix t)
-;; (set-terminal-coding-system 'utf-8-unix)
-;; (set-keyboard-coding-system 'utf-8-unix)
 (set-selection-coding-system 'utf-8-unix) ;; copy/paste from other programs
 (prefer-coding-system 'utf-8-unix)
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
@@ -118,8 +106,6 @@
 (require 'handlebars-mode)
 (require 'jade-mode)
 (require 'simplezen)
-
-(define-key html-mode-map (kbd "C-c C-z") 'simplezen-expand)
 
 (setq haml-backspace-backdents-nesting nil)
 (setq slim-backspace-backdents-nesting nil)
