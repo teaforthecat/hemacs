@@ -25,11 +25,12 @@
 (key-chord-define-global ";'" 'open-project)
 (key-chord-define-global ";l" 'persp-switch)
 (key-chord-define-global ";," 'magit-status)
-(key-chord-define-global ";k" 'ack-and-a-half)
 (key-chord-define-global ";g" 'ag-project-at-point)
+(key-chord-define-global ":G" 'ag)
 
-;; editing
+;; zap
 (key-chord-define-global ";z" 'zap-up-to-char)
+(key-chord-define-global ":Z" (lambda (char) (interactive "cZap up to char backwards: ") (zap-up-to-char -1 char)))
 
 ;; todos
 (key-chord-define-global ";e" 'hemacs-todo-capture)
