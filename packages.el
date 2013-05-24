@@ -13,7 +13,7 @@
     ag
     auto-dim-other-buffers
     back-button
-    bash-completion
+    ;; bash-completion
     browse-kill-ring
     buffer-move
     bundler
@@ -59,12 +59,11 @@
     ;; regex-tool
     s
     sass-mode
-    shell-command
+    ;; shell-command
     simplezen
     slim-mode
     smartparens
     smex
-    smart-tab
     ;; smooth-scrolling
     stylus-mode
     sublimity
