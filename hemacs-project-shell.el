@@ -43,7 +43,7 @@
   "Find or create a dedicated shell for the current project."
   (interactive)
   (let* ((shell-buffer-name (concat "*shell " (persp-name persp-curr) "*")))
-    (display-buffer
+    (switch-to-buffer
      (or (get-buffer shell-buffer-name)
          (save-window-excursion (make-persp-shell))))))
 
@@ -65,7 +65,7 @@
          (cmd (read-from-minibuffer (concat "Shell command (" dir-string "): ") nil nil nil 'shell-command-history))
          (command-buffer-name (concat "*shell " (persp-name persp-curr) " " cmd "*"))
          )
-    (display-buffer
+    (switch-to-buffer
      (save-window-excursion
        (unless in-current-dir (cd (projectile-project-root)))
        (async-shell-command-get-buffer)))))
@@ -89,5 +89,6 @@
 (global-set-key (kbd "C-z x") 'popwin:project-shell)
 (global-set-key (kbd "C-c m") 'project-async-command-to-buffer)
 (global-set-key (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
+(define-key comint-mode-map (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
 
 (provide 'hemacs-project-shell)
