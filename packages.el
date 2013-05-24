@@ -29,7 +29,6 @@
     git-gutter-fringe
     github-browse-file
     haml-mode
-    handlebars-mode
     ido-ubiquitous
     jade-mode
     js2-mode

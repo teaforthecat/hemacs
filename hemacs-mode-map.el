@@ -9,16 +9,16 @@
 (add-to-list 'auto-mode-alist '("\\.m$" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.cfm" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 
-(add-to-list 'auto-mode-alist '("\\.hamlbars$" . haml-mode))
+(add-to-list 'auto-mode-alist '("\\.cfm" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.hamlbars$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache$" . html-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
-(add-to-list 'auto-mode-alist '("\\.hbs$" . handlebars-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache$" . handlebars-mode))
 
-(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.styl$" . stylus-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . less-css-mode))
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
