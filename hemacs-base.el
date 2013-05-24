@@ -33,8 +33,13 @@
 (require 'smartparens-config)
 (smartparens-global-mode 1)
 (show-smartparens-global-mode t)
-(sp-with-modes '(html-mode sgml-mode handlebars-mode)
-  (sp-local-pair "<" ">"))
+(setq sp-autoescape-string-quote nil)
+
+(sp-with-modes '(ruby-mode slim-mode)
+  (sp-local-pair "|" "|"))
+
+(sp-with-modes '(ruby-mode slim-mode)
+  (sp-local-pair "\{ " " \\}"))
 
 ;; clean up buffers that are stale over 15 minutes every 2 hours
 ;; (setq midnight-period 7200 ;; 2x60x60 = "2 hours"
