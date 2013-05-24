@@ -89,5 +89,8 @@
 (global-unset-key (kbd "s-q")) ; save-all-buffers-kill-emacs
 (global-unset-key (kbd "s-n")) ; make-frame
 
+;; smarter minibuffer history cycling
+(define-key minibuffer-local-map (kbd "TAB") 'previous-complete-history-element)
+(define-key minibuffer-local-map (kbd "M-TAB") 'next-complete-history-element)
 
 (provide 'hemacs-bindings)

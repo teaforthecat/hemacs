@@ -17,24 +17,9 @@
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'stylus-mode-hook 'rainbow-mode)
 
-;; nice scrolling for most modes
-;; (dolist (hook '(prog-mode-hook
-;;                 html-mode-hook
-;;                 css-mode-hook
-;;                 sass-mode-hook
-;;                 magit-log-mode-hook
-;;                 magit-mode-hook
-;;                 slim-mode-hook
-;;                 ;; coffee-mode-hook
-;;                 haml-mode-hook
-;;                 markdown-mode-hook
-;;                 js2-mode-hook))
-;;   (add-hook hook 'nice-scrolling))
-
-;; text scale down one and turn off smart tab for shell-ish modes
+;; text scale down one for shell-ish modes
 (add-hook 'comint-mode-hook '(lambda ()
-                               (text-scale-decrease 1)
-                               (smart-tab-mode 0)))
+                               (text-scale-decrease 1)))
 
 ;; force utf8 on I/O
 ;; (defun exec-use-utf8 ()

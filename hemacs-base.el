@@ -65,11 +65,6 @@
 (setq minibuffer-eldef-shorten-default t) ;; shorten "(default ...)" to "[...]"
 (minibuffer-electric-default-mode t)
 
-;; smarter minibuffer history cycling
-(define-key minibuffer-local-map [up] 'previous-complete-history-element)
-(define-key minibuffer-local-map [down] 'next-complete-history-element)
-;; (define-key minibuffer-local-map (kbd "TAB") 'completion-at-point)
-
 ;; forcefully applying utf-8
 (set-selection-coding-system 'utf-8-unix) ;; copy/paste from other programs
 (prefer-coding-system 'utf-8-unix)
