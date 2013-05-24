@@ -399,4 +399,46 @@ file of a buffer in an external program."
     (deactivate-mark))
   (call-interactively 'isearch-backward))
 
+(defun camelcase-region (start end)
+  "Changes region from snake_case to camelCase"
+  (interactive "r")
+  (save-restriction (narrow-to-region start end)
+                    (goto-char (point-min))
+                    (while (re-search-forward "_\\(.\\)" nil t)
+                      (replace-match (upcase (match-string 1))))))
+
+(defun camelcase-word-or-region ()
+  "Changes word or region from snake_case to camelCase"
+  (interactive)
+  (let (pos1 pos2 bds)
+    (if (and transient-mark-mode mark-active)
+        (setq pos1 (region-beginning) pos2 (region-end))
+      (progn
+        (setq bds (bounds-of-thing-at-point 'symbol))
+        (setq pos1 (car bds) pos2 (cdr bds))))
+    (camelcase-region pos1 pos2)))
+
+(defun snakecase-region (start end)
+  "Changes region from camelCase to snake_case"
+  (interactive "r")
+  (save-restriction
+    (let ((case-fold-search nil))
+      (narrow-to-region start end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\([a-z]\\)\\([A-Z]\\)" nil t)
+        (message (match-string 1))
+        (replace-match (concat (match-string 1) "_" (downcase (match-string 2))))
+        (goto-char (point-min))))))
+
+(defun snakecase-word-or-region ()
+  "Changes word or region from camelCase to snake_case"
+  (interactive)
+  (let (pos1 pos2 bds)
+    (if (and transient-mark-mode mark-active)
+        (setq pos1 (region-beginning) pos2 (region-end))
+      (progn
+        (setq bds (bounds-of-thing-at-point 'symbol))
+        (setq pos1 (car bds) pos2 (cdr bds))))
+    (snakecase-region pos1 pos2)))
+
 (provide 'hemacs-defuns)

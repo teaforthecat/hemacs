@@ -58,6 +58,10 @@
 (global-set-key (kbd "s-:") 'mc/mark-all-like-this-dwim)
 (global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
 
+;; camelCase snake_case conversion
+(global-set-key (kbd "s-+") 'camelcase-word-or-region)
+(global-set-key (kbd "s-_") 'snakecase-word-or-region)
+
 ;; change inner/outer
 (global-set-key (kbd "s-i") 'change-inner)
 (global-set-key (kbd "s-o") 'change-outer)
