@@ -1,6 +1,3 @@
-(require 'nav)
-(require 'ag)
-
 ;; heavily relying on persp for projects
 (require 'perspective)
 (persp-mode t)

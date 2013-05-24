@@ -44,6 +44,7 @@
         ("*magit-commit*" :noselect t)
         ("*magit-diff*" :noselect t)
         ("*magit-edit-log*" :height 5 :dedicated t)
+        (direx:direx-mode :position left :width .3 :dedicated t)
         ;; (dired-mode :position left :width .3)
         (" *undo-tree*" :position right :width .3 :dedicated t)
         ("*Kill Ring*" :position right :width .3 :dedicated t)
@@ -59,12 +60,5 @@
 ;;   (if (popwin:popup-window-live-p)
 ;;       (popwin:close-popup-window)
 ;;     (popwin:display-last-buffer)))
-
-(global-set-key (kbd "C-z") popwin:keymap)
-(global-set-key (kbd "C-z d") 'dired-jump-other-window)
-
-;; nav toggle following popwin C-z convention
-(global-set-key (kbd "C-z n") 'nav-toggle)
-(global-set-key (kbd "C-z C-n") 'nav-toggle)
 
 (provide 'hemacs-windows)

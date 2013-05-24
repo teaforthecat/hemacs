@@ -1,6 +1,7 @@
 (require 'expand-region)
 (require 'change-inner)
 (require 'multiple-cursors)
+(require 'direx)
 
 ;; the undo tree
 (require 'undo-tree)
@@ -12,9 +13,14 @@
 (require 'back-button)
 (back-button-mode 1)
 
+;; popwin and file directory/tree navigation
+(global-set-key (kbd "C-z") popwin:keymap)
+(global-set-key (kbd "C-z d") 'dired-jump-other-window)
+(global-set-key (kbd "C-z C-j") 'direx:jump-to-directory-other-window)
+
 ;; concentrate, focus power
 (global-set-key (kbd "C-=") 'delete-other-windows)
-(global-set-key (kbd "s-+") 'toggle-fullscreen)
+(global-set-key (kbd "C-+") 'toggle-fullscreen)
 
 ;; keyboard scrolling
 (global-set-key (kbd "s-,") 'next-line)

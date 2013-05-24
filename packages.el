@@ -24,6 +24,7 @@
     elisp-slime-nav
     exec-path-from-shell
     expand-region
+    direx
     git-gutter
     git-gutter-fringe
     github-browse-file
@@ -42,10 +43,11 @@
     markdown-mode
     mmm-mode
     multiple-cursors
-    nav
+    ;; nav
     octomacs
     page-break-lines
     pcmpl-args
+    pcmpl-git
     perspective
     php-mode
     popwin
