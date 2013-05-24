@@ -51,9 +51,18 @@
     (setq he-expand-list (cdr he-expand-list))
     t))
 
-;; smart tab for hippie or indenting
-(require 'smart-tab)
-(setq smart-tab-using-hippie-expand t)
-(global-smart-tab-mode 1)
+(defun tab-dwim ()
+  "Complete with hippie expand or indent current line or active region"
+  (interactive)
+  (if mark-active
+      (indent-region (region-beginning) (region-end))
+    (if (looking-at "\\_>")
+        (hippie-expand nil)
+      (indent-for-tab-command))))
+
+;; bindings
+(global-set-key (kbd "TAB") 'tab-dwim)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "M-?") 'hippie-expand-lines)
 
 (provide 'hemacs-hippie)

@@ -40,9 +40,6 @@
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "s-u") 'duplicate-dwim)
 
-;; hippie expand line
-(global-set-key (kbd "C-/") 'hippie-expand-lines)
-
 ;; ace jump mode
 (global-set-key (kbd "s-m") 'ace-jump-mode)
 (global-set-key (kbd "s-M") 'ace-jump-char-mode)
