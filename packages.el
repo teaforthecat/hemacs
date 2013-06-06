@@ -25,10 +25,12 @@
     exec-path-from-shell
     expand-region
     direx
+    flx
     git-gutter
     git-gutter-fringe
     github-browse-file
     haml-mode
+    ido-sort-mtime
     ido-ubiquitous
     jade-mode
     js2-mode

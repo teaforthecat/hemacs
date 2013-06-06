@@ -1,16 +1,23 @@
+(require 'flx-ido)
 (require 'ido-ubiquitous)
 (require 'smex)
 
 (ido-mode t)
 (ido-everywhere t)
 (ido-ubiquitous t)
+(flx-ido-mode 1)
+(ido-sort-mtime-mode 1)
+
 (smex-initialize) ;; smart super-x ido action
 
 (setq ido-enable-flex-matching t ;; fuzzy matching
       ido-use-filename-at-point nil ;; don't guess based on cursor position
       ido-auto-merge-work-directories-length -1 ;; don't merge to other dirs
       ido-max-window-height 20
-      ido-max-prospects 18)
+      ido-max-prospects 18
+      ido-use-faces nil)
+
+(setq gc-cons-threshold 20000000) ;; flx memory optimization
 
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 (add-to-list 'ido-ignore-files "\\.ido.last")
@@ -59,21 +66,5 @@
                           nil t)))
     (when file
       (find-file file))))
-
-;; sort ido filelist by mtime instead of alphabetically
-(defun ido-sort-mtime ()
-  (setq ido-temp-list
-        (sort ido-temp-list
-              (lambda (a b)
-                (time-less-p
-                 (sixth (file-attributes (concat ido-current-directory b)))
-                 (sixth (file-attributes (concat ido-current-directory a)))))))
-  (ido-to-end  ;; move . files to end (again)
-   (delq nil (mapcar
-              (lambda (x) (and (char-equal (string-to-char x) ?.) x))
-              ido-temp-list))))
-
-(add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
-(add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
 
 (provide 'hemacs-ido)
