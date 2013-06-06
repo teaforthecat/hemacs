@@ -1,6 +1,9 @@
 ;; suppress "complete, but not unique" popup
 (setq completion-cycle-threshold t)
 
+;; don't output the expansion function used
+(setq hippie-expand-verbose nil)
+
 ;; hippie expand match order
 (setq hippie-expand-try-functions-list '(try-expand-dabbrev-visible
                                          try-expand-dabbrev
