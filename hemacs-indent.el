@@ -3,7 +3,6 @@
 (setq-default indent-tabs-mode nil)
 (setq normal-erase-is-backspace 2)
 
-;; indent shifting textmate-like bindings
 (defun shift-right (&optional arg)
   "Shift the line or region to the ARG places to the right.
   A place is considered `tab-width' character columns."
@@ -28,9 +27,8 @@ the cursor at its beginning, according to the current mode."
 
 ;; auto-indent pasted texted
 (defvar yank-indent-modes '(prog-mode
-                            sgml-mode
                             css-mode
-                            js2-mode)
+                            sgml-mode)
   "Modes in which to indent regions that are yanked (or yank-popped)")
 
 (defvar yank-advised-indent-threshold 1000
@@ -44,16 +42,16 @@ the cursor at its beginning, according to the current mode."
 (defadvice yank (after yank-indent activate)
   "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
-           (member major-mode yank-indent-modes))
+           (--any? (derived-mode-p it) yank-indent-modes))
       (let ((transient-mark-mode nil))
-    (yank-advised-indent-function (region-beginning) (region-end)))))
+        (yank-advised-indent-function (region-beginning) (region-end)))))
 
 (defadvice yank-pop (after yank-pop-indent activate)
   "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
            (member major-mode yank-indent-modes))
-    (let ((transient-mark-mode nil))
-    (yank-advised-indent-function (region-beginning) (region-end)))))
+      (let ((transient-mark-mode nil))
+        (yank-advised-indent-function (region-beginning) (region-end)))))
 
 (defun yank-unindented ()
   (interactive)
