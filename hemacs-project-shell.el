@@ -10,6 +10,29 @@
      (when initialize ,@body)
      (setq persp-last current-perspective)))
 
+(defun persp-remove-current-buffer ()
+  (interactive)
+  (persp-remove-buffer (get-buffer (current-buffer))))
+
+(defun buffer-in-current-presp (buffer)
+  (delq
+   nil
+   (mapcar (lambda (persp-buffer)
+             (eq (buffer-name persp-buffer) (buffer-name buffer)))
+           (persp-buffers persp-curr))))
+
+(defadvice switch-to-next-buffer (after switch-to-next-persp-buffer activate)
+  "Advice around `switch-to-next-buffer' to restrict to current perspective."
+  (unless (buffer-in-current-presp (current-buffer))
+    (persp-remove-current-buffer)
+    (switch-to-next-buffer)))
+
+(defadvice switch-to-prev-buffer (after switch-to-prev-persp-buffer activate)
+  "Advice around `switch-to-prev-buffer' to restrict to current perspective."
+  (unless (buffer-in-current-presp (current-buffer))
+    (persp-remove-current-buffer)
+    (switch-to-prev-buffer)))
+
 (defun open-project ()
   "Use ido to find or create a perspective for a project, create a project shell, and open magit"
   (interactive)

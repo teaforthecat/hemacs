@@ -70,6 +70,7 @@
 ;; (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "C-o") 'open-line-and-indent)
+(global-set-key (kbd "s-w") 'persp-remove-current-buffer)
 
 ;; super+colon adds space
 (global-set-key (kbd "s-:") 'pad-colon)

@@ -1,6 +1,4 @@
-;; (require 'nurumacs)
 (require 'powerline)
-;; (require 'mic-paren)
 (require 'git-gutter)
 (require 'git-gutter-fringe)
 (require 'auto-dim-other-buffers)
