@@ -16,6 +16,7 @@
         sgml-close-tag
         slim-electric-backspace
         smart-tab
+        tab-dwim
         zap-up-to-char
         ))
 
@@ -30,4 +31,5 @@
         persp-switch
         query-replace
         smex
+        sp--self-insert-command
         ))
