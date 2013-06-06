@@ -57,13 +57,13 @@
 ;;       company-minimum-prefix-length 2)
 
 ;; minibuffer
-;; (setq minibuffer-auto-raise t)
 (setq minibuffer-prompt-properties
       (quote
        (read-only
         t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 (setq minibuffer-eldef-shorten-default t) ;; shorten "(default ...)" to "[...]"
 (minibuffer-electric-default-mode t)
+(setq enable-recursive-minibuffers t)
 
 ;; forcefully applying utf-8
 (set-selection-coding-system 'utf-8-unix) ;; copy/paste from other programs
