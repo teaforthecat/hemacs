@@ -4,6 +4,7 @@
 
 (key-chord-define-global "<>" 'sgml-close-tag)
 (key-chord-define-global "{}" 'open-brackets-newline-and-indent)
+(key-chord-define-global "[]" 'pad-brackets)
 (key-chord-define-global "_+" 'arrow)
 (key-chord-define-global "]\\" 'toggle-split-window-horizontally)
 (key-chord-define-global "qr" 'query-replace)
@@ -11,8 +12,8 @@
 ;; semi-colon chordage
 
 ;; buffer hopping
-(key-chord-define-global ",." 'ace-jump-buff)
-(key-chord-define-global ";s" 'ido-switch-buffer)
+(key-chord-define-global ";s" 'ace-jump-buffer)
+(key-chord-define-global ":S" 'ido-switch-buffer)
 (key-chord-define-global ";r" 'recentf-ido-find-file)
 (key-chord-define-global ";t" 'projectile-find-file)
 (key-chord-define-global ";f" 'ido-find-file)

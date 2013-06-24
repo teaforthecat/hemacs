@@ -1,5 +1,6 @@
 (require 'magit)
 (require 'magithub)
+(require 'git-messenger)
 
 ;; always update files, i.e. after git pull
 (global-auto-revert-mode 1)
@@ -52,6 +53,6 @@
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
-(setq magit-save-some-buffers nil) ;; don't ask to save buffers
+;; (setq magit-save-some-buffers nil) ;; don't ask to save buffers
 
 (provide 'hemacs-git)

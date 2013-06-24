@@ -10,8 +10,8 @@
 (global-set-key (kbd "s-Z") 'undo-tree-redo)
 
 ;; visual mark history navigation C-x [left/right]
-(require 'back-button)
-(back-button-mode 1)
+;; (require 'back-button)
+;; (back-button-mode 1)
 
 ;; popwin and file directory/tree navigation
 (global-set-key (kbd "C-z") popwin:keymap)
@@ -53,10 +53,10 @@
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
 ;; regions
-(global-set-key (kbd "s-'") 'er/expand-region)
-(global-set-key (kbd "s-;") 'mc/mark-next-like-this)
-(global-set-key (kbd "s-:") 'mc/mark-all-like-this-dwim)
-(global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
+(global-set-key (kbd "s-;") 'er/expand-region)
+(global-set-key (kbd "s-'") 'mc/mark-next-like-this)
+(global-set-key (kbd "s-\"") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c s-'") 'mc/mark-all-like-this-dwim)
 
 ;; camelCase snake_case conversion
 (global-set-key (kbd "s-+") 'camelcase-word-or-region)
@@ -82,6 +82,7 @@
 ;; necessities
 (global-set-key (kbd "s-x") 'smex)
 (global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
 (global-set-key (kbd "C-c O") 'github-browse-file)
 (global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
 
@@ -94,8 +95,19 @@
 (global-unset-key (kbd "s-q")) ; save-all-buffers-kill-emacs
 (global-unset-key (kbd "s-n")) ; make-frame
 
+(global-set-key (kbd "M-RET") 'newline-dwim)
+
 ;; smarter minibuffer history cycling
 (define-key minibuffer-local-map (kbd "TAB") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "M-TAB") 'next-complete-history-element)
+
+(global-set-key (kbd "C-c C-t") 'rtog/toggle-repl)
+
+;; project shell
+(global-set-key (kbd "C-c x") 'switch-to-or-create-project-shell)
+(global-set-key (kbd "C-z x") 'popwin:project-shell)
+(global-set-key (kbd "C-c m") 'project-async-command-to-buffer)
+(global-set-key (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
+(define-key comint-mode-map (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
 
 (provide 'hemacs-bindings)

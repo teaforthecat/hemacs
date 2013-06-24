@@ -25,6 +25,5 @@
      ))
 
 (define-key js-mode-map (kbd "C-l") 'js-insert-console)
-(define-key js-mode-map (kbd "s-{") 'open-brackets-newline-and-indent)
 
 (provide 'hemacs-javascripts)

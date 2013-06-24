@@ -431,4 +431,16 @@ file of a buffer in an external program."
         (setq pos1 (car bds) pos2 (cdr bds))))
     (snakecase-region pos1 pos2)))
 
+(defun newline-dwim ()
+  (interactive)
+  (let ((break-open-pair (or (and (looking-back "{") (looking-at "}"))
+                             (and (looking-back ">") (looking-at "<"))
+                             (and (looking-back "\\[") (looking-at "\\]")))))
+    (newline)
+    (when break-open-pair
+      (save-excursion
+        (newline)
+        (indent-for-tab-command)))
+    (indent-for-tab-command)))
+
 (provide 'hemacs-defuns)
