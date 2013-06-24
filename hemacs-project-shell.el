@@ -1,55 +1,23 @@
-(require 'projectile)
-(require 'perspective)
+(autoload 'vc-git-root "vc-git")
+(autoload 'vc-svn-root "vc-svn")
 
-(persp-mode t)
-
-(defmacro custom-persp (name &rest body)
-  `(let ((initialize (not (gethash ,name perspectives-hash)))
-         (current-perspective persp-curr))
-     (persp-switch ,name)
-     (when initialize ,@body)
-     (setq persp-last current-perspective)))
-
-(defun persp-remove-current-buffer ()
-  (interactive)
-  (persp-remove-buffer (get-buffer (current-buffer))))
-
-(defun buffer-in-current-presp (buffer)
-  (delq
-   nil
-   (mapcar (lambda (persp-buffer)
-             (eq (buffer-name persp-buffer) (buffer-name buffer)))
-           (persp-buffers persp-curr))))
-
-(defadvice switch-to-next-buffer (after switch-to-next-persp-buffer activate)
-  "Advice around `switch-to-next-buffer' to restrict to current perspective."
-  (unless (buffer-in-current-presp (current-buffer))
-    (persp-remove-current-buffer)
-    (switch-to-next-buffer)))
-
-(defadvice switch-to-prev-buffer (after switch-to-prev-persp-buffer activate)
-  "Advice around `switch-to-prev-buffer' to restrict to current perspective."
-  (unless (buffer-in-current-presp (current-buffer))
-    (persp-remove-current-buffer)
-    (switch-to-prev-buffer)))
-
-(defun open-project ()
-  "Use ido to find or create a perspective for a project, create a project shell, and open magit"
-  (interactive)
-  (let* ((project-name (ido-completing-read "Open project: " (directory-files code-dir nil "^[^.]")))
-         (project-dir (concat code-dir project-name))
-         (shell-buffer-name (concat "*shell " project-name "*")))
-    (custom-persp project-name)
-    (with-temp-buffer
-      (cd project-dir)
-      (shell shell-buffer-name))
-    (magit-status project-dir)))
+(defun find-project-root ()
+  "Guess the project root of the given FILE-PATH."
+  (or (vc-git-root default-directory)
+      (vc-svn-root default-directory)
+      default-directory))
 
 (defun make-persp-shell ()
   (with-temp-buffer
-    (cd (projectile-project-root))
+    (cd (find-project-root))
     (shell shell-buffer-name)
     (get-buffer shell-buffer-name)))
+
+(defun growl (title message)
+  (start-process "growl" " growl" "growlnotify" title "-a" "Emacs")
+  (process-send-string " growl" message)
+  (process-send-string " growl" "\n")
+  (process-send-eof " growl"))
 
 (defun async-shell-command-get-buffer ()
   (async-shell-command cmd command-buffer-name)
@@ -81,7 +49,7 @@
 
 (defun project-async-command-to-buffer (&optional arg)
  "Execute command from minibuffer at the project root and output into a dedicated buffer.
-  Use C-u prefix to do the command in `current-directory`, defaults to `projectile-project-root`."
+  Use C-u prefix to do the command in `current-directory`, defaults to the project root."
   (interactive "P")
   (let* ((in-current-dir (consp arg))
          (dir-string (if in-current-dir "current directory" "project root"))
@@ -90,28 +58,18 @@
          )
     (switch-to-buffer
      (save-window-excursion
-       (unless in-current-dir (cd (projectile-project-root)))
+       (unless in-current-dir (cd (find-project-root)))
        (async-shell-command-get-buffer)))))
 
 (defun project-async-command-in-background-and-growl-output (&optional arg)
  "Execute command from minibuffer in the background and send the output to growlnotify on exit.
-  Use C-u prefix to do the command in `current-directory`, defaults to `projectile-project-root`."
+  Use C-u prefix to do the command in `current-directory`, defaults to the project root."
   (interactive "P")
   (let* ((in-current-dir (consp arg))
          (dir-string (if in-current-dir "current directory" "project root"))
          (cmd (read-from-minibuffer (concat "Shell command (" dir-string "): ") nil nil nil 'shell-command-history)))
     (with-temp-buffer
-      (unless in-current-dir (cd (projectile-project-root)))
+      (unless in-current-dir (cd (find-project-root)))
       (set-process-sentinel (start-process-shell-command cmd cmd cmd) #'growl-output-kill-buffer-sentinel))))
-
-(defun ido-shell-buffer-in-persp ()
-  (interactive)
-  (ido-for-mode-in-persp "Shell:" 'shell-mode))
-
-(global-set-key (kbd "C-c x") 'switch-to-or-create-project-shell)
-(global-set-key (kbd "C-z x") 'popwin:project-shell)
-(global-set-key (kbd "C-c m") 'project-async-command-to-buffer)
-(global-set-key (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
-(define-key comint-mode-map (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
 
 (provide 'hemacs-project-shell)

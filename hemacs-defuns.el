@@ -334,10 +334,6 @@ file of a buffer in an external program."
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-(defun persp-switch-last ()
-  (interactive)
-  (persp-switch persp-last))
-
 (defun font-candidate (&rest fonts)
      "Return existing font which first match."
      (find-if (lambda (f) (find-font (font-spec :name f))) fonts))
@@ -345,12 +341,6 @@ file of a buffer in an external program."
 (defun font-existsp (font)
   (if (null (x-list-fonts font))
       nil t))
-
-(defun growl (title message)
-  (start-process "growl" " growl" "growlnotify" title "-a" "Emacs")
-  (process-send-string " growl" message)
-  (process-send-string " growl" "\n")
-  (process-send-eof " growl"))
 
 (defun terminal-notifier (title message)
   (start-process "terminal-notifier" "*terminal-notifier*" "terminal-notifier" "-title" title "-message" message))

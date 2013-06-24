@@ -41,20 +41,6 @@
 
 (add-hook 'ido-setup-hook 'ido-up-down-fix)
 
-;; switch buffers in project by mode
-(defun ido-for-mode-in-persp (prompt the-mode)
-  (switch-to-buffer
-   (ido-completing-read prompt
-                        (save-excursion
-                          (delq
-                           nil
-                           (mapcar (lambda (buf)
-                                     (when (buffer-live-p buf)
-                                       (with-current-buffer buf
-                                         (and (eq major-mode the-mode)
-                                              (buffer-name buf)))))
-                                   (persp-buffers persp-curr)))))))
-
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."
   (interactive)

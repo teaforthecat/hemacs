@@ -1,7 +1,3 @@
-;; heavily relying on persp for projects
-(require 'perspective)
-(persp-mode t)
-
 ;; enable features
 (require 'misc)
 (put 'downcase-region 'disabled nil)
@@ -37,6 +33,9 @@
 
 (sp-with-modes '(ruby-mode slim-mode)
   (sp-local-pair "\{ " " \\}"))
+
+;; projectile mode for projects
+(require 'projectile)
 
 ;; clean up buffers that are stale over 15 minutes every 2 hours
 ;; (setq midnight-period 7200 ;; 2x60x60 = "2 hours"
