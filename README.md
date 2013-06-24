@@ -10,13 +10,13 @@ one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm main
 
 indeed, installing carbon emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew). i go cutting edge like this =>
 
-`brew install emacs --cocoa --use-git-head --srgba --HEAD`
-
-then run `brew linkapps` or, better yet, move the Emacs.app from your homebrew cellar to your `/Applications` directory.
-
+`
+brew install emacs --cocoa --use-git-head --srgba --HEAD
+mv /usr/local/Cellar/emacs/HEAD/Emacs.app /Applications
+`
 since we are already brewing, you might want to make sure you have these programs installed as well =>
 
-`brew install ag git ack markdown ispell bash-completion`
+`brew install ag git ack markdown ispell`
 
 also, the first time you boot a whole bunch of elisp packages will be installed so just relax.
 
@@ -32,13 +32,13 @@ with glitz in the form of these two 24+ modified color themes =>
 and then there are these tuning modules =>
 
 * `hemacs-base` - bunch of general configurations
-* `hemacs-ido` - minibuffer cycling related
+* `hemacs-persp` - heavily relying on `persp-mode` for project / workspace management
+* `hemacs-ido` - minibuffer cycling enhancements
 * `hemacs-hippie` - (usually) tab-based completion tweaking
-* `hemacs-jump-buff` - lightning fast buffer switching
+* `hemacs-hyper-jump` - lightning fast buffer switching
 * `hemacs-windows`  - window management and `popwin` settings
 * `hemacs-indent` - indent on enter and pasting with shifting bindings
 * `hemacs-copy-paste` - yank and kill modifications
-* `hemacs-pairs` - `electric-pair` tweaks for hungry delete behavior and `delete-selection-mode` compatibility
 * `hemacs-bindings` & `hemacs-chords` - global key bindings and abusing `keychord-mode`
 * `hemacs-git` - git and github helpers
 * `hemacs-shell` - attempting to make emacs shell actually usable
@@ -53,7 +53,7 @@ as well as support (with some massaging) for the following languages =>
 - javascript & coffescript
 - css, less css, scss, stylus
 - templating languages like sass, haml, slim, jade, handlebars
-- html w/ `mmm-mode`
+- html / erb
 - random sometimes stuff like yaml, markdown, php
 
 ## default settings
