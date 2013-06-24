@@ -17,12 +17,14 @@
         slim-electric-backspace
         smart-tab
         tab-dwim
+        yaml-electric-dash-and-dot
         zap-up-to-char
         ))
 
 (setq mc/cmds-to-run-once
       '(
         ace-jump-mode
+        align-regexp
         beginning-of-buffer
         end-of-buffer
         goto-line-with-feedback
