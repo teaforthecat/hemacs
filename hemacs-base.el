@@ -98,14 +98,16 @@
 ;; templating
 (require 'sgml-mode)
 (require 'slim-mode)
-(require 'mmm-mode)
+(require 'rhtml-mode)
 (require 'haml-mode)
 (require 'yaml-mode)
-(require 'handlebars-mode)
 (require 'jade-mode)
 (require 'simplezen)
 
 (setq haml-backspace-backdents-nesting nil)
 (setq slim-backspace-backdents-nesting nil)
+
+(require 'repl-toggle)
+(setq rtog/mode-repl-alist '((emacs-lisp-mode . ielm)))
 
 (provide 'hemacs-base)
