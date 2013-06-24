@@ -2,8 +2,7 @@
 (global-rbenv-mode)
 
 ;; jump to and from definition with M-. / M-,
-(autoload 'zossima-mode "zossima" "" t)
-(add-hook 'ruby-mode-hook 'zossima-mode)
+;; (add-hook 'ruby-mode-hook 'robe-mode)
 
 ;; indentation fixing
 (setq ruby-deep-indent-paren nil)
