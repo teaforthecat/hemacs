@@ -9,18 +9,20 @@
   (package-refresh-contents))
 
 (defvar packages
-  '(ace-jump-mode
+  '(ace-jump-buffer
+    ace-jump-mode
     ag
     auto-dim-other-buffers
     back-button
     ;; bash-completion
-    browse-kill-ring
+    ;; browse-kill-ring
     buffer-move
     bundler
     change-inner
     coffee-mode
     dash
     dired-details
+    dizzee
     elisp-slime-nav
     exec-path-from-shell
     expand-region
@@ -32,6 +34,7 @@
     haml-mode
     ido-sort-mtime
     ido-ubiquitous
+    inf-ruby
     jade-mode
     js2-mode
     jump-char
@@ -42,9 +45,9 @@
     ;; magit-gh-pulls
     magithub
     markdown-mode
-    mmm-mode
+    ;; mmm-mode
     multiple-cursors
-    ;; nav
+    nav-flash
     octomacs
     page-break-lines
     pcmpl-args
@@ -57,11 +60,15 @@
     rainbow-mode
     rainbow-delimiters
     rbenv
+    repl-toggle
+    rhtml-mode
+    robe
     ;; regex-tool
     s
     sass-mode
     ;; shell-command
     simplezen
+    skewer-mode
     slim-mode
     smartparens
     smex
@@ -70,12 +77,23 @@
     sublimity
     perspective
     undo-tree
-    yaml-mode
-    zossima)
+    yaml-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (package packages)
   (when (not (package-installed-p package))
     (package-install package)))
+
+(defun require-package (package &optional min-version no-refresh)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (package-install package)
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
 
 (provide 'packages)
