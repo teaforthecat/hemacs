@@ -30,22 +30,16 @@
 
 ;; lay the base
 (require 'hemacs-base)
+(require 'hemacs-persp)
 
 ;; editing modules
 (require 'hemacs-subword)
 (require 'hemacs-hooks)
 (require 'hemacs-ido)
 (require 'hemacs-hippie)
-(require 'hemacs-jump-buff)
 (require 'hemacs-windows)
 (require 'hemacs-indent)
 (require 'hemacs-copy-paste)
-;; (require 'hemacs-pairs)
-
-;; global bindings and keychord
-(require 'hemacs-bindings)
-(require 'hemacs-chords)
-(require 'hemacs-hyper-jump)
 
 ;; utility
 (require 'hemacs-git)
@@ -68,6 +62,11 @@
 
 ;; appearance
 (require 'hemacs-ui)
+
+;; global bindings and keychord
+(require 'hemacs-bindings)
+(require 'hemacs-chords)
+(require 'hemacs-hyper-jump)
 
 ;; emacs server
 (require 'server)
