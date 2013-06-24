@@ -19,6 +19,7 @@
 (setq savehist-file (expand-file-name "savehist" hemacs-dir))
 (setq save-place-file (expand-file-name "places" hemacs-dir))
 (setq history-delete-duplicates t)
+(setq history-length 200)
 (savehist-mode t)
 (recentf-mode t)
 
