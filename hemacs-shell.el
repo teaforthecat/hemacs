@@ -57,10 +57,4 @@
     (comint-truncate-buffer)
     (setq comint-buffer-maximum-size old-max)))
 
-(define-key comint-mode-map (kbd "C-c <C-backspace>") 'clear-shell)
-
-;; up/down cycle through input history at current input point
-(define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
-(define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)
-
 (provide 'hemacs-shell)

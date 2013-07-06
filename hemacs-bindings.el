@@ -13,6 +13,13 @@
 ;; (require 'back-button)
 ;; (back-button-mode 1)
 
+;; shell
+(define-key comint-mode-map (kbd "C-c <C-backspace>") 'clear-shell)
+
+;; up/down cycle through input history at current input point
+(define-key comint-mode-map (kbd "M-TAB") 'comint-previous-matching-input-from-input)
+(define-key comint-mode-map (kbd "<C-tab>") 'comint-next-matching-input-from-input)
+
 ;; popwin and file directory/tree navigation
 (global-set-key (kbd "C-z") popwin:keymap)
 (global-set-key (kbd "C-z d") 'dired-jump-other-window)
