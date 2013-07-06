@@ -9,6 +9,13 @@
 (key-chord-define-global "]\\" 'toggle-split-window-horizontally)
 (key-chord-define-global "qr" 'query-replace)
 
+;; jumping
+(key-chord-define-global "zz" 'zap-up-to-char)
+(key-chord-define-global "ZZ" (lambda (char) (interactive "cZap up to char backwards: ") (zap-up-to-char -1 char)))
+(key-chord-define-global "jj" 'ace-jump-word-mode)
+(key-chord-define-global "jl" 'ace-jump-line-mode)
+(key-chord-define-global "jk" 'ace-jump-char-mode)
+
 ;; semi-colon chordage
 
 ;; buffer hopping
@@ -28,10 +35,6 @@
 (key-chord-define-global ";," 'magit-status)
 (key-chord-define-global ";g" 'ag-project-at-point)
 (key-chord-define-global ":G" 'ag)
-
-;; zap
-(key-chord-define-global ";z" 'zap-up-to-char)
-(key-chord-define-global ":Z" (lambda (char) (interactive "cZap up to char backwards: ") (zap-up-to-char -1 char)))
 
 ;; todos
 (key-chord-define-global ";e" 'hemacs-todo-capture)
