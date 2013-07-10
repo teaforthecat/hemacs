@@ -1,18 +1,19 @@
-(require 'powerline)
 (require 'git-gutter)
 (require 'git-gutter-fringe)
-(require 'auto-dim-other-buffers)
-;; (require 'smooth-scrolling)
+(global-git-gutter-mode)
+(set-fringe-style (cons 10 0)) ;; left 10px
+
 (require 'sublimity-scroll)
-;; (require 'sublimity-map)
 
 ;; custom, minimal powerline
-(defun hemacs-powerline-theme ()
+(require-package 'powerline)
+(defun powerline-hemacs-theme ()
   (interactive)
   (setq-default mode-line-format
                 '("%e"
                   (:eval
-                   (let* ((active (eq (frame-selected-window) (selected-window)))
+                   (let* ((active (powerline-selected-window-active))
+                          (mode-line (if active 'mode-line 'mode-line-inactive))
                           (face1 (if active 'powerline-active1 'powerline-inactive1))
                           (face2 (if active 'powerline-active2 'powerline-inactive2))
                           (lhs (list
@@ -22,11 +23,12 @@
                                 (powerline-arrow-right nil face1)
                                 (powerline-raw " " face1)
                                 (powerline-hud face2 face1)
-                                (powerline-raw " " face1)
                                 (powerline-buffer-size face1 'l)
-                                (powerline-raw " " face1)
+                                (powerline-raw " %3l" face1 'r)
                                 (powerline-arrow-right face1 face2)
                                 (powerline-raw mode-line-process face2 'l)
+                                (when (and (boundp 'which-func-mode) which-func-mode)
+                                  (powerline-raw which-func-format face2 'l))
                                 ))
                           (rhs (list
                                 (powerline-arrow-left face2 face1)
@@ -34,13 +36,14 @@
                                 (powerline-raw " " face1)
                                 (powerline-arrow-left face1 nil)
                                 (powerline-raw " ")
-                                (powerline-raw (persp-name persp-curr) nil 'r)
-                                (powerline-raw " ")
+                                (powerline-raw (persp-name persp-curr) mode-line 'r)
                                 )))
                      (concat
                       (powerline-render lhs)
                       (powerline-fill face2 (powerline-width rhs))
                       (powerline-render rhs)))))))
+
+(powerline-hemacs-theme)
 
 ;; set font
 (if (and *is-a-mac* window-system (font-existsp default-font))
@@ -52,26 +55,22 @@
       font-lock-maximum-decoration t
       truncate-partial-width-windows nil)
 
-;; padding for line numbers
-(setq linum-format (lambda (line)
-                     (propertize
-                      (format (concat " %"
-                                      (number-to-string
-                                       (length (number-to-string
-                                                (line-number-at-pos (point-max)))))
-                                      "d ")
-                              line)
-                      'face 'linum)))
-
 (transient-mark-mode t)
-;; (show-paren-mode 1)
 (blink-cursor-mode 1)
 (global-font-lock-mode t)
-(set-fringe-style (cons 1 0)) ;; left only
+(which-func-mode t)
+(color-theme-approximate-on)
+
+(require 'linum-relative)
+;; padding for line numbers
+(setq linum-relative-format " %3s ")
+(setq linum-relative-current-symbol "=>")
+
 (global-page-break-lines-mode) ;; get rid of ^L
-(global-git-gutter-mode)
+
+(require 'auto-dim-other-buffers)
 (auto-dim-other-buffers-mode)
-(hemacs-powerline-theme)
+
 (load-theme 'birds-of-paradise t)
 (toggle-fullscreen)
 

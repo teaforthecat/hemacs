@@ -20,6 +20,8 @@
     bundler
     change-inner
     coffee-mode
+    color-theme-approximate
+    company
     dash
     dired-details
     dizzee
@@ -35,17 +37,16 @@
     ido-sort-mtime
     ido-ubiquitous
     inf-ruby
-    jade-mode
     js2-mode
     jump-char
     key-chord
     ;; kite
     less-css-mode
+    linum-relative
     magit
     ;; magit-gh-pulls
     magithub
     markdown-mode
-    ;; mmm-mode
     multiple-cursors
     nav-flash
     octomacs
@@ -65,7 +66,6 @@
     robe
     ;; regex-tool
     s
-    sass-mode
     ;; shell-command
     simplezen
     skewer-mode
@@ -73,7 +73,6 @@
     smartparens
     smex
     ;; smooth-scrolling
-    stylus-mode
     sublimity
     perspective
     undo-tree
