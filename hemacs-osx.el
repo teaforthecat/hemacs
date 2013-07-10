@@ -1,3 +1,6 @@
+;; sane fullscreen
+(setq ns-use-native-fullscreen nil)
+
 ;; delete to an emacs folder in trash
 (setq delete-by-moving-to-trash t)
 (setq trash-directory "~/.Trash/emacs")
