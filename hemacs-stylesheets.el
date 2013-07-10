@@ -1,6 +1,4 @@
 (require 'less-css-mode)
-(require 'sass-mode)
-(require 'stylus-mode)
 
 (setq css-indent-offset 2
       css-reference-list '
@@ -129,9 +127,8 @@
      (add-to-list 'hippie-expand-try-functions-list 'try-expand-css)
      ))
 
-(eval-after-load 'stylus-mode
+(eval-after-load 'slim-mode
   '(progn
-     (define-key stylus-mode-map (kbd "M-RET") 'newline)
      (set (make-local-variable 'hippie-expand-try-functions-list) hippie-expand-try-functions-list)
      (add-to-list 'hippie-expand-try-functions-list 'try-expand-css)
      ))

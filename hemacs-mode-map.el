@@ -15,10 +15,8 @@
 (add-to-list 'auto-mode-alist '("\\.hamlbars$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache$" . html-mode))
-;; (add-to-list 'auto-mode-alist '("\\.rhtml\\'" . rhtml-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
 
-(add-to-list 'auto-mode-alist '("\\.styl$" . stylus-mode))
+(add-to-list 'auto-mode-alist '("\\.styl$" . slim-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . less-css-mode))
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
