@@ -11,7 +11,7 @@ one man's ever evolving emacs setup. used on osx with carbon emacs 24+. i'm main
 indeed, installing carbon emacs 24+ on osx is easiest with [homebrew](http://mxcl.github.com/homebrew). i go cutting edge like this =>
 
 `
-brew install emacs --cocoa --use-git-head --srgba --HEAD
+brew install emacs --cocoa --use-git-head --srgba --HEAD  
 mv /usr/local/Cellar/emacs/HEAD/Emacs.app /Applications
 `
 since we are already brewing, you might want to make sure you have these programs installed as well =>

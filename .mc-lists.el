@@ -17,6 +17,7 @@
         slim-electric-backspace
         smart-tab
         tab-dwim
+        yaml-electric-backspace
         yaml-electric-dash-and-dot
         zap-up-to-char
         ))

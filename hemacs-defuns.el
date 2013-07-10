@@ -371,6 +371,10 @@ file of a buffer in an external program."
              (string-match ".*theme.el" buffer-file-name))
     (rainbow-mode)))
 
+(defun maybe-delete-trailing-whitespace ()
+  (unless (eq major-mode 'markdown-mode)
+    (delete-trailing-whitespace)))
+
 (defun region-as-string ()
   (buffer-substring (region-beginning)
                     (region-end)))
