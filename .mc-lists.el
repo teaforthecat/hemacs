@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        ace-jump-move
         back-to-indentation-or-beginning
         coffee-dedent-line-backspace
         dabbrev-expand
@@ -14,6 +15,7 @@
         right-subword
         ruby-end-space
         sgml-close-tag
+        shift-right
         slim-electric-backspace
         smart-tab
         tab-dwim
@@ -30,6 +32,7 @@
         end-of-buffer
         goto-line-with-feedback
         ido-find-file
+        magit-status
         next-error
         persp-switch
         query-replace

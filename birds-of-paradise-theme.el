@@ -43,12 +43,12 @@
  '(rbnev-active-ruby-face ((t (:foreground "#E6E1C4" :weight bold :inherit nil))))
  '(persp-selected-face ((t (:foreground "#E6E1C4" :weight bold :inherit nil))))
  '(linum ((t (:background "#3D2B28" :foreground "#5C413D"))))
- '(linum-relative-current-face ((t (:background "#372725" :foreground "#865C38"))))
+ '(linum-relative-current-face ((t (:background "#3D2B28" :foreground "#5C413D"))))
  '(fringe ((t (:background "#3D2B28" :foreground "#5C413D" :height 100 :weight extralight))))
  '(git-gutter-fr:added ((t (:foreground "#7DAF9C" :height 100 :weight extralight))))
  '(git-gutter-fr:deleted ((t (:foreground "#BB99BB" :height 100 :weight extralight))))
  '(git-gutter-fr:modified ((t (:foreground "#6C99BB" :height 100 :weight extralight))))
- '(auto-dim-other-buffers-face ((t (:background "#302020"))))
+ '(auto-dim-other-buffers-face ((t (:background "#3D2B28"))))
 
  '(show-paren-match ((t (:background "#7D504A"))))
  '(show-paren-mismatch ((t (:inherit font-lock-warning-face))))
@@ -135,6 +135,6 @@
  '(nxml-attribute-local-name ((t (:foreground "#EF5D32"))))
  '(nxml-attribute-value ((t (:foreground "#D9D762"))))
 
- '(default ((t (:background "#372725" :foreground "#E6E1C4")))))
+ '(default ((t (:background "#332322" :foreground "#E6E1C4")))))
 
 (provide-theme 'birds-of-paradise)
