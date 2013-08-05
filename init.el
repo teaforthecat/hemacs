@@ -13,7 +13,7 @@
 
 ;; load paths
 (add-to-list 'load-path user-emacs-directory)
-(when (file-exists-p vendor-dir) (add-to-list 'load-path vendor-dir))
+(add-to-list 'load-path vendor-dir)
 (when (file-exists-p custom-file) (load custom-file))
 
 ;; hide GUI

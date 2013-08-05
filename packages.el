@@ -53,6 +53,7 @@
     perspective
     php-mode
     popwin
+    popup
     pos-tip
     powerline
     projectile

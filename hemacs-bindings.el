@@ -19,6 +19,7 @@
 (global-set-key (kbd "M-?") 'hippie-expand-lines)
 
 ;; popup kill ring
+(require 'popup-kill-ring)
 (global-set-key (kbd "C-c y") 'popup-kill-ring)
 
 ;; shell

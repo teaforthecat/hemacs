@@ -99,15 +99,17 @@
 (require 'sgml-mode)
 (require 'slim-mode)
 (require 'rhtml-mode)
-(require 'haml-mode)
 (require 'yaml-mode)
-(require 'jade-mode)
 (require 'simplezen)
 
-(setq haml-backspace-backdents-nesting nil)
 (setq slim-backspace-backdents-nesting nil)
 
 (require 'repl-toggle)
 (setq rtog/mode-repl-alist '((emacs-lisp-mode . ielm)))
+
+(require 'dash-at-point)
+(setq dash-at-point-docsets '("coffee" "lisp" "css" "elisp" "html" "javascript" "iphoneos" "ruby"
+                              "jquery" "meteor" "phonegap" "rubygems" "rails" "underscore" "d3"
+                              "backbone" "bootstrap"))
 
 (provide 'hemacs-base)
