@@ -29,6 +29,7 @@
     expand-region
     direx
     flx
+    flx-ido
     git-gutter
     git-gutter-fringe
     github-browse-file

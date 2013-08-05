@@ -13,8 +13,10 @@
 (setq ido-enable-flex-matching t ;; fuzzy matching
       ido-use-filename-at-point nil ;; don't guess based on cursor position
       ido-auto-merge-work-directories-length -1 ;; don't merge to other dirs
+      ido-completion-buffer-all-completions t
       ido-max-window-height 20
       ido-max-prospects 18
+      ido-use-virtual-buffers 'auto
       ido-use-faces nil)
 
 (setq gc-cons-threshold 20000000) ;; flx memory optimization
@@ -28,6 +30,7 @@
 (add-to-list 'ido-ignore-directories "tmp")
 (add-to-list 'ido-ignore-directories "node_modules")
 (add-to-list 'ido-ignore-directories "vendor")
+(add-to-list 'ido-ignore-directories "target")
 
 ;; vertical ido results!
 (setq ido-decorations (quote ("\n=> " "" "\n   " "\n   ..."
