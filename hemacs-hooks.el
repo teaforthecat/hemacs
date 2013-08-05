@@ -1,3 +1,20 @@
+(defun nice-scrolling ()
+  "Turn on smooth buffered scrolling"
+  (interactive)
+  (set (make-local-variable 'line-spacing) 0.12)
+  (set (make-local-variable 'scroll-margin) 24)
+  (set (make-local-variable 'scroll-conservatively) 100000)
+  (set (make-local-variable 'scroll-preserve-screen-position) t))
+
+(defun maybe-turn-on-rainbow-mode ()
+  (when (and (stringp buffer-file-name)
+             (string-match ".*theme.el" buffer-file-name))
+    (rainbow-mode)))
+
+(defun maybe-delete-trailing-whitespace ()
+  (unless (eq major-mode 'markdown-mode)
+    (delete-trailing-whitespace)))
+
 ;; remove trailing whitespace and deactivate the mark on save
 (add-hook 'before-save-hook 'maybe-delete-trailing-whitespace)
 (add-hook 'before-save-hook 'maybe-deactivate-mark)
@@ -7,9 +24,6 @@
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 
 (add-hook 'magit-log-edit-mode-hook 'flyspell-mode)
-
-;; symbolism
-(add-hook 'prog-mode-hook 'pretty-lambdas)
 
 ;; (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
