@@ -51,6 +51,10 @@
   (kill-buffer)
   (jump-to-register :magit-fullscreen))
 
+(defadvice magit-process-sentinel (after magit-growl-finish (process event) activate)
+  (let ((msg (format "%s %s." (process-name process) (substring event 0 -1))))
+    (growl "Magit" msg)))
+
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;; (setq magit-save-some-buffers nil) ;; don't ask to save buffers
