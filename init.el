@@ -2,8 +2,8 @@
 
  ;; internal settings
  *is-a-mac* (eq system-type 'darwin)
- hemacs-dir (file-name-directory load-file-name)
- custom-file (expand-file-name "custom.el" hemacs-dir)
+ vendor-dir (expand-file-name  "vendor" user-emacs-directory)
+ custom-file (expand-file-name "custom.el" user-emacs-directory)
 
  ;; default settings
  code-dir "~/code/"
@@ -12,11 +12,12 @@
  )
 
 ;; load paths
-(add-to-list 'load-path hemacs-dir)
+(add-to-list 'load-path user-emacs-directory)
+(when (file-exists-p vendor-dir) (add-to-list 'load-path vendor-dir))
 (when (file-exists-p custom-file) (load custom-file))
 
-;; hide everything
-(dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+;; hide GUI
+(dolist (mode '(tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
 ;; load elpa packages
@@ -44,7 +45,7 @@
 ;; utility
 (require 'hemacs-git)
 (require 'hemacs-shell)
-(require 'hemacs-projector)
+(require 'projector)
 (require 'hemacs-dired)
 (require 'hemacs-todo)
 

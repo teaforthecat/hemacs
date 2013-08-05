@@ -1,4 +1,4 @@
-(setq hemacs-todo-file (expand-file-name "todo.org" hemacs-dir)
+(setq hemacs-todo-file (expand-file-name "todo.org" user-emacs-directory)
       org-capture-templates
       '(("t" "Todo" entry (file+function hemacs-todo-file hemacs-org-capture-todo-header)
          "** TODO %?\n")))
