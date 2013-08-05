@@ -1,5 +1,3 @@
-(require 'browse-kill-ring)
-
 ;; delete region on yanking if active
 ;; (defun delete-region-if-active ()
 ;;   (if (region-active-p)
@@ -52,11 +50,5 @@
   (if (and (eolp) (not (bolp)))
       (delete-indentation t)
     (kill-line arg)))
-
-(global-set-key (kbd "C-k") 'kill-and-join-forward)
-(global-set-key (kbd "M-w") 'copy-region-or-current-line)
-(global-set-key (kbd "C-x C-y") 'browse-kill-ring)
-(global-set-key (kbd "C-c k") 'copy-whole-line)
-(global-set-key (kbd "C-c C-k") 'kill-whole-line)
 
 (provide 'hemacs-copy-paste)

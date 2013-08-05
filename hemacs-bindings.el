@@ -13,12 +13,24 @@
 ;; (require 'back-button)
 ;; (back-button-mode 1)
 
+;; hippie expand
+(global-set-key (kbd "TAB") 'tab-dwim)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "M-?") 'hippie-expand-lines)
+
+;; popup kill ring
+(global-set-key (kbd "C-c y") 'popup-kill-ring)
+
 ;; shell
 (define-key comint-mode-map (kbd "C-c <C-backspace>") 'clear-shell)
 
 ;; up/down cycle through input history at current input point
 (define-key comint-mode-map (kbd "M-TAB") 'comint-previous-matching-input-from-input)
 (define-key comint-mode-map (kbd "<C-tab>") 'comint-next-matching-input-from-input)
+
+;; smarter minibuffer history cycling
+(define-key minibuffer-local-map (kbd "M-TAB") 'previous-complete-history-element)
+(define-key minibuffer-local-map (kbd "<C-Tab>") 'next-complete-history-element)
 
 ;; popwin and file directory/tree navigation
 (global-set-key (kbd "C-z") popwin:keymap)
@@ -37,20 +49,8 @@
 (global-set-key (kbd "<M-left>") 'left-subword)
 (global-set-key (kbd "<M-right>") 'right-subword)
 
-;; go to line with feedback
-(global-set-key [remap goto-line] 'goto-line-with-feedback)
-
 ;; aligning, shifting
 (global-set-key (kbd "C-x \\") 'align-regexp)
-
-;; do what i mean
-(global-set-key (kbd "s-/") 'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "s-u") 'duplicate-dwim)
-
-;; ace jump mode
-(global-set-key (kbd "s-m") 'ace-jump-mode)
-(global-set-key (kbd "s-M") 'ace-jump-char-mode)
-(global-set-key (kbd "s-b") 'ace-jump-buff)
 
 ;; buffer cycling
 (global-set-key (kbd "s-{") 'switch-to-prev-buffer)
@@ -59,25 +59,34 @@
 ;; delete file
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 
-;; regions
-(global-set-key (kbd "s-;") 'er/expand-region)
-(global-set-key (kbd "s-'") 'mc/mark-next-like-this)
-(global-set-key (kbd "s-\"") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c s-'") 'mc/mark-all-like-this-dwim)
-
-;; camelCase snake_case conversion
+;; common editing manipulation
+(global-set-key (kbd "s-u") 'duplicate-dwim)
+(global-set-key (kbd "s-/") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "s-i") 'er/expand-region)
+(global-set-key (kbd "s-o") 'mc/mark-next-like-this)
+(global-set-key (kbd "s-p") 'mc/mark-previous-like-this)
+(global-set-key (kbd "s-O") 'mc/mark-all-like-this-dwim)
 (global-set-key (kbd "s-+") 'camelcase-word-or-region)
 (global-set-key (kbd "s-_") 'snakecase-word-or-region)
+(global-set-key (kbd "s-;") 'change-inner)
+(global-set-key (kbd "s-\"") 'change-outer)
+(global-set-key (kbd "s-q") 'query-replace)
+(global-set-key (kbd "s-k") 'kill-and-join-forward)
 
-;; change inner/outer
-(global-set-key (kbd "s-i") 'change-inner)
-(global-set-key (kbd "s-o") 'change-outer)
+;; copy and paste
+(global-set-key (kbd "M-w") 'copy-region-or-current-line)
+(global-set-key (kbd "C-c k") 'copy-whole-line)
+(global-set-key (kbd "C-c C-k") 'kill-whole-line)
 
 ;; !! overrides
 ;; (global-set-key (kbd "C-g") 'keyboard-quit-or-abort-recursive-edit)
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "C-o") 'open-line-and-indent)
 (global-set-key (kbd "s-w") 'persp-remove-current-buffer)
+(global-set-key (kbd "s-j") 'ace-jump-mode)
+
+(global-set-key (kbd "C-c d") 'dash-at-point)
+(global-set-key (kbd "C-c D") 'dash-at-point-with-docset)
 
 ;; super+colon adds space
 (global-set-key (kbd "s-:") 'pad-colon)
@@ -88,33 +97,44 @@
 
 ;; necessities
 (global-set-key (kbd "s-x") 'smex)
-(global-set-key (kbd "C-c g") 'magit-status)
-(global-set-key (kbd "C-x v p") 'git-messenger:popup-message)
-(global-set-key (kbd "C-c O") 'github-browse-file)
 (global-set-key (kbd "C-c o") 'find-or-create-file-at-point)
 
-;; expand
+;; git related
+(global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c O") 'github-browse-file)
+
+(global-set-key (kbd "C-x n") 'git-gutter:next-hunk)
+(global-set-key (kbd "C-x p") 'git-gutter:previous-hunk)
+(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+(global-set-key (kbd "C-x r") 'git-gutter:revert-hunk)
+
+;; expand snippets and shorthand
 (global-set-key (kbd "C-c C-z") 'simplezen-expand)
 
 ;; unset the unneeded
 (global-unset-key (kbd "s-t")) ; ns-popup-font-panel
-(global-unset-key (kbd "s-p")) ; ns-print-buffer
-(global-unset-key (kbd "s-q")) ; save-all-buffers-kill-emacs
 (global-unset-key (kbd "s-n")) ; make-frame
+(global-unset-key (kbd "s-m")) ; iconify-frame
 
+;; new line modifiers
 (global-set-key (kbd "M-RET") 'newline-dwim)
-
-;; smarter minibuffer history cycling
-(define-key minibuffer-local-map (kbd "TAB") 'previous-complete-history-element)
-(define-key minibuffer-local-map (kbd "M-TAB") 'next-complete-history-element)
 
 (global-set-key (kbd "C-c C-t") 'rtog/toggle-repl)
 
-;; project shell
-(global-set-key (kbd "C-c x") 'switch-to-or-create-project-shell)
-(global-set-key (kbd "C-z x") 'popwin:project-shell)
-(global-set-key (kbd "C-c m") 'project-async-command-to-buffer)
-(global-set-key (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
-(define-key comint-mode-map (kbd "C-c RET") 'project-async-command-in-background-and-growl-output)
+;; linum toggle
+(global-set-key (kbd "C-c l t") 'linum-mode)
+
+;; projector shell
+(global-set-key (kbd "C-c x") 'switch-to-or-create-projector-shell)
+(global-set-key (kbd "C-z x") 'popwin:projector-shell)
+(global-set-key (kbd "C-c m") 'projector-async-command-projector-root)
+(global-set-key (kbd "C-c RET") 'projector-async-command-current-directory)
+(define-key comint-mode-map (kbd "C-c RET") 'projector-async-command-current-directory)
+
+;; bindings helper
+(require-package 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x x"))
+(setq guide-key/popup-window-position 'bottom)
+(guide-key-mode 1)  ; Enable guide-key-mode
 
 (provide 'hemacs-bindings)

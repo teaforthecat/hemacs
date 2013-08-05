@@ -6,8 +6,8 @@
 (key-chord-define-global "{}" 'open-brackets-newline-and-indent)
 (key-chord-define-global "[]" 'pad-brackets)
 (key-chord-define-global "_+" 'arrow)
-(key-chord-define-global "]\\" 'toggle-split-window-horizontally)
-(key-chord-define-global "qr" 'query-replace)
+(key-chord-define-global "]\\" 'toggle-split-window)
+(key-chord-define-global "}|" 'delete-other-windows)
 
 ;; jumping
 (key-chord-define-global "zz" 'zap-up-to-char)
@@ -24,10 +24,9 @@
 (key-chord-define-global ";r" 'recentf-ido-find-file)
 (key-chord-define-global ";t" 'projectile-find-file)
 (key-chord-define-global ";f" 'ido-find-file)
-
-;; shells
+(key-chord-define-global ";d" 'direx:jump-to-directory-other-window)
 (key-chord-define-global ";x" 'ido-shell-buffer-in-persp)
-(key-chord-define-global ";c" 'switch-to-or-create-project-shell)
+(key-chord-define-global ";c" 'switch-to-or-create-projector-shell)
 
 ;; project-ish
 (key-chord-define-global ";'" 'open-project)

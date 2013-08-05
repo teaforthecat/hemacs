@@ -63,9 +63,4 @@
         (hippie-expand nil)
       (indent-for-tab-command))))
 
-;; bindings
-(global-set-key (kbd "TAB") 'tab-dwim)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "M-?") 'hippie-expand-lines)
-
 (provide 'hemacs-hippie)
