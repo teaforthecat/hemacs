@@ -1,28 +1,18 @@
-(require 'pcmpl-args)
-(require 'pcmpl-git)
-;; (require 'shell-command)
+;; use bash completion
+(require 'bash-completion)
+(bash-completion-setup)
 
-;; use bash tab completion
-;; (require 'bash-completion)
-;; (autoload 'bash-completion-dynamic-complete
-;;   "bash-completion"
-;;   "BASH completion hook")
-;; (add-hook 'shell-dynamic-complete-functions
-;;           'bash-completion-dynamic-complete)
-;; (add-hook 'shell-command-complete-functions
-;;           'bash-completion-dynamic-complete)
-;; (shell-command-completion-mode)
+(setq-default comint-prompt-read-only t
+              comint-move-point-for-output t
+              comint-scroll-show-maximum-output t
+              comint-process-echoes t
+              ;; comint-buffer-maximum-size 1000
+              comint-input-ignoredups t
+              ;; shell-completion-execonly t
+              ;; shell-prompt-pattern "^[^#$%>]*[#$%>] *"
+              )
 
-(setq comint-prompt-read-only t
-      comint-move-point-for-output t
-      comint-scroll-show-maximum-output t
-      process-read-adaptive-buffering nil
-      ;; comint-process-echoes t
-      ;; comint-buffer-maximum-size 1000
-      comint-input-ignoredups t
-      ;; shell-completion-execonly t
-      ;; shell-prompt-pattern "^[^#$%>]*[#$%>] *"
-)
+(setq process-read-adaptive-buffering nil) ;; helps with log tailing and mass shell output writing
 
 ;; persist shell and REPL command history
 (defun comint-write-history-on-exit (process event)

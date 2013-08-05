@@ -14,8 +14,7 @@
     ag
     auto-dim-other-buffers
     back-button
-    ;; bash-completion
-    ;; browse-kill-ring
+    bash-completion
     buffer-move
     bundler
     change-inner
@@ -51,11 +50,10 @@
     nav-flash
     octomacs
     page-break-lines
-    pcmpl-args
-    pcmpl-git
     perspective
     php-mode
     popwin
+    pos-tip
     powerline
     projectile
     rainbow-mode
