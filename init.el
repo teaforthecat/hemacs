@@ -44,10 +44,9 @@
 ;; utility
 (require 'hemacs-git)
 (require 'hemacs-shell)
-(require 'hemacs-project-shell)
+(require 'hemacs-projector)
 (require 'hemacs-dired)
 (require 'hemacs-todo)
-;; (require 'hemacs-webkit)
 
 ;; mac-ish
 (when (and *is-a-mac* window-system) (require 'hemacs-osx))
